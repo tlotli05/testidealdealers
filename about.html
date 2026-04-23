@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Ideal Dealers | About — The Ideal Way to Grow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0A0A0A;
+            font-family: 'Inter', sans-serif;
+            color: #FFFFFF;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* refined premium typography */
+        html {
+            font-size: 15px;
+        }
+        body, p, li, .card-text {
+            font-size: 0.85rem;
+            letter-spacing: 0.01em;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.6rem;
+        }
+        .section-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #C0C0C0;
+            margin-bottom: 1rem;
+        }
+        .section-sub {
+            font-size: 0.8rem;
+            color: #8A8A8A;
+            letter-spacing: 0.02em;
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0A0A0A; }
+        ::-webkit-scrollbar-thumb { background: #666; border-radius: 4px; }
+
+        /* navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8,8,8,0.94);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 1rem 2rem;
+        }
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-placeholder {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #F0F0F0, #999);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-placeholder i { font-size: 1.1rem; color: #0A0A0A; }
+        .logo-text {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #FFF, #BBB);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a {
+            color: #BBB;
+            text-decoration: none;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #FFF; text-shadow: 0 0 8px rgba(255,255,255,0.3); }
+        .mobile-menu { display: none; font-size: 1.3rem; cursor: pointer; }
+
+        .btn-primary {
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #EAEAEA, #A8A8A8);
+            color: #0A0A0A;
+            border: none;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(180,180,180,0.35); }
+
+        /* hero */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-size: cover;
+            background-position: center 30%;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(145deg, rgba(0,0,0,0.55) 0%, rgba(8,8,8,0.85) 100%);
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 2rem; }
+        .hero-title {
+            background: linear-gradient(135deg, #FFF, #C8C8C8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        .hero-sub { font-size: 0.9rem; color: #D5D5D5; margin-bottom: 1.5rem; }
+
+        .section { max-width: 1300px; margin: 0 auto; padding: 4rem 2rem; }
+
+        /* story card - elegant */
+        .story-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 32px;
+            padding: 2.5rem;
+            transition: all 0.4s;
+        }
+        .story-card:hover {
+            border-color: rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.03);
+        }
+        .quote-mark {
+            font-size: 3rem;
+            color: rgba(200,200,200,0.15);
+            font-family: serif;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        /* mission block */
+        .mission-block {
+            background: linear-gradient(145deg, #0F0F0F, #080808);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 40px;
+            padding: 3rem;
+            text-align: center;
+        }
+        .mission-text {
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            background: linear-gradient(135deg, #FFF, #C0C0C0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* team grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+        }
+        .team-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 28px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.4s;
+        }
+        .team-card:hover {
+            border-color: rgba(255,255,255,0.12);
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.03);
+        }
+        .team-icon {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #D0D0D0;
+        }
+        .team-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .team-role {
+            font-size: 0.7rem;
+            color: #A0A0A0;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+        .team-bio {
+            font-size: 0.75rem;
+            color: #AAAAAA;
+        }
+
+        /* values grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+        }
+        .value-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 28px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.4s;
+        }
+        .value-card:hover {
+            border-color: rgba(255,255,255,0.12);
+            transform: translateY(-4px);
+        }
+        .value-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #D0D0D0;
+        }
+
+        footer {
+            background: #030303;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            padding: 2.5rem 2rem 1.5rem;
+        }
+        .footer-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            margin-right: 1.5rem;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .copyright { text-align: center; color: #555; font-size: 0.6rem; margin-top: 2rem; }
+
+        /* animations with delays */
+        .fade-left, .fade-right, .fade-up {
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.2, 0.85, 0.3, 1);
+        }
+        .fade-left { transform: translateX(-35px); }
+        .fade-right { transform: translateX(35px); }
+        .fade-up { transform: translateY(30px); }
+        .visible { opacity: 1; transform: translateX(0) translateY(0); }
+        .delay-1 { transition-delay: 0.08s; }
+        .delay-2 { transition-delay: 0.16s; }
+        .delay-3 { transition-delay: 0.24s; }
+        .delay-4 { transition-delay: 0.32s; }
+        .delay-5 { transition-delay: 0.4s; }
+
+        @media (max-width: 950px) {
+            .team-grid, .values-grid { grid-template-columns: repeat(2, 1fr); }
+            .mission-text { font-size: 1.3rem; }
+            h1 { font-size: 2.5rem; }
+        }
+        @media (max-width: 750px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #0F0F0F;
+                border: 1px solid rgba(255,255,255,0.05);
+                padding: 1rem;
+                border-radius: 20px;
+                margin-top: 0.8rem;
+            }
+            .nav-links.active { display: flex; }
+            .mobile-menu { display: block; }
+            .hero-title { font-size: 2rem; }
+            .section { padding: 2rem 1.2rem; }
+            .team-grid, .values-grid { grid-template-columns: 1fr; }
+            .story-card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-area">
+            <div class="logo-placeholder"><i class="fas fa-chart-line"></i></div>
+            <span class="logo-text">IDEAL DEALERS</span>
+        </div>
+        <div class="mobile-menu" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600'); background-position: center 35%;">
+        <div class="hero-content">
+            <h1 class="fade-up">Built From Experience.<br>Designed for Growth.</h1>
+            <p class="hero-sub fade-up delay-1">We don't just offer service — we build your brand from the ground up, then handle everything needed to grow it.</p>
+            <div class="fade-up delay-2"><button class="btn-primary" id="exploreTeam">Meet the team →</button></div>
+        </div>
+    </section>
+
+    <!-- Story Section - Lekobe's Journey -->
+    <section class="section">
+        <div class="story-card fade-up">
+            <div class="quote-mark">"</div>
+            <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem; color: #E0E0E0;">
+                Ideal Dealers was founded from a personal journey of ambition, frustration, and discovery. 
+                The founder, Lekobe Makgaretsa, had a strong vision to build a business but initially had little knowledge of where to begin. 
+                The process was challenging and often frustrating — requiring patience, learning, and persistence. But every step proved to be worth it.
+            </p>
+            <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; color: #CCCCCC;">
+                Throughout this journey, Lekobe developed a deep passion and natural knack for creating business ideas. 
+                To turn vision into knowledge, he pursued marketing management and business development courses through Udemy, 
+                gaining practical insight into running and growing a business. With this new understanding came a powerful realisation: 
+                <span style="color: #E0E0E0; font-weight: 500;">many aspiring entrepreneurs face the same struggles — wasting time trying to figure everything out alone.</span>
+            </p>
+            <p style="font-size: 0.9rem; line-height: 1.6; color: #CCCCCC;">
+                From that realisation, Ideal Dealers was born. The purpose is simple: to help entrepreneurs and businesses build their dream brands 
+                without the confusion and delays that often come with starting or growing a business. By handling branding, marketing, and digital development, 
+                Ideal Dealers allows business owners to focus on what matters most — running and growing their business.
+            </p>
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05);">
+                <p style="font-size: 0.8rem; color: #AAAAAA;"><i class="fas fa-signature"></i> — Lekobe Makgaretsa, Director & Creative Lead</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="section">
+        <div class="mission-block fade-up">
+            <h2 class="section-title">Our Mission</h2>
+            <div class="mission-text">To help businesses grow with clarity, creativity, and strategy.</div>
+            <p class="section-sub" style="margin-top: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                We aim to simplify the journey of building and marketing a business by providing professional branding, 
+                effective marketing solutions, and modern digital development that save our clients time and unlock their full potential.
+            </p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section" id="teamSection">
+        <h2 class="section-title fade-left">The Minds Behind the Movement</h2>
+        <p class="section-sub fade-right delay-1">A team built on passion, skill, and commitment to your growth.</p>
+        <div class="team-grid" style="margin-top: 2rem;">
+            <div class="team-card fade-up delay-1">
+                <div class="team-icon"><i class="fas fa-user-astronaut"></i></div>
+                <div class="team-name">Lekobe Makgaretsa</div>
+                <div class="team-role">Director | Creative Lead</div>
+                <div class="team-bio">The visionary behind Ideal Dealers. Leads strategic direction, branding projects, and creative development. Drives innovation, partnerships, and long-term growth.</div>
+            </div>
+            <div class="team-card fade-up delay-2">
+                <div class="team-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="team-name">Letago</div>
+                <div class="team-role">Sales Executive | Business Development</div>
+                <div class="team-bio">Leads client acquisition, structures service packages, negotiates pricing, and builds strong client relationships aligned with growth vision.</div>
+            </div>
+            <div class="team-card fade-up delay-3">
+                <div class="team-icon"><i class="fas fa-bullhorn"></i></div>
+                <div class="team-name">Lesedi</div>
+                <div class="team-role">Marketing Promoter | Brand Engagement</div>
+                <div class="team-bio">Manages brand visibility, social media campaigns, and digital marketing initiatives. Ensures clients stay visible, relevant, and competitive.</div>
+            </div>
+            <div class="team-card fade-up delay-4">
+                <div class="team-icon"><i class="fas fa-clipboard-list"></i></div>
+                <div class="team-name">Bokang</div>
+                <div class="team-role">Operations Manager</div>
+                <div class="team-bio">Oversees daily operations, project coordination, and timelines. Ensures every project is delivered on time at the highest quality.</div>
+            </div>
+            <div class="team-card fade-up delay-5">
+                <div class="team-icon"><i class="fas fa-laptop-code"></i></div>
+                <div class="team-name">Kabelo</div>
+                <div class="team-role">Web Developer | Digital Solutions</div>
+                <div class="team-bio">Leads website development, hosting, SEO basics, and technical integrations. Turns creative ideas into functional digital experiences.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section">
+        <h2 class="section-title fade-left">Our Philosophy</h2>
+        <p class="section-sub fade-right delay-1">The principles that drive every decision, every partnership.</p>
+        <div class="values-grid" style="margin-top: 2rem;">
+            <div class="value-card fade-up delay-1">
+                <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                <h3>Partnership Over Transactions</h3>
+                <p class="card-text">We don't just take orders — we build relationships grounded in mutual success and long-term trust.</p>
+            </div>
+            <div class="value-card fade-up delay-2">
+                <div class="value-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Real Growth > Aesthetics</h3>
+                <p class="card-text">Looking good means nothing without actual results. We focus on measurable impact and sustainable growth.</p>
+            </div>
+            <div class="value-card fade-up delay-3">
+                <div class="value-icon"><i class="fas fa-brain"></i></div>
+                <h3>Strategy + Creativity Combined</h3>
+                <p class="card-text">The perfect balance of smart thinking and bold ideas. No compromise, no shortcuts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Clients Trust - Additional Section -->
+    <section class="section">
+        <div class="story-card fade-up">
+            <h2 class="section-title" style="text-align: center;">Why Clients Trust Us</h2>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem;">
+                <div>
+                    <i class="fas fa-check-circle" style="color: #A0A0A0; margin-right: 0.5rem;"></i>
+                    <span style="font-size: 0.8rem;">We understand the challenges of starting a business</span>
+                </div>
+                <div>
+                    <i class="fas fa-check-circle" style="color: #A0A0A0; margin-right: 0.5rem;"></i>
+                    <span style="font-size: 0.8rem;">We focus on real growth, not just aesthetics</span>
+                </div>
+                <div>
+                    <i class="fas fa-check-circle" style="color: #A0A0A0; margin-right: 0.5rem;"></i>
+                    <span style="font-size: 0.8rem;">Personalized solutions tailored to each client</span>
+                </div>
+                <div>
+                    <i class="fas fa-check-circle" style="color: #A0A0A0; margin-right: 0.5rem;"></i>
+                    <span style="font-size: 0.8rem;">Committed to long-term success and partnership</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section" style="text-align:center;">
+        <div class="fade-up">
+            <p style="font-size: 0.85rem; color: #AAAAAA; margin-bottom: 1.5rem;">Ready to write your brand's story?</p>
+            <button class="btn-primary" id="finalCtaBtn">Start Your Journey →</button>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div>
+            <div class="logo-area" style="margin-bottom:0.5rem;">
+                <div class="logo-placeholder"><i class="fas fa-chart-line"></i></div>
+                <span class="logo-text">IDEAL DEALERS</span>
+            </div>
+            <p style="font-size:0.7rem;">The Ideal Way to Grow.</p>
+            <p style="font-size:0.65rem; margin-top:0.3rem;">info@idealdealers.co.za</p>
+        </div>
+        <div class="footer-links">
+            <h4 style="font-size:0.7rem; margin-bottom:0.5rem;">Navigate</h4>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-links">
+            <h4 style="font-size:0.7rem; margin-bottom:0.5rem;">Legal</h4>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+        </div>
+    </div>
+    <div class="copyright">© 2025 Ideal Dealers — premium marketing & growth agency</div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    if(mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+
+    // Intersection Observer for fade animations
+    const animatedElements = document.querySelectorAll('.fade-left, .fade-right, .fade-up');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+    animatedElements.forEach(el => observer.observe(el));
+
+    // Trigger for elements already in view
+    setTimeout(() => {
+        animatedElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if(rect.top < window.innerHeight - 50) {
+                el.classList.add('visible');
+            }
+        });
+    }, 100);
+
+    // Button interactions
+    const exploreBtn = document.getElementById('exploreTeam');
+    const finalCta = document.getElementById('finalCtaBtn');
+
+    if(exploreBtn) {
+        exploreBtn.addEventListener('click', () => {
+            document.getElementById('teamSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+    if(finalCta) {
+        finalCta.addEventListener('click', () => {
+            window.location.href = 'contact.html';
+        });
+    }
+
+    // Close mobile menu when clicking a link
+    const navItems = document.querySelectorAll('.nav-links a');
+    navItems.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+</script>
+</body>
+</html>

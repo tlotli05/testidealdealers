@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Ideal Dealers | The Ideal Way to Grow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0A0A0A;
+            font-family: 'Inter', sans-serif;
+            color: #FFFFFF;
+            line-height: 1.45;
+            overflow-x: hidden;
+        }
+
+        /* ultra-premium typography - refined, small, elegant */
+        html {
+            font-size: 14px;
+        }
+        body, p, li, a, button, .card-text, .step p, .trust-card p, .badge-text {
+            font-size: 0.7rem;
+            letter-spacing: 0.03em;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+        }
+        h2 {
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        h3 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+        .section-title {
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #C0C0C0;
+            margin-bottom: 0.75rem;
+        }
+        .section-sub {
+            font-size: 0.65rem;
+            color: #7A7A7A;
+            letter-spacing: 0.05em;
+        }
+        
+        /* custom scroll */
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-track { background: #0A0A0A; }
+        ::-webkit-scrollbar-thumb { background: #666; border-radius: 10px; }
+
+        /* navbar - glassmorphism refined */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8,8,8,0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 0.5px solid rgba(255,255,255,0.04);
+            padding: 0.9rem 2rem;
+            transition: all 0.3s ease;
+        }
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-placeholder {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, #F0F0F0, #999);
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .logo-placeholder i {
+            font-size: 1rem;
+            color: #0A0A0A;
+        }
+        .logo-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #FFF, #BBB);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: #BBB;
+            text-decoration: none;
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            transition: all 0.25s;
+            text-transform: uppercase;
+        }
+        .nav-links a:hover {
+            color: #FFF;
+            text-shadow: 0 0 8px rgba(255,255,255,0.3);
+        }
+        .mobile-menu {
+            display: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* buttons - minimalist luxury */
+        .btn-primary, .btn-secondary {
+            padding: 9px 28px;
+            border-radius: 50px;
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            border: none;
+            text-transform: uppercase;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #EAEAEA, #A8A8A8);
+            color: #0A0A0A;
+        }
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(180,180,180,0.3);
+            background: linear-gradient(135deg, #FFF, #B8B8B8);
+        }
+        .btn-secondary {
+            background: transparent;
+            border: 0.8px solid rgba(255,255,255,0.25);
+            color: #FFF;
+        }
+        .btn-secondary:hover {
+            border-color: #DDD;
+            background: rgba(255,255,255,0.03);
+            transform: scale(1.01);
+        }
+
+        /* hero section with parallax feel */
+        .hero {
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-size: cover;
+            background-position: center 30%;
+            position: relative;
+            background-attachment: fixed;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(145deg, rgba(0,0,0,0.6) 0%, rgba(8,8,8,0.85) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 750px;
+            padding: 2rem;
+        }
+        .hero-title {
+            background: linear-gradient(135deg, #FFF, #C8C8C8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        .hero-sub {
+            font-size: 0.8rem;
+            color: #D5D5D5;
+            margin-bottom: 2rem;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+            letter-spacing: 0.02em;
+        }
+
+        /* sections */
+        .section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 4.5rem 2rem;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .section-sub {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        /* glass cards - elevated */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 0.5px solid rgba(255, 255, 255, 0.04);
+            border-radius: 24px;
+            padding: 1.5rem 1.2rem;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.3, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.035);
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.5);
+        }
+        .icon-md {
+            font-size: 1.3rem;
+            margin-bottom: 0.9rem;
+            color: #D8D8D8;
+            opacity: 0.9;
+        }
+        .card-text {
+            font-size: 0.67rem;
+            color: #A8A8A8;
+            line-height: 1.5;
+        }
+
+        /* grids */
+        .trust-grid, .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.3rem;
+        }
+
+        /* case study with dual images feel */
+        .case-study {
+            background: rgba(12,12,12,0.7);
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border: 0.5px solid rgba(255,255,255,0.04);
+            backdrop-filter: blur(4px);
+        }
+        .case-flex {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .case-content {
+            flex: 1.5;
+        }
+        .case-image {
+            flex: 1;
+            min-width: 200px;
+            height: 190px;
+            background: #151515;
+            border-radius: 24px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+            transition: transform 0.4s;
+        }
+        .case-image:hover {
+            transform: scale(1.01);
+        }
+        .badge-small {
+            font-size: 0.55rem;
+            letter-spacing: 2.5px;
+            color: #999;
+            text-transform: uppercase;
+        }
+
+        /* process steps refined */
+        .process-steps {
+            display: flex;
+            gap: 1.3rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        .step {
+            flex: 1;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.015);
+            border-radius: 24px;
+            padding: 1.6rem 1rem;
+            border: 0.5px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.35s;
+        }
+        .step:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            transform: translateY(-3px);
+        }
+        .step-num {
+            width: 38px;
+            height: 38px;
+            background: rgba(220, 220, 220, 0.07);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.9rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+
+        /* final CTA - elegant */
+        .final-cta {
+            background: radial-gradient(ellipse at 30% 20%, #121212, #050505);
+            border-radius: 32px;
+            text-align: center;
+            padding: 2.8rem;
+            border: 0.5px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* footer */
+        footer {
+            background: #030303;
+            border-top: 0.5px solid rgba(255, 255, 255, 0.03);
+            padding: 2.2rem 2rem 1.2rem;
+            margin-top: 1rem;
+        }
+        .footer-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .footer-col p {
+            font-size: 0.6rem;
+            color: #777;
+        }
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            margin-right: 1.5rem;
+            font-size: 0.58rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .copyright {
+            text-align: center;
+            color: #555;
+            font-size: 0.52rem;
+            margin-top: 1.5rem;
+        }
+
+        /* sophisticated animations with delays */
+        .fade-left, .fade-right, .fade-up {
+            opacity: 0;
+            transition: all 0.85s cubic-bezier(0.15, 0.85, 0.3, 1);
+        }
+        .fade-left {
+            transform: translateX(-30px);
+        }
+        .fade-right {
+            transform: translateX(30px);
+        }
+        .fade-up {
+            transform: translateY(25px);
+        }
+        .visible {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+        }
+        
+        /* delay classes for staggered animations */
+        .delay-1 { transition-delay: 0.05s; }
+        .delay-2 { transition-delay: 0.1s; }
+        .delay-3 { transition-delay: 0.15s; }
+        .delay-4 { transition-delay: 0.2s; }
+
+        /* responsive */
+        @media (max-width: 950px) {
+            .trust-grid, .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 750px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #0F0F0F;
+                padding: 1rem;
+                border-radius: 20px;
+                margin-top: 0.8rem;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .mobile-menu {
+                display: block;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .section {
+                padding: 2.5rem 1.2rem;
+            }
+            .trust-grid, .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-area">
+            <div class="logo-placeholder">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <span class="logo-text">IDEAL DEALERS</span>
+        </div>
+        <div class="mobile-menu" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#" class="active">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <!-- Hero Section with luxury image -->
+    <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1600'); background-position: center 25%;">
+        <div class="hero-content">
+            <h1 class="fade-up">The Ideal Way to Grow.</h1>
+            <p class="hero-sub fade-up delay-1">We build, market, and scale your business — so you can focus on running it.</p>
+            <div class="fade-up delay-2">
+                <button class="btn-primary" id="bookCoffeeBtn">Book a Coffee</button>
+                <button class="btn-secondary" id="viewServicesBtn">View Services</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="section">
+        <h2 class="section-title fade-left">Why Clients Trust Ideal Dealers</h2>
+        <p class="section-sub fade-right delay-1">Built from real experience. Driven by real results.</p>
+        <div class="trust-grid">
+            <div class="glass-card fade-up delay-1">
+                <i class="fas fa-chart-line icon-md"></i>
+                <h3>Real Business Understanding</h3>
+                <p class="card-text">Founded from real startup struggle — we've been exactly where you are.</p>
+            </div>
+            <div class="glass-card fade-up delay-2">
+                <i class="fas fa-bullseye icon-md"></i>
+                <h3>Results-Driven Strategies</h3>
+                <p class="card-text">Every decision measured, every strategy built for scalable growth.</p>
+            </div>
+            <div class="glass-card fade-up delay-3">
+                <i class="fas fa-user-check icon-md"></i>
+                <h3>Personalized Solutions</h3>
+                <p class="card-text">No templates. No copy-paste. Just strategies tailored to you.</p>
+            </div>
+            <div class="glass-card fade-up delay-4">
+                <i class="fas fa-seedling icon-md"></i>
+                <h3>Long-Term Growth Focus</h3>
+                <p class="card-text">We're not here for one project — we grow with you, period.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview Section -->
+    <section class="section" id="servicesPreview">
+        <h2 class="section-title fade-left">What We Do</h2>
+        <p class="section-sub fade-right delay-1">Complete solutions to build and grow your brand</p>
+        <div class="services-grid">
+            <div class="glass-card fade-up delay-1">
+                <i class="fas fa-trademark icon-md"></i>
+                <h3>Branding</h3>
+                <p class="card-text">From logo to guidelines — identities that command attention.</p>
+            </div>
+            <div class="glass-card fade-up delay-2">
+                <i class="fas fa-pen-fancy icon-md"></i>
+                <h3>Graphic Design</h3>
+                <p class="card-text">Presentations, packaging, business cards, and everything visual.</p>
+            </div>
+            <div class="glass-card fade-up delay-3">
+                <i class="fas fa-hashtag icon-md"></i>
+                <h3>Social Media Management</h3>
+                <p class="card-text">Your brand, consistently visible across all platforms, daily.</p>
+            </div>
+            <div class="glass-card fade-up delay-4">
+                <i class="fas fa-code icon-md"></i>
+                <h3>Website Development</h3>
+                <p class="card-text">Modern, responsive websites that convert visitors into clients.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Two Case Study Images Section (luxury double visual) -->
+    <section class="section">
+        <div class="case-study fade-left">
+            <div class="case-flex">
+                <div class="case-content">
+                    <span class="badge-small"><i class="fas fa-star" style="font-size:0.45rem;"></i> Featured Work</span>
+                    <h2 style="font-size: 1.15rem; margin: 0.6rem 0; text-transform: none; letter-spacing: -0.3px;">Clogerie — Brand Transformation</h2>
+                    <p class="card-text">Women's clothing & lingerie brand. We partnered to build a presence that reflects confidence, elegance, and modern femininity. From visual direction to social media creatives, we shaped a brand that truly connects.</p>
+                    <div style="margin-top: 1.2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.04); padding: 0.2rem 0.9rem; border-radius: 30px;"><i class="fas fa-palette"></i> Visual Identity</span>
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.04); padding: 0.2rem 0.9rem; border-radius: 30px;"><i class="fas fa-chart-simple"></i> Marketing Strategy</span>
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.04); padding: 0.2rem 0.9rem; border-radius: 30px;"><i class="fas fa-camera"></i> Social Creatives</span>
+                    </div>
+                </div>
+                <div class="case-image" style="background-image: url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500');"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extra Image Gallery / Second Visual - adds luxury -->
+    <section class="section" style="padding-top: 0;">
+        <div class="fade-right" style="display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center; justify-content: center; background: rgba(15,15,15,0.4); border-radius: 28px; padding: 1.8rem;">
+            <div style="flex: 1; min-width: 200px; height: 150px; background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500'); background-size: cover; background-position: center; border-radius: 20px;"></div>
+            <div style="flex: 1.5;">
+                <p class="badge-small" style="margin-bottom: 0.5rem;">Visual storytelling</p>
+                <h3 style="font-size: 0.9rem;">Strategic creative direction</h3>
+                <p class="card-text">Every brand deserves a distinct visual language. We craft identities that resonate, engage, and convert — from color psychology to typography that speaks luxury.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section">
+        <h2 class="section-title fade-left">The Ideal Process</h2>
+        <p class="section-sub fade-right delay-1">Three steps. No confusion. Just growth.</p>
+        <div class="process-steps">
+            <div class="step fade-up delay-1">
+                <div class="step-num">1</div>
+                <h3>Understand</h3>
+                <p class="card-text">We learn your vision, your market, and your goals deeply.</p>
+            </div>
+            <div class="step fade-up delay-2">
+                <div class="step-num">2</div>
+                <h3>Build</h3>
+                <p class="card-text">We create the identity and plan that drives real results.</p>
+            </div>
+            <div class="step fade-up delay-3">
+                <div class="step-num">3</div>
+                <h3>Scale</h3>
+                <p class="card-text">We execute, optimize, and grow with you long-term.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="section">
+        <div class="final-cta fade-up delay-1">
+            <h2 style="font-size: 1.1rem; margin-bottom: 0.6rem; letter-spacing: 0.5px;">Let's Build Your Brand the Right Way</h2>
+            <p class="card-text" style="margin-bottom: 1.3rem;">Stop figuring it out alone. Start growing with a partner who understands.</p>
+            <button class="btn-primary" id="startJourneyBtn">Start Your Growth Journey →</button>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-col">
+            <div class="logo-area" style="margin-bottom: 0.5rem;">
+                <div class="logo-placeholder"><i class="fas fa-chart-line"></i></div>
+                <span class="logo-text">IDEAL DEALERS</span>
+            </div>
+            <p>The Ideal Way to Grow.</p>
+            <p style="margin-top: 0.3rem;">info@idealdealers.co.za</p>
+        </div>
+        <div class="footer-col">
+            <h4 style="font-size: 0.65rem; margin-bottom: 0.5rem;">Explore</h4>
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4 style="font-size: 0.65rem; margin-bottom: 0.5rem;">Legal</h4>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">© 2025 Ideal Dealers — premium marketing & growth agency</div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    if(mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+
+    // Intersection Observer for fade animations with threshold
+    const animatedElements = document.querySelectorAll('.fade-left, .fade-right, .fade-up');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+    animatedElements.forEach(el => observer.observe(el));
+
+    // Immediate check for elements already visible
+    setTimeout(() => {
+        animatedElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if(rect.top < window.innerHeight - 60) {
+                el.classList.add('visible');
+            }
+        });
+    }, 150);
+
+    // Button interactions
+    const bookBtn = document.getElementById('bookCoffeeBtn');
+    const viewBtn = document.getElementById('viewServicesBtn');
+    const journeyBtn = document.getElementById('startJourneyBtn');
+
+    if(bookBtn) {
+        bookBtn.addEventListener('click', () => {
+            alert('☕ Book a Coffee — A relaxed consultation. No pressure. Just good coffee and the start of something remarkable. We\'ll reach out within 24 hours.');
+        });
+    }
+    if(viewBtn) {
+        viewBtn.addEventListener('click', () => {
+            document.getElementById('servicesPreview').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+    if(journeyBtn) {
+        journeyBtn.addEventListener('click', () => {
+            alert('Start Your Growth Journey — Let\'s create something extraordinary together. Our team will connect with you shortly.');
+        });
+    }
+
+    // Smooth scroll for nav (placeholder)
+    const navItems = document.querySelectorAll('.nav-links a');
+    navItems.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const text = link.innerText;
+            if(text === 'Home') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                alert(`${text} page — Crafted with the same attention to detail. Coming soon as we perfect every pixel.`);
+            }
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // subtle parallax effect on hero (optional)
+    window.addEventListener('scroll', () => {
+        const hero = document.querySelector('.hero');
+        if(hero) {
+            const scrolled = window.pageYOffset;
+            hero.style.backgroundPositionY = 25 + (scrolled * 0.2) + '%';
+        }
+    });
+</script>
+</body>
+</html>
