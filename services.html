@@ -21,62 +21,64 @@
             overflow-x: hidden;
         }
 
-        /* balanced premium typography - previous working size */
+        /* premium typography */
         html {
             font-size: 15px;
         }
-        body, p, li, .card-text {
-            font-size: 0.85rem;
-            letter-spacing: 0.01em;
+        body, p, li, a, button, .card-text {
+            font-size: 0.75rem;
+            letter-spacing: 0.02em;
             font-weight: 400;
             line-height: 1.5;
         }
         h1 {
-            font-size: 3.2rem;
+            font-size: 2.6rem;
             font-weight: 600;
             letter-spacing: -0.02em;
             line-height: 1.2;
         }
         h2 {
             font-size: 1.2rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
+            font-weight: 500;
+            letter-spacing: 0.02em;
             text-transform: uppercase;
         }
         h3 {
-            font-size: 1rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            letter-spacing: 0.02em;
-            margin-bottom: 0.6rem;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.5rem;
         }
         .section-title {
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 500;
-            letter-spacing: 0.3em;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            color: #C0C0C0;
-            margin-bottom: 1rem;
+            color: #C8C8C8;
+            margin-bottom: 0.5rem;
         }
         .section-sub {
-            font-size: 0.8rem;
-            color: #8A8A8A;
-            letter-spacing: 0.02em;
+            font-size: 0.7rem;
+            color: #888;
+            letter-spacing: 0.5px;
         }
 
-        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar { width: 3px; }
         ::-webkit-scrollbar-track { background: #0A0A0A; }
-        ::-webkit-scrollbar-thumb { background: #666; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #555; border-radius: 10px; }
 
         /* navbar */
         .navbar {
             position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(8,8,8,0.94);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            padding: 1rem 2rem;
+            background: rgba(8,8,8,0.96);
+            backdrop-filter: blur(16px);
+            border-bottom: 0.5px solid rgba(255,255,255,0.05);
+            padding: 0.8rem 2rem;
         }
         .nav-container {
             max-width: 1300px;
@@ -84,77 +86,180 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
         .logo-placeholder {
-            width: 38px;
-            height: 38px;
-            background: linear-gradient(135deg, #F0F0F0, #999);
-            border-radius: 10px;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #E8E8E8, #909090);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .logo-placeholder i { font-size: 1.1rem; color: #0A0A0A; }
-        .logo-text {
+        .logo-placeholder i {
             font-size: 1rem;
+            color: #0A0A0A;
+        }
+        .logo-text {
+            font-size: 0.9rem;
             font-weight: 600;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #FFF, #BBB);
+            letter-spacing: 1.5px;
+            background: linear-gradient(135deg, #FFF, #AAA);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-        .nav-links { display: flex; gap: 2rem; }
+        
+        /* Desktop nav links */
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
         .nav-links a {
             color: #BBB;
             text-decoration: none;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 1.2px;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #FFF;
+            text-shadow: 0 0 6px rgba(255,255,255,0.3);
+        }
+        
+        /* Mobile Menu Button - 3 lines that turn into X - stays on far right */
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            z-index: 1002;
+            flex-shrink: 0;
+        }
+        .mobile-menu span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 24px;
+            background: #FFFFFF;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            left: 3px;
+        }
+        .mobile-menu span:nth-child(1) { top: 8px; }
+        .mobile-menu span:nth-child(2) { top: 14px; }
+        .mobile-menu span:nth-child(3) { top: 20px; }
+        .mobile-menu.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 14px;
+        }
+        .mobile-menu.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+        .mobile-menu.active span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 14px;
+        }
+
+        /* Mobile menu overlay panel - slides from right */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            max-width: 280px;
+            height: 100vh;
+            background: #0A0A0A;
+            backdrop-filter: blur(20px);
+            z-index: 1001;
+            transition: right 0.35s ease;
+            border-left: 1px solid rgba(255,255,255,0.1);
+            padding: 5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .mobile-nav-overlay.active {
+            right: 0;
+        }
+        .mobile-nav-overlay a {
+            color: #DDD;
+            text-decoration: none;
+            font-size: 0.9rem;
             font-weight: 500;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+            padding: 0.5rem 0;
             transition: all 0.2s;
         }
-        .nav-links a:hover, .nav-links a.active { color: #FFF; text-shadow: 0 0 8px rgba(255,255,255,0.3); }
-        .mobile-menu { display: none; font-size: 1.3rem; cursor: pointer; }
+        .mobile-nav-overlay a:hover, .mobile-nav-overlay a.active {
+            color: #FFF;
+            text-shadow: 0 0 6px rgba(255,255,255,0.3);
+        }
+        /* Overlay background when menu is open */
+        .menu-overlay-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .menu-overlay-bg.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
         .btn-primary {
-            padding: 12px 32px;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 1px;
             cursor: pointer;
-            background: linear-gradient(135deg, #EAEAEA, #A8A8A8);
-            color: #0A0A0A;
+            transition: all 0.25s ease;
+            font-family: inherit;
             border: none;
             text-transform: uppercase;
-            transition: all 0.3s;
+            background: linear-gradient(135deg, #E8E8E8, #A0A0A0);
+            color: #0A0A0A;
         }
-        .btn-primary:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(180,180,180,0.35); }
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 16px rgba(160,160,160,0.35);
+        }
 
-        /* hero */
+        /* hero - clean gradient, no background image */
         .hero {
-            min-height: 55vh;
+            min-height: 45vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background-size: cover;
-            background-position: center 30%;
             position: relative;
+            background: radial-gradient(circle at 30% 20%, #121212 0%, #0A0A0A 100%);
+            padding-top: 70px;
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(145deg, rgba(0,0,0,0.55) 0%, rgba(8,8,8,0.85) 100%);
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
         }
-        .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 2rem; }
         .hero-title {
             background: linear-gradient(135deg, #FFF, #C8C8C8);
             -webkit-background-clip: text;
@@ -162,89 +267,56 @@
             color: transparent;
             margin-bottom: 1rem;
         }
-        .hero-sub { font-size: 0.9rem; color: #D5D5D5; margin-bottom: 2rem; }
-
-        .section { max-width: 1300px; margin: 0 auto; padding: 4rem 2rem; }
-
-        /* premium service cards - with elegant borders */
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-        .service-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 28px;
-            padding: 2rem;
-            transition: all 0.4s ease;
-        }
-        .service-card:hover {
-            border-color: rgba(255,255,255,0.15);
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.03);
-        }
-        .service-icon {
-            font-size: 2.2rem;
-            margin-bottom: 1.2rem;
-            color: #D8D8D8;
-        }
-        .service-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-        .service-desc {
-            color: #AAAAAA;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-        .service-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-        .service-features span {
-            font-size: 0.7rem;
-            background: rgba(255,255,255,0.05);
-            padding: 0.3rem 1rem;
-            border-radius: 30px;
-            color: #CCCCCC;
+        .hero-sub {
+            font-size: 0.85rem;
+            color: #D5D5D5;
+            margin-bottom: 1.5rem;
         }
 
-        /* pricing section */
-        .pricing-wrapper {
-            background: linear-gradient(145deg, #0F0F0F, #080808);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 40px;
+        .section {
+            max-width: 1300px;
+            margin: 0 auto;
             padding: 3rem 2rem;
         }
+        .section-title {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .section-sub {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* glass cards */
+        .glass-card {
+            background: rgba(255,255,255,0.02);
+            backdrop-filter: blur(8px);
+            border: 0.5px solid rgba(255,255,255,0.04);
+            border-radius: 20px;
+            padding: 1.5rem 1.2rem;
+            transition: all 0.35s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(255,255,255,0.12);
+            transform: translateY(-3px);
+            background: rgba(255,255,255,0.03);
+        }
+        .icon-md {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: #D0D0D0;
+        }
+
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        .pricing-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 24px;
-            padding: 2rem 1.5rem;
-            transition: all 0.3s;
-        }
-        .pricing-card:hover {
-            border-color: rgba(255,255,255,0.12);
-            transform: translateY(-4px);
-            background: rgba(255,255,255,0.03);
-        }
-        .pricing-card.premium {
-            border-top: 2px solid #C0C0C0;
+            gap: 1.2rem;
         }
         .price {
-            font-size: 2.4rem;
-            font-weight: 700;
-            margin: 1rem 0;
-            background: linear-gradient(135deg, #FFF, #C0C0C0);
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 0.5rem 0;
+            background: linear-gradient(135deg, #FFF, #BBB);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -254,98 +326,74 @@
             margin: 1rem 0;
         }
         .pricing-features li {
-            margin: 0.6rem 0;
+            margin: 0.45rem 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #BBBBBB;
+            font-size: 0.7rem;
+        }
+        .badge-premium {
+            background: rgba(200,200,200,0.12);
+            border-radius: 30px;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.55rem;
+            display: inline-block;
+        }
+
+        .service-list-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        .service-item {
+            background: rgba(255,255,255,0.02);
+            border-radius: 16px;
+            padding: 0.9rem 1rem;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 0.75rem;
-            color: #BBBBBB;
+            border: 0.5px solid rgba(255,255,255,0.04);
+            transition: all 0.2s;
         }
-        .pricing-features i {
-            font-size: 0.7rem;
-            color: #A0A0A0;
+        .service-item:hover {
+            border-color: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.03);
+        }
+        .platform-badge {
+            background: rgba(255,255,255,0.05);
+            border-radius: 30px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.6rem;
+            display: inline-block;
+            margin-right: 0.5rem;
         }
 
-        /* growth partnership */
-        .growth-section {
-            background: radial-gradient(ellipse at 50% 30%, #121212, #050505);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 40px;
-            padding: 3rem;
-            text-align: center;
+        .growth-partner {
+            background: radial-gradient(ellipse at 30% 20%, #121212, #050505);
+            border-radius: 28px;
+            padding: 2rem;
+            margin-top: 1rem;
+            border: 0.5px solid rgba(255,255,255,0.05);
         }
-        .growth-grid {
+        .feature-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin: 2rem 0;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
         }
-        .growth-item {
-            padding: 1rem;
-        }
-        .growth-item i {
-            font-size: 2rem;
-            color: #D0D0D0;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-        .growth-item p {
-            font-size: 0.75rem;
-            color: #999;
-        }
-
-        /* mini game */
-        .game-section {
-            background: rgba(15,15,15,0.6);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 40px;
-            padding: 2.5rem;
-            text-align: center;
-        }
-        .game-question {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            color: #E8E8E8;
-            font-weight: 500;
-        }
-        .game-options {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .game-btn {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            color: #DDDDDD;
-        }
-        .game-btn:hover {
-            background: rgba(255,255,255,0.12);
-            border-color: rgba(255,255,255,0.25);
-            transform: translateY(-2px);
-        }
-        .game-feedback {
-            font-size: 0.8rem;
-            margin-top: 1rem;
+        .card-text {
+            font-size: 0.7rem;
             color: #AAA;
-        }
-        .game-score {
-            font-size: 0.75rem;
-            color: #C0C0C0;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
+            line-height: 1.5;
         }
 
         footer {
-            background: #030303;
-            border-top: 1px solid rgba(255,255,255,0.04);
-            padding: 2.5rem 2rem 1.5rem;
+            background: #040404;
+            border-top: 0.5px solid rgba(255,255,255,0.03);
+            padding: 2rem 2rem 1.2rem;
+            margin-top: 2rem;
         }
         .footer-inner {
             max-width: 1300px;
@@ -353,54 +401,53 @@
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 1.5rem;
         }
         .footer-links a {
             color: #888;
             text-decoration: none;
             margin-right: 1.5rem;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
-        .copyright { text-align: center; color: #555; font-size: 0.6rem; margin-top: 2rem; }
+        .footer-links a:hover {
+            color: #FFF;
+        }
+        .copyright {
+            text-align: center;
+            color: #555;
+            font-size: 0.55rem;
+            margin-top: 1.5rem;
+        }
 
-        /* animations with visible delays */
+        /* animations */
         .fade-left, .fade-right, .fade-up {
             opacity: 0;
-            transition: all 0.8s cubic-bezier(0.2, 0.85, 0.3, 1);
+            transition: all 0.7s cubic-bezier(0.2, 0.8, 0.3, 1);
         }
-        .fade-left { transform: translateX(-35px); }
-        .fade-right { transform: translateX(35px); }
-        .fade-up { transform: translateY(30px); }
+        .fade-left { transform: translateX(-28px); }
+        .fade-right { transform: translateX(28px); }
+        .fade-up { transform: translateY(24px); }
         .visible { opacity: 1; transform: translateX(0) translateY(0); }
         .delay-1 { transition-delay: 0.08s; }
         .delay-2 { transition-delay: 0.16s; }
         .delay-3 { transition-delay: 0.24s; }
-        .delay-4 { transition-delay: 0.32s; }
 
         @media (max-width: 950px) {
-            .service-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .pricing-grid, .growth-grid { grid-template-columns: repeat(2, 1fr); }
-            h1 { font-size: 2.5rem; }
+            .pricing-grid, .feature-grid { grid-template-columns: repeat(2, 1fr); }
+            h1 { font-size: 2rem; }
         }
         @media (max-width: 750px) {
             .nav-links {
                 display: none;
-                flex-direction: column;
-                width: 100%;
-                background: #0F0F0F;
-                border: 1px solid rgba(255,255,255,0.05);
-                padding: 1rem;
-                border-radius: 20px;
-                margin-top: 0.8rem;
             }
-            .nav-links.active { display: flex; }
-            .mobile-menu { display: block; }
-            .hero-title { font-size: 2rem; }
+            .mobile-menu {
+                display: block;
+            }
+            .hero-title { font-size: 1.8rem; }
             .section { padding: 2rem 1.2rem; }
-            .pricing-grid, .growth-grid { grid-template-columns: 1fr; }
-            .pricing-wrapper, .growth-section, .game-section { padding: 1.8rem; }
+            .pricing-grid, .feature-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -409,149 +456,170 @@
 <nav class="navbar">
     <div class="nav-container">
         <div class="logo-area">
-            <div class="logo-placeholder"><i class="fas fa-chart-line"></i></div>
+            <div class="logo-placeholder">
+                <i class="fas fa-chart-line"></i>
+            </div>
             <span class="logo-text">IDEAL DEALERS</span>
         </div>
-        <div class="mobile-menu" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
-        <div class="nav-links" id="navLinks">
+        <!-- Desktop nav links -->
+        <div class="nav-links" id="desktopNavLinks">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="services.html" class="active">Services</a>
             <a href="contact.html">Contact</a>
         </div>
+        <!-- Mobile menu button (3 lines) -->
+        <div class="mobile-menu" id="mobileMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!-- Mobile overlay background -->
+    <div class="menu-overlay-bg" id="menuOverlayBg"></div>
+    <!-- Mobile nav panel that slides from right -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="contact.html">Contact</a>
     </div>
 </nav>
 
 <main>
-    <!-- Hero -->
-    <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1600');">
+    <!-- Hero Section - clean gradient, no background image -->
+    <section class="hero">
         <div class="hero-content">
-            <h1 class="fade-up">Services that<br>build empires.</h1>
-            <p class="hero-sub fade-up delay-1">Strategic. Creative. Results-driven. Everything you need under one roof.</p>
-            <div class="fade-up delay-2"><button class="btn-primary" id="exploreCta">Explore offerings →</button></div>
+            <h1 class="fade-up">Everything You Need to Build and Grow Your Brand</h1>
+            <p class="hero-sub fade-up delay-1">From identity creation to full-scale growth partnership — we've got you covered.</p>
+            <div class="fade-up delay-2">
+                <button class="btn-primary" id="exploreBtn">Explore Packages →</button>
+            </div>
         </div>
     </section>
 
-    <!-- Core Services -->
+    <!-- Branding Packages -->
+    <section class="section" id="packages">
+        <h2 class="section-title fade-left">Branding Packages</h2>
+        <p class="section-sub fade-right delay-1">Choose the package that fits your stage of growth</p>
+        <div class="pricing-grid">
+            <div class="glass-card fade-up delay-1">
+                <h3>Starter Pack</h3>
+                <div class="price">R2,000</div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check-circle" style="color:#A0A0A0;"></i> Logo Concept</li>
+                    <li><i class="fas fa-check-circle"></i> Color Palette</li>
+                    <li><i class="fas fa-check-circle"></i> Typography</li>
+                    <li><i class="fas fa-check-circle"></i> Brand Guidelines</li>
+                </ul>
+            </div>
+            <div class="glass-card fade-up delay-2">
+                <h3>Growth Pack</h3>
+                <div class="price">R7,500</div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check-circle"></i> Starter Pack +</li>
+                    <li><i class="fas fa-check-circle"></i> Business Cards</li>
+                    <li><i class="fas fa-check-circle"></i> Email Signature</li>
+                    <li><i class="fas fa-check-circle"></i> Business Profile</li>
+                    <li><i class="fas fa-check-circle"></i> Flyers / Leaflets</li>
+                    <li><i class="fas fa-check-circle"></i> Posters</li>
+                </ul>
+            </div>
+            <div class="glass-card fade-up delay-3">
+                <h3>Premium Pack <span class="badge-premium">recommended</span></h3>
+                <div class="price">R10,000</div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check-circle"></i> Growth Pack +</li>
+                    <li><i class="fas fa-check-circle"></i> Marketing Materials</li>
+                    <li><i class="fas fa-check-circle"></i> Packaging & Labelling</li>
+                    <li><i class="fas fa-check-circle"></i> Social Media Management*</li>
+                    <li><i class="fas fa-check-circle"></i> Weekly Reports + Strategy</li>
+                </ul>
+                <p style="font-size:0.6rem; color:#777; margin-top:0.5rem;">*SMM monthly: R1,500</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Graphic Design -->
     <section class="section">
-        <h2 class="section-title fade-left">What We Offer</h2>
-        <p class="section-sub fade-right delay-1">Comprehensive solutions for ambitious brands</p>
-        <div class="service-grid" style="margin-top: 2rem;">
-            <div class="service-card fade-up delay-1">
-                <div class="service-icon"><i class="fas fa-trademark"></i></div>
-                <h3>Branding</h3>
-                <p class="service-desc">Complete brand worlds — from visual identity to emotional connection, strategy to guidelines.</p>
-                <div class="service-features">
-                    <span>Visual Identity</span><span>Brand Strategy</span><span>Guidelines</span><span>Positioning</span>
-                </div>
-            </div>
-            <div class="service-card fade-up delay-2">
-                <div class="service-icon"><i class="fas fa-pen-fancy"></i></div>
-                <h3>Graphic Design</h3>
-                <p class="service-desc">Premium visual language across every touchpoint. Presentations, packaging, business cards.</p>
-                <div class="service-features">
-                    <span>Presentations</span><span>Packaging</span><span>Profiles</span><span>Posters</span>
-                </div>
-            </div>
-            <div class="service-card fade-up delay-3">
-                <div class="service-icon"><i class="fas fa-hashtag"></i></div>
-                <h3>Social Media Management</h3>
-                <p class="service-desc">Strategic content that builds communities, drives engagement, creates loyalty.</p>
-                <div class="service-features">
-                    <span>Daily Posting</span><span>Ad Creatives</span><span>Analytics</span><span>Community Mgmt</span>
-                </div>
-            </div>
-            <div class="service-card fade-up delay-4">
-                <div class="service-icon"><i class="fas fa-code"></i></div>
-                <h3>Website Development</h3>
-                <p class="service-desc">High-performance, conversion-focused websites. Your digital flagship.</p>
-                <div class="service-features">
-                    <span>Business Sites</span><span>Landing Pages</span><span>Lead Gen</span><span>SEO Ready</span>
-                </div>
+        <div class="glass-card fade-left">
+            <h2 class="section-title" style="text-align:left; margin-bottom:0.5rem;">Graphic Design</h2>
+            <p class="section-sub" style="text-align:left; margin-bottom:1rem;">Professional visual identities that make you look credible, modern, and memorable.</p>
+            <div class="service-list-grid">
+                <div class="service-item"><i class="fas fa-file-powerpoint"></i> Presentations & Pitch Decks</div>
+                <div class="service-item"><i class="fas fa-building"></i> Company Profiles</div>
+                <div class="service-item"><i class="fas fa-envelope"></i> Email Signatures</div>
+                <div class="service-item"><i class="fas fa-poster"></i> Posters & Flyers</div>
+                <div class="service-item"><i class="fas fa-id-card"></i> Business Cards</div>
+                <div class="service-item"><i class="fas fa-trademark"></i> Logo & Brand Identity</div>
+                <div class="service-item"><i class="fas fa-box"></i> Packaging & Label Design</div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing -->
-    <div class="section">
-        <div class="pricing-wrapper fade-up">
-            <h2 class="section-title" style="text-align:center;">Investment</h2>
-            <p class="section-sub" style="text-align:center;">Choose the foundation for your brand's future</p>
-            <div class="pricing-grid">
-                <div class="pricing-card fade-up delay-1">
-                    <h3>Starter</h3>
-                    <div class="price">R2,000</div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check-circle"></i> Logo Concept</li>
-                        <li><i class="fas fa-check-circle"></i> Color Palette</li>
-                        <li><i class="fas fa-check-circle"></i> Typography</li>
-                        <li><i class="fas fa-check-circle"></i> Brand Guidelines</li>
-                    </ul>
-                </div>
-                <div class="pricing-card fade-up delay-2">
-                    <h3>Growth</h3>
-                    <div class="price">R7,500</div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check-circle"></i> Everything in Starter</li>
-                        <li><i class="fas fa-check-circle"></i> Business Cards + Email Signature</li>
-                        <li><i class="fas fa-check-circle"></i> Business Profile + Flyers</li>
-                        <li><i class="fas fa-check-circle"></i> Posters</li>
-                    </ul>
-                </div>
-                <div class="pricing-card premium fade-up delay-3">
-                    <h3>Premium <span style="font-size:0.65rem;">recommended</span></h3>
-                    <div class="price">R10,000</div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check-circle"></i> Everything in Growth</li>
-                        <li><i class="fas fa-check-circle"></i> Packaging & Labelling</li>
-                        <li><i class="fas fa-check-circle"></i> Social Media Management*</li>
-                        <li><i class="fas fa-check-circle"></i> Weekly Reports + Strategy Sessions</li>
-                    </ul>
-                    <p style="font-size:0.65rem; color:#777; margin-top:0.5rem;">*SMM monthly: R1,500</p>
-                </div>
+    <!-- Social Media Management -->
+    <section class="section">
+        <div class="glass-card fade-right">
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-items: baseline;">
+                <h2 class="section-title" style="text-align:left; margin-bottom:0.3rem;">Social Media Management</h2>
+                <span class="badge-premium" style="font-size:0.65rem;">Monthly: R1,500</span>
+            </div>
+            <div style="margin: 0.8rem 0 1rem;">
+                <span class="platform-badge"><i class="fab fa-tiktok"></i> TikTok</span>
+                <span class="platform-badge"><i class="fab fa-instagram"></i> Instagram</span>
+                <span class="platform-badge"><i class="fab fa-facebook"></i> Facebook</span>
+                <span class="platform-badge"><i class="fab fa-linkedin"></i> LinkedIn</span>
+            </div>
+            <div class="service-list-grid">
+                <div class="service-item"><i class="fas fa-ad"></i> Ad Creatives & Campaigns</div>
+                <div class="service-item"><i class="fas fa-chart-line"></i> Campaign Management</div>
+                <div class="service-item"><i class="fas fa-edit"></i> Content Editing</div>
+                <div class="service-item"><i class="fas fa-calendar-week"></i> Daily Posting & Scheduling</div>
+                <div class="service-item"><i class="fas fa-comments"></i> Community Management</div>
+                <div class="service-item"><i class="fas fa-chart-simple"></i> Monthly Reports</div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Website Development -->
+    <section class="section">
+        <div class="glass-card fade-left">
+            <h2 class="section-title" style="text-align:left;">Website Development</h2>
+            <p class="section-sub" style="text-align:left; margin-bottom:1rem;">Modern websites that turn visitors into customers.</p>
+            <div class="service-list-grid">
+                <div class="service-item"><i class="fas fa-globe"></i> Business Websites</div>
+                <div class="service-item"><i class="fas fa-landmark"></i> Landing Pages</div>
+                <div class="service-item"><i class="fas fa-mobile-alt"></i> Mobile-Responsive Design</div>
+                <div class="service-item"><i class="fas fa-users"></i> Lead Generation Setup</div>
+                <div class="service-item"><i class="fas fa-calendar-check"></i> Contact & Booking Integration</div>
+                <div class="service-item"><i class="fas fa-palette"></i> Brand-aligned Design</div>
+            </div>
+        </div>
+    </section>
 
     <!-- Growth Partnership -->
     <section class="section">
-        <div class="growth-section fade-up">
-            <h2 class="section-title">The Growth Partnership</h2>
-            <p class="section-sub" style="margin-bottom: 1.5rem;">Beyond services. A true partnership for ambitious brands.</p>
-            <div class="growth-grid">
-                <div class="growth-item fade-up delay-1"><i class="fas fa-chart-line"></i><h3>Monthly Reports</h3><p>Full transparency on performance</p></div>
-                <div class="growth-item fade-up delay-2"><i class="fas fa-users"></i><h3>Strategy Sessions</h3><p>Monthly alignment calls</p></div>
-                <div class="growth-item fade-up delay-3"><i class="fas fa-chart-simple"></i><h3>Campaign Scaling</h3><p>Optimize and multiply results</p></div>
-                <div class="growth-item fade-up delay-4"><i class="fas fa-bolt"></i><h3>Priority Access</h3><p>Direct line, faster feedback</p></div>
+        <div class="growth-partner fade-up">
+            <h2 class="section-title">Growth Partnership</h2>
+            <p class="section-sub" style="margin-bottom: 1rem;">We're not just your agency — we're part of your business.</p>
+            <div class="feature-grid">
+                <div><i class="fas fa-chart-line" style="font-size:1.2rem;"></i><h3 style="margin-top:0.5rem;">Monthly Reports</h3><p class="card-text">What worked, what failed, next steps</p></div>
+                <div><i class="fas fa-users" style="font-size:1.2rem;"></i><h3 style="margin-top:0.5rem;">Strategy Sessions</h3><p class="card-text">Regular calls to align goals</p></div>
+                <div><i class="fas fa-chart-simple" style="font-size:1.2rem;"></i><h3 style="margin-top:0.5rem;">Campaign Scaling</h3><p class="card-text">Optimize and scale what works</p></div>
+                <div><i class="fas fa-bolt" style="font-size:1.2rem;"></i><h3 style="margin-top:0.5rem;">Priority Access</h3><p class="card-text">Direct communication, faster feedback</p></div>
             </div>
-            <div style="background:rgba(255,255,255,0.03); border-radius: 28px; padding: 1.2rem; margin-top: 0.5rem;">
-                <p style="font-size:0.8rem;">"We are part of your business now." — Advisor, not vendor.</p>
-                <p style="font-size:0.7rem; color:#777; margin-top:0.5rem;">No cancellations unless poor performance. Clients grow with us.</p>
+            <div style="background:rgba(255,255,255,0.02); border-radius:20px; padding:1rem; margin-top:1rem;">
+                <p style="font-size:0.7rem;">"We are part of your business now." — Advisor, not vendor.</p>
+                <p style="font-size:0.6rem; color:#777; margin-top:0.3rem;">No cancellations unless poor performance. Clients grow with us.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Mini Game -->
-    <section class="section">
-        <div class="game-section fade-up">
-            <h2 class="section-title">Quick Quiz</h2>
-            <p class="section-sub" style="margin-bottom: 1rem;">Test your knowledge about our services</p>
-            <div class="game-score" id="gameScore">Score: 0 / 5</div>
-            <div class="game-question" id="gameQuestion">Which package includes Social Media Management?</div>
-            <div class="game-options" id="gameOptions">
-                <div class="game-btn" data-answer="starter">Starter Pack</div>
-                <div class="game-btn" data-answer="growth">Growth Pack</div>
-                <div class="game-btn" data-answer="premium">Premium Pack</div>
-            </div>
-            <div class="game-feedback" id="gameFeedback">Click an answer to play → Learn while you explore</div>
         </div>
     </section>
 
     <!-- Final CTA -->
     <section class="section" style="text-align:center;">
         <div class="fade-up">
-            <p style="font-size:0.85rem; color:#AAAAAA; margin-bottom:1.5rem;">Ready to build something extraordinary?</p>
-            <button class="btn-primary" id="finalCtaBtn">Start Your Journey →</button>
+            <p style="font-size:0.7rem; margin-bottom:1rem;">We don't just offer service — we build your brand from the ground up.</p>
+            <button class="btn-primary" id="contactBtn">Start Your Growth Journey →</button>
         </div>
     </section>
 </main>
@@ -559,12 +627,12 @@
 <footer>
     <div class="footer-inner">
         <div>
-            <div class="logo-area" style="margin-bottom:0.5rem;">
+            <div class="logo-area" style="margin-bottom:0.3rem;">
                 <div class="logo-placeholder"><i class="fas fa-chart-line"></i></div>
                 <span class="logo-text">IDEAL DEALERS</span>
             </div>
-            <p style="font-size:0.7rem;">The Ideal Way to Grow.</p>
-            <p style="font-size:0.65rem; margin-top:0.3rem;">info@idealdealers.co.za</p>
+            <p style="font-size:0.65rem;">The Ideal Way to Grow.</p>
+            <p style="font-size:0.6rem; margin-top:0.3rem;">info@idealdealers.co.za</p>
         </div>
         <div class="footer-links">
             <h4 style="font-size:0.7rem; margin-bottom:0.5rem;">Navigate</h4>
@@ -575,100 +643,117 @@
         </div>
         <div class="footer-links">
             <h4 style="font-size:0.7rem; margin-bottom:0.5rem;">Legal</h4>
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
+            <a href="#" id="privacyLink">Privacy</a>
+            <a href="#" id="termsLink">Terms</a>
         </div>
     </div>
     <div class="copyright">© 2025 Ideal Dealers — premium marketing & growth agency</div>
 </footer>
 
 <script>
-    // Mobile menu
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const navLinks = document.getElementById('navLinks');
-    if(mobileBtn) mobileBtn.onclick = () => navLinks.classList.toggle('active');
+    // Mobile menu elements
+    const mobileMenuBtn = document.getElementById('mobileMenu');
+    const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+    const menuOverlayBg = document.getElementById('menuOverlayBg');
+    
+    // Function to open mobile menu
+    function openMobileMenu() {
+        mobileMenuBtn.classList.add('active');
+        mobileNavOverlay.classList.add('active');
+        menuOverlayBg.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Function to close mobile menu
+    function closeMobileMenu() {
+        mobileMenuBtn.classList.remove('active');
+        mobileNavOverlay.classList.remove('active');
+        menuOverlayBg.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    // Toggle menu on button click
+    if(mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if(mobileNavOverlay.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+    }
+    
+    // Close menu when clicking overlay background
+    if(menuOverlayBg) {
+        menuOverlayBg.addEventListener('click', closeMobileMenu);
+    }
+    
+    // Close menu when clicking a mobile nav link
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-overlay a');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+    
+    // Close menu on window resize (if screen becomes desktop)
+    window.addEventListener('resize', function() {
+        if(window.innerWidth > 750) {
+            closeMobileMenu();
+        }
+    });
+
+    // Legal links - smooth alerts
+    const privacyLink = document.getElementById('privacyLink');
+    const termsLink = document.getElementById('termsLink');
+    
+    if(privacyLink) {
+        privacyLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert("Privacy Policy — We respect your privacy. Your information is safe with Ideal Dealers.");
+        });
+    }
+    if(termsLink) {
+        termsLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert("Terms & Conditions — By using our services, you agree to our standard terms.");
+        });
+    }
 
     // Intersection Observer for animations
-    const animated = document.querySelectorAll('.fade-left, .fade-right, .fade-up');
+    const animatedElements = document.querySelectorAll('.fade-left, .fade-right, .fade-up');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if(entry.isIntersecting) entry.target.classList.add('visible');
+            if(entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
         });
-    }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
-    animated.forEach(el => observer.observe(el));
+    }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+    animatedElements.forEach(el => observer.observe(el));
 
     setTimeout(() => {
-        animated.forEach(el => {
-            if(el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('visible');
+        animatedElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if(rect.top < window.innerHeight - 50) {
+                el.classList.add('visible');
+            }
         });
     }, 100);
 
-    document.getElementById('exploreCta')?.addEventListener('click', () => {
-        document.querySelector('.service-grid').scrollIntoView({ behavior: 'smooth' });
-    });
-    document.getElementById('finalCtaBtn')?.addEventListener('click', () => {
-        window.location.href = 'contact.html';
-    });
-
-    // MINI GAME
-    const questions = [
-        { text: "Which package includes Social Media Management?", options: ["Starter Pack", "Growth Pack", "Premium Pack"], correct: "Premium Pack" },
-        { text: "What is the monthly subscription fee for Social Media Management?", options: ["R500", "R1,000", "R1,500"], correct: "R1,500" },
-        { text: "Which service includes daily posting and community management?", options: ["Branding", "Graphic Design", "Social Media Management"], correct: "Social Media Management" },
-        { text: "What does the Growth Partnership offer?", options: ["Monthly Reports", "Only Design", "Just Hosting"], correct: "Monthly Reports" },
-        { text: "Which pack includes Packaging & Labelling?", options: ["Starter", "Growth", "Premium"], correct: "Premium" }
-    ];
+    // Button navigation
+    const exploreBtn = document.getElementById('exploreBtn');
+    const contactBtn = document.getElementById('contactBtn');
     
-    let currentQuestion = 0;
-    let score = 0;
-    let gameActive = true;
-    
-    const questionEl = document.getElementById('gameQuestion');
-    const optionsEl = document.getElementById('gameOptions');
-    const feedbackEl = document.getElementById('gameFeedback');
-    const scoreEl = document.getElementById('gameScore');
-    
-    function loadQuestion() {
-        if (currentQuestion >= questions.length) {
-            questionEl.textContent = gameActive ? `✨ Amazing! You scored ${score}/${questions.length}. Ready for a partnership?` : "Game completed!";
-            optionsEl.innerHTML = `<div class="game-btn" id="restartGame">Play Again →</div>`;
-            feedbackEl.textContent = score === questions.length ? "Perfect score! You know Ideal Dealers well. Let's grow together." : "Great effort! Want to learn more? Contact us.";
-            const restartBtn = document.getElementById('restartGame');
-            if (restartBtn) restartBtn.onclick = () => { currentQuestion = 0; score = 0; gameActive = true; updateScoreDisplay(); loadQuestion(); };
-            return;
-        }
-        
-        const q = questions[currentQuestion];
-        questionEl.textContent = q.text;
-        optionsEl.innerHTML = q.options.map(opt => 
-            `<div class="game-btn" data-answer="${opt.toLowerCase()}">${opt}</div>`
-        ).join('');
-        
-        document.querySelectorAll('#gameOptions .game-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                if (!gameActive) return;
-                const selected = btn.textContent;
-                const isCorrect = selected === q.correct;
-                if (isCorrect) {
-                    score++;
-                    feedbackEl.textContent = "✓ Correct! " + (q.correct === "Premium Pack" ? "Premium includes SMM + reports." : q.correct === "R1,500" ? "Exactly — R1,500 monthly." : q.correct === "Social Media Management" ? "Yes! Daily posting and engagement." : q.correct === "Monthly Reports" ? "Growth Partnership includes reports & strategy." : "Perfect! Premium includes packaging.");
-                    feedbackEl.style.color = "#A8D8A8";
-                } else {
-                    feedbackEl.textContent = `✗ Incorrect. The correct answer is: ${q.correct}.`;
-                    feedbackEl.style.color = "#D8A8A8";
-                }
-                updateScoreDisplay();
-                currentQuestion++;
-                loadQuestion();
-            });
+    if(exploreBtn) {
+        exploreBtn.addEventListener('click', () => {
+            document.getElementById('packages').scrollIntoView({ behavior: 'smooth' });
         });
     }
-    
-    function updateScoreDisplay() {
-        scoreEl.textContent = `Score: ${score} / ${questions.length}`;
+    if(contactBtn) {
+        contactBtn.addEventListener('click', () => {
+            window.location.href = 'contact.html';
+        });
     }
-    
-    loadQuestion();
 </script>
 </body>
 </html>
