@@ -6,6 +6,9 @@
     <title>Ideal Dealers | Contact — Let's Talk About Your Growth</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Flatpickr for calendar/time picker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <style>
         * {
             margin: 0;
@@ -21,57 +24,64 @@
             overflow-x: hidden;
         }
 
-        /* refined premium typography */
+        /* premium typography */
         html {
             font-size: 15px;
         }
         body, p, li, a, button, input, textarea, label {
-            font-size: 0.85rem;
-            letter-spacing: 0.01em;
+            font-size: 0.75rem;
+            letter-spacing: 0.02em;
             font-weight: 400;
             line-height: 1.5;
         }
         h1 {
-            font-size: 3.2rem;
+            font-size: 2.6rem;
             font-weight: 600;
             letter-spacing: -0.02em;
             line-height: 1.2;
         }
         h2 {
             font-size: 1.2rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
+            font-weight: 500;
+            letter-spacing: 0.02em;
             text-transform: uppercase;
         }
         h3 {
-            font-size: 1rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            letter-spacing: 0.02em;
-            margin-bottom: 0.6rem;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.5rem;
         }
         .section-title {
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 500;
-            letter-spacing: 0.3em;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            color: #C0C0C0;
-            margin-bottom: 1rem;
+            color: #C8C8C8;
+            margin-bottom: 0.5rem;
+        }
+        .section-sub {
+            font-size: 0.7rem;
+            color: #888;
+            letter-spacing: 0.5px;
         }
 
-        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar { width: 3px; }
         ::-webkit-scrollbar-track { background: #0A0A0A; }
-        ::-webkit-scrollbar-thumb { background: #666; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #555; border-radius: 10px; }
 
         /* navbar */
         .navbar {
             position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(8,8,8,0.94);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            padding: 1rem 2rem;
+            background: rgba(8,8,8,0.96);
+            backdrop-filter: blur(16px);
+            border-bottom: 0.5px solid rgba(255,255,255,0.05);
+            padding: 0.8rem 2rem;
         }
         .nav-container {
             max-width: 1300px;
@@ -79,62 +89,165 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
         .logo-placeholder {
-            width: 38px;
-            height: 38px;
-            background: linear-gradient(135deg, #F0F0F0, #999);
-            border-radius: 10px;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #E8E8E8, #909090);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .logo-placeholder i { font-size: 1.1rem; color: #0A0A0A; }
-        .logo-text {
+        .logo-placeholder i {
             font-size: 1rem;
+            color: #0A0A0A;
+        }
+        .logo-text {
+            font-size: 0.9rem;
             font-weight: 600;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #FFF, #BBB);
+            letter-spacing: 1.5px;
+            background: linear-gradient(135deg, #FFF, #AAA);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-        .nav-links { display: flex; gap: 2rem; }
+        
+        /* Desktop nav links */
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
         .nav-links a {
             color: #BBB;
             text-decoration: none;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 1.2px;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #FFF;
+            text-shadow: 0 0 6px rgba(255,255,255,0.3);
+        }
+        
+        /* Mobile Menu Button - 3 lines that turn into X */
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            z-index: 1002;
+            flex-shrink: 0;
+        }
+        .mobile-menu span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 24px;
+            background: #FFFFFF;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            left: 3px;
+        }
+        .mobile-menu span:nth-child(1) { top: 8px; }
+        .mobile-menu span:nth-child(2) { top: 14px; }
+        .mobile-menu span:nth-child(3) { top: 20px; }
+        .mobile-menu.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 14px;
+        }
+        .mobile-menu.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+        .mobile-menu.active span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 14px;
+        }
+
+        /* Mobile menu overlay panel */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            max-width: 280px;
+            height: 100vh;
+            background: #0A0A0A;
+            backdrop-filter: blur(20px);
+            z-index: 1001;
+            transition: right 0.35s ease;
+            border-left: 1px solid rgba(255,255,255,0.1);
+            padding: 5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .mobile-nav-overlay.active {
+            right: 0;
+        }
+        .mobile-nav-overlay a {
+            color: #DDD;
+            text-decoration: none;
+            font-size: 0.9rem;
             font-weight: 500;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+            padding: 0.5rem 0;
             transition: all 0.2s;
         }
-        .nav-links a:hover, .nav-links a.active { color: #FFF; text-shadow: 0 0 8px rgba(255,255,255,0.3); }
-        .mobile-menu { display: none; font-size: 1.3rem; cursor: pointer; }
+        .mobile-nav-overlay a:hover, .mobile-nav-overlay a.active {
+            color: #FFF;
+            text-shadow: 0 0 6px rgba(255,255,255,0.3);
+        }
+        .menu-overlay-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .menu-overlay-bg.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
         .btn-primary {
-            padding: 12px 32px;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 1px;
             cursor: pointer;
-            background: linear-gradient(135deg, #EAEAEA, #A8A8A8);
-            color: #0A0A0A;
+            transition: all 0.25s ease;
+            font-family: inherit;
             border: none;
             text-transform: uppercase;
-            transition: all 0.3s;
+            background: linear-gradient(135deg, #E8E8E8, #A0A0A0);
+            color: #0A0A0A;
         }
-        .btn-primary:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(180,180,180,0.35); }
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 16px rgba(160,160,160,0.35);
+        }
 
-        /* hero */
+        /* hero with background image - YOUR IMAGE NAME: bg-contact.jpg or bg-contact.png */
         .hero {
-            min-height: 50vh;
+            min-height: 45vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -142,14 +255,20 @@
             background-size: cover;
             background-position: center 30%;
             position: relative;
+            padding-top: 70px;
         }
         .hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(145deg, rgba(0,0,0,0.55) 0%, rgba(8,8,8,0.85) 100%);
+            background: linear-gradient(145deg, rgba(0,0,0,0.6) 0%, rgba(8,8,8,0.85) 100%);
         }
-        .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 2rem; }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
         .hero-title {
             background: linear-gradient(135deg, #FFF, #C8C8C8);
             -webkit-background-clip: text;
@@ -157,9 +276,17 @@
             color: transparent;
             margin-bottom: 1rem;
         }
-        .hero-sub { font-size: 0.9rem; color: #D5D5D5; margin-bottom: 1.5rem; }
+        .hero-sub {
+            font-size: 0.85rem;
+            color: #D5D5D5;
+            margin-bottom: 1.5rem;
+        }
 
-        .section { max-width: 1300px; margin: 0 auto; padding: 4rem 2rem; }
+        .section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
 
         /* contact grid */
         .contact-grid {
@@ -171,10 +298,10 @@
         /* form styling */
         .form-card {
             background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 32px;
+            border: 0.5px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
             padding: 2rem;
-            transition: all 0.4s;
+            transition: all 0.35s ease;
         }
         .form-card:hover {
             border-color: rgba(255,255,255,0.12);
@@ -186,20 +313,20 @@
         label {
             display: block;
             margin-bottom: 0.4rem;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 1px;
             color: #AAAAAA;
             text-transform: uppercase;
         }
         input, textarea, select {
             width: 100%;
-            padding: 0.9rem 1rem;
+            padding: 0.8rem 1rem;
             background: rgba(20,20,20,0.8);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 20px;
+            border: 0.5px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
             font-family: 'Inter', sans-serif;
             color: #FFFFFF;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             transition: all 0.2s;
         }
         input:focus, textarea:focus, select:focus {
@@ -215,34 +342,55 @@
         /* coffee card */
         .coffee-card {
             background: linear-gradient(145deg, #0F0F0F, #080808);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 32px;
+            border: 0.5px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
             padding: 2rem;
             text-align: center;
-            transition: all 0.4s;
+            transition: all 0.35s ease;
         }
         .coffee-card:hover {
             border-color: rgba(255,255,255,0.1);
         }
         .coffee-icon {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #D0D0D0;
             margin-bottom: 1rem;
+        }
+        .datetime-picker {
+            background: rgba(20,20,20,0.9);
+            border: 0.5px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 0.8rem;
+            width: 100%;
+            margin: 0.8rem 0;
+            color: white;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+        .coffee-name-input {
+            background: rgba(20,20,20,0.9);
+            border: 0.5px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 0.8rem;
+            width: 100%;
+            margin: 0.8rem 0;
+            color: white;
+            font-size: 0.75rem;
         }
         .info-row {
             display: flex;
             align-items: center;
             gap: 1rem;
             background: rgba(255,255,255,0.02);
-            padding: 1rem;
-            border-radius: 24px;
-            margin: 1rem 0;
+            padding: 0.8rem;
+            border-radius: 16px;
+            margin: 0.8rem 0;
             text-align: left;
         }
         .info-row i {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #C0C0C0;
-            width: 32px;
+            width: 28px;
         }
         .info-row a {
             color: #DDD;
@@ -253,20 +401,19 @@
             color: #FFF;
         }
 
-        /* map placeholder */
         .map-placeholder {
             background: rgba(15,15,15,0.5);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 32px;
+            border: 0.5px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
             padding: 2rem;
             text-align: center;
-            margin-top: 2rem;
         }
 
         footer {
-            background: #030303;
-            border-top: 1px solid rgba(255,255,255,0.04);
-            padding: 2.5rem 2rem 1.5rem;
+            background: #040404;
+            border-top: 0.5px solid rgba(255,255,255,0.03);
+            padding: 2rem 2rem 1.2rem;
+            margin-top: 2rem;
         }
         .footer-inner {
             max-width: 1300px;
@@ -274,26 +421,34 @@
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 1.5rem;
         }
         .footer-links a {
             color: #888;
             text-decoration: none;
             margin-right: 1.5rem;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
-        .copyright { text-align: center; color: #555; font-size: 0.6rem; margin-top: 2rem; }
+        .footer-links a:hover {
+            color: #FFF;
+        }
+        .copyright {
+            text-align: center;
+            color: #555;
+            font-size: 0.55rem;
+            margin-top: 1.5rem;
+        }
 
         /* animations */
         .fade-left, .fade-right, .fade-up {
             opacity: 0;
-            transition: all 0.8s cubic-bezier(0.2, 0.85, 0.3, 1);
+            transition: all 0.7s cubic-bezier(0.2, 0.8, 0.3, 1);
         }
-        .fade-left { transform: translateX(-35px); }
-        .fade-right { transform: translateX(35px); }
-        .fade-up { transform: translateY(30px); }
+        .fade-left { transform: translateX(-28px); }
+        .fade-right { transform: translateX(28px); }
+        .fade-up { transform: translateY(24px); }
         .visible { opacity: 1; transform: translateX(0) translateY(0); }
         .delay-1 { transition-delay: 0.08s; }
         .delay-2 { transition-delay: 0.16s; }
@@ -301,22 +456,16 @@
 
         @media (max-width: 950px) {
             .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            h1 { font-size: 2.5rem; }
+            h1 { font-size: 2rem; }
         }
         @media (max-width: 750px) {
             .nav-links {
                 display: none;
-                flex-direction: column;
-                width: 100%;
-                background: #0F0F0F;
-                border: 1px solid rgba(255,255,255,0.05);
-                padding: 1rem;
-                border-radius: 20px;
-                margin-top: 0.8rem;
             }
-            .nav-links.active { display: flex; }
-            .mobile-menu { display: block; }
-            .hero-title { font-size: 2rem; }
+            .mobile-menu {
+                display: block;
+            }
+            .hero-title { font-size: 1.8rem; }
             .section { padding: 2rem 1.2rem; }
             .form-card, .coffee-card { padding: 1.5rem; }
         }
@@ -327,36 +476,50 @@
 <nav class="navbar">
     <div class="nav-container">
         <div class="logo-area">
-            <div class="logo-placeholder"><i class="fas fa-chart-line"></i></div>
+            <div class="logo-placeholder">
+                <i class="fas fa-chart-line"></i>
+            </div>
             <span class="logo-text">IDEAL DEALERS</span>
         </div>
-        <div class="mobile-menu" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
-        <div class="nav-links" id="navLinks">
+        <div class="nav-links" id="desktopNavLinks">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="services.html">Services</a>
             <a href="contact.html" class="active">Contact</a>
         </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="menu-overlay-bg" id="menuOverlayBg"></div>
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html" class="active">Contact</a>
     </div>
 </nav>
 
 <main>
-    <!-- Hero Section -->
-    <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1600'); background-position: center 25%;">
+    <!-- Hero Section with background image - name your image "bg-contact.jpg" or "bg-contact.png" -->
+    <section class="hero" style="background-image: url('bg-contact.jpg'); background-position: center 25%;">
         <div class="hero-content">
             <h1 class="fade-up">Let's Talk About<br>Your Growth</h1>
             <p class="hero-sub fade-up delay-1">Ready to stop figuring it out alone? Let's build something great together.</p>
-            <div class="fade-up delay-2"><button class="btn-primary" id="scrollToForm">Start a conversation →</button></div>
+            <div class="fade-up delay-2">
+                <button class="btn-primary" id="scrollToForm">Start a conversation →</button>
+            </div>
         </div>
     </section>
 
     <!-- Contact Form + Book a Coffee Section -->
     <section class="section" id="contactFormSection">
         <div class="contact-grid">
-            <!-- Contact Form -->
             <div class="form-card fade-left">
                 <h2 class="section-title" style="text-align: left; margin-bottom: 0.5rem;">Send us a message</h2>
-                <p style="font-size: 0.75rem; color: #999; margin-bottom: 1.5rem;">Tell us about your vision — we'll respond within 24 hours.</p>
+                <p style="font-size: 0.7rem; color: #999; margin-bottom: 1.5rem;">Tell us about your vision — we'll respond within 24 hours.</p>
                 <form id="contactForm">
                     <div class="form-group">
                         <label>Full Name</label>
@@ -379,64 +542,71 @@
                         <textarea id="message" placeholder="Tell us about your goals, project, or any question..." required></textarea>
                     </div>
                     <button type="submit" class="btn-primary" style="width: 100%;">Send Message →</button>
-                    <p class="response-note" id="formFeedback" style="font-size: 0.7rem; color: #888; margin-top: 1rem; text-align: center;"></p>
+                    <p id="formFeedback" style="font-size: 0.65rem; color: #888; margin-top: 1rem; text-align: center;"></p>
                 </form>
             </div>
 
-            <!-- Book a Coffee Section -->
             <div class="coffee-card fade-right">
                 <div class="coffee-icon"><i class="fas fa-mug-hot"></i></div>
-                <h3 style="font-size: 1.2rem;">Book a Coffee With Us</h3>
-                <p style="color: #CCCCCC; margin: 1rem 0;">
-                    A relaxed consultation where we get to know your business, understand your goals, and explore 
-                    how Ideal Dealers can help you grow.
+                <h3 style="font-size: 1rem;">Book a Coffee With Us</h3>
+                <p style="color: #CCCCCC; margin: 0.5rem 0 0.8rem; font-size:0.7rem;">
+                    A relaxed consultation. No pressure. Just good coffee and the start of something great.
                 </p>
-                <p style="font-size: 0.75rem; color: #AAAAAA; margin-bottom: 1.5rem;">
-                    No pressure. Just good coffee and the start of something great.
-                </p>
-                <button id="coffeeBookingBtn" class="btn-primary" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #FFF; margin-bottom: 1.5rem; width: 100%;">
-                    Schedule a Coffee Chat <i class="fas fa-calendar-alt" style="margin-left: 8px;"></i>
+                
+                <div style="margin: 0.5rem 0;">
+                    <label style="font-size: 0.6rem; text-align: left; display: block; margin-bottom: 0.3rem; color:#AAA;">Select Date & Time</label>
+                    <input type="text" id="datetimePicker" class="datetime-picker" placeholder="Choose your preferred date and time" readonly>
+                </div>
+                
+                <div style="margin-bottom: 0.5rem;">
+                    <label style="font-size: 0.6rem; text-align: left; display: block; margin-bottom: 0.3rem; color:#AAA;">Your Name</label>
+                    <input type="text" id="coffeeName" class="coffee-name-input" placeholder="Enter your name">
+                </div>
+                
+                <button id="coffeeBookingBtn" class="btn-primary" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #FFF; margin: 0.5rem 0 1rem; width: 100%;">
+                    Confirm Coffee Chat <i class="fas fa-calendar-check" style="margin-left: 8px;"></i>
                 </button>
+                <p id="coffeeFeedback" style="font-size: 0.6rem; color: #888; margin-top: -0.3rem;"></p>
                 
                 <div class="info-row">
                     <i class="fas fa-envelope"></i>
                     <div>
-                        <h4 style="font-size: 0.75rem; margin-bottom: 0.2rem;">Email Directly</h4>
-                        <a href="mailto:info@idealdealers.co.za">info@idealdealers.co.za</a>
+                        <h4 style="font-size: 0.7rem; margin-bottom: 0.2rem;">Email Directly</h4>
+                        <a href="mailto:info@idealdealers.co.za" style="font-size: 0.7rem;">info@idealdealers.co.za</a>
                     </div>
                 </div>
                 <div class="info-row">
                     <i class="fas fa-clock"></i>
                     <div>
-                        <h4 style="font-size: 0.75rem; margin-bottom: 0.2rem;">Response Time</h4>
-                        <p style="font-size: 0.7rem; color: #AAAAAA;">Within 24 hours — often same day</p>
+                        <h4 style="font-size: 0.7rem; margin-bottom: 0.2rem;">Response Time</h4>
+                        <p style="font-size: 0.65rem; color: #AAAAAA;">Within 24 hours — often same day</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Location / Map Placeholder -->
+    <!-- Location Section -->
     <section class="section" style="padding-top: 0;">
         <div class="map-placeholder fade-up">
-            <i class="fas fa-map-pin" style="font-size: 2rem; color: #C0C0C0; margin-bottom: 1rem; display: inline-block;"></i>
-            <h3 style="font-size: 1rem;">Based in South Africa — Working Worldwide</h3>
-            <p style="font-size: 0.75rem; color: #AAAAAA; max-width: 500px; margin: 0.5rem auto 0;">
+            <i class="fas fa-map-pin" style="font-size: 1.5rem; color: #C0C0C0; margin-bottom: 0.8rem; display: inline-block;"></i>
+            <h3 style="font-size: 0.9rem;">Based in South Africa — Working Worldwide</h3>
+            <p style="font-size: 0.65rem; color: #AAAAAA; max-width: 500px; margin: 0.5rem auto 0;">
                 Ideal Dealers operates remotely, serving ambitious businesses across continents. 
                 Let's connect wherever you are.
             </p>
-            <div style="margin-top: 1rem; font-size: 0.65rem; color: #777;">
+            <div style="margin-top: 0.8rem; font-size: 0.55rem; color: #777;">
                 <i class="fas fa-globe-africa"></i> Johannesburg • Global reach
             </div>
         </div>
     </section>
 
-    <!-- Final Trust CTA -->
+    <!-- Final CTA -->
     <section class="section" style="text-align:center;">
         <div class="fade-up">
-            <i class="fas fa-handshake" style="font-size: 1.8rem; color: #C0C0C0; margin-bottom: 1rem; display: inline-block;"></i>
-            <h3 style="font-size: 1rem;">Your growth journey starts with a conversation.</h3>
-            <p style="font-size: 0.75rem; color: #AAAAAA; margin: 0.5rem 0 1.5rem;">
+            <i class="fas fa-handshake" style="font-size: 1.4rem; color: #C0C0C0; margin-bottom: 0.8rem; display: inline-block;"></i>
+            <h3 style="font-size: 0.9rem;">Your growth journey starts with a conversation.</h3>
+            <p style="font-size: 0.65rem; color: #AAAAAA; margin: 0.5rem 0 1.2rem;">
                 Whether you need a full brand identity, a high-converting website, or a strategic marketing partnership — we're ready.
             </p>
             <button class="btn-primary" id="bottomCta">Let's Talk →</button>
@@ -447,12 +617,12 @@
 <footer>
     <div class="footer-inner">
         <div>
-            <div class="logo-area" style="margin-bottom:0.5rem;">
+            <div class="logo-area" style="margin-bottom:0.3rem;">
                 <div class="logo-placeholder"><i class="fas fa-chart-line"></i></div>
                 <span class="logo-text">IDEAL DEALERS</span>
             </div>
-            <p style="font-size:0.7rem;">The Ideal Way to Grow.</p>
-            <p style="font-size:0.65rem; margin-top:0.3rem;">info@idealdealers.co.za</p>
+            <p style="font-size:0.65rem;">The Ideal Way to Grow.</p>
+            <p style="font-size:0.6rem; margin-top:0.3rem;">info@idealdealers.co.za</p>
         </div>
         <div class="footer-links">
             <h4 style="font-size:0.7rem; margin-bottom:0.5rem;">Navigate</h4>
@@ -463,50 +633,69 @@
         </div>
         <div class="footer-links">
             <h4 style="font-size:0.7rem; margin-bottom:0.5rem;">Legal</h4>
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
+            <a href="#" id="privacyLink">Privacy</a>
+            <a href="#" id="termsLink">Terms</a>
         </div>
     </div>
     <div class="copyright">© 2025 Ideal Dealers — premium marketing & growth agency</div>
 </footer>
 
 <script>
-    // Mobile menu toggle
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const navLinks = document.getElementById('navLinks');
-    if(mobileBtn) {
-        mobileBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+    // Mobile menu functions
+    const mobileMenuBtn = document.getElementById('mobileMenu');
+    const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+    const menuOverlayBg = document.getElementById('menuOverlayBg');
+    
+    function openMobileMenu() {
+        mobileMenuBtn.classList.add('active');
+        mobileNavOverlay.classList.add('active');
+        menuOverlayBg.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeMobileMenu() {
+        mobileMenuBtn.classList.remove('active');
+        mobileNavOverlay.classList.remove('active');
+        menuOverlayBg.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    if(mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if(mobileNavOverlay.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
         });
     }
+    
+    if(menuOverlayBg) {
+        menuOverlayBg.addEventListener('click', closeMobileMenu);
+    }
+    
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-overlay a');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+    
+    window.addEventListener('resize', function() {
+        if(window.innerWidth > 750) {
+            closeMobileMenu();
+        }
+    });
 
-    // Intersection Observer for fade animations
-    const animatedElements = document.querySelectorAll('.fade-left, .fade-right, .fade-up');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
-    animatedElements.forEach(el => observer.observe(el));
-
-    // Trigger for elements already in view
-    setTimeout(() => {
-        animatedElements.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if(rect.top < window.innerHeight - 50) {
-                el.classList.add('visible');
-            }
-        });
-    }, 100);
-
-    // Scroll to form button
-    const scrollBtn = document.getElementById('scrollToForm');
-    if(scrollBtn) {
-        scrollBtn.addEventListener('click', () => {
-            document.getElementById('contactFormSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Flatpickr initialization
+    const datetimePicker = document.getElementById('datetimePicker');
+    if(datetimePicker) {
+        flatpickr(datetimePicker, {
+            enableTime: true,
+            dateFormat: "Y-m-d H:i",
+            time_24hr: true,
+            minDate: "today",
+            disable: [function(date) { return date.getDay() === 0; }],
+            placeholder: "Select date and time"
         });
     }
 
@@ -530,29 +719,58 @@
         });
     }
 
-    // Coffee booking button
+    // Coffee booking
     const coffeeBtn = document.getElementById('coffeeBookingBtn');
+    const coffeeFeedback = document.getElementById('coffeeFeedback');
+    const coffeeNameInput = document.getElementById('coffeeName');
+    
     if(coffeeBtn) {
         coffeeBtn.addEventListener('click', () => {
-            alert("☕ Book a Coffee with Ideal Dealers — Let's schedule a relaxed consultation. We'll reach out to confirm a time (virtual or in-person if in JHB). No pressure, just growth ideas.");
+            const selectedDateTime = datetimePicker ? datetimePicker.value : null;
+            const coffeeName = coffeeNameInput ? coffeeNameInput.value.trim() : null;
+            
+            if(!coffeeName) {
+                coffeeFeedback.innerHTML = "Please enter your name to book a coffee chat.";
+                coffeeFeedback.style.color = "#D8A8A8";
+                return;
+            }
+            if(!selectedDateTime) {
+                coffeeFeedback.innerHTML = "Please select a date and time.";
+                coffeeFeedback.style.color = "#D8A8A8";
+                return;
+            }
+            
+            const formattedDate = new Date(selectedDateTime).toLocaleString('en-ZA', {
+                weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+            });
+            
+            coffeeFeedback.innerHTML = `<i class="fas fa-check-circle"></i> Thanks ${coffeeName}! Request for ${formattedDate}. We'll confirm within 24 hours.`;
+            coffeeFeedback.style.color = "#A8D8A8";
+            if(datetimePicker) datetimePicker.value = "";
+            if(coffeeNameInput) coffeeNameInput.value = "";
+            setTimeout(() => { if(coffeeFeedback) coffeeFeedback.innerHTML = ""; }, 5000);
         });
     }
 
-    // Bottom CTA
+    // Scroll buttons
+    const scrollBtn = document.getElementById('scrollToForm');
     const bottomCta = document.getElementById('bottomCta');
-    if(bottomCta) {
-        bottomCta.addEventListener('click', () => {
-            document.getElementById('contactFormSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    }
+    if(scrollBtn) scrollBtn.addEventListener('click', () => document.getElementById('contactFormSection').scrollIntoView({ behavior: 'smooth' }));
+    if(bottomCta) bottomCta.addEventListener('click', () => document.getElementById('contactFormSection').scrollIntoView({ behavior: 'smooth' }));
 
-    // Close mobile menu when clicking a link
-    const navItems = document.querySelectorAll('.nav-links a');
-    navItems.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-        });
-    });
+    // Legal links
+    document.getElementById('privacyLink')?.addEventListener('click', (e) => { e.preventDefault(); alert("Privacy Policy — We respect your privacy."); });
+    document.getElementById('termsLink')?.addEventListener('click', (e) => { e.preventDefault(); alert("Terms & Conditions — Available upon request."); });
+
+    // Intersection Observer
+    const animatedElements = document.querySelectorAll('.fade-left, .fade-right, .fade-up');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    animatedElements.forEach(el => observer.observe(el));
+    setTimeout(() => {
+        animatedElements.forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('visible'); });
+    }, 100);
 </script>
 </body>
 </html>
