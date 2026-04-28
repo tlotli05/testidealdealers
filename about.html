@@ -21,7 +21,6 @@
             overflow-x: hidden;
         }
 
-        /* premium typography */
         html {
             font-size: 15px;
         }
@@ -67,7 +66,7 @@
         ::-webkit-scrollbar-track { background: #0A0A0A; }
         ::-webkit-scrollbar-thumb { background: #555; border-radius: 10px; }
 
-        /* navbar */
+        /* navbar - solid black with logo */
         .navbar {
             position: fixed;
             top: 0;
@@ -75,10 +74,9 @@
             right: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(8,8,8,0.96);
-            backdrop-filter: blur(16px);
-            border-bottom: 0.5px solid rgba(255,255,255,0.05);
-            padding: 0.8rem 2rem;
+            background: #000000;
+            border-bottom: 0.5px solid rgba(255,255,255,0.08);
+            padding: 0.7rem 2rem;
         }
         .nav-container {
             max-width: 1300px;
@@ -93,21 +91,14 @@
             align-items: center;
             gap: 10px;
         }
-        .logo-placeholder {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #E8E8E8, #909090);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .logo-placeholder i {
-            font-size: 1rem;
-            color: #0A0A0A;
+        .logo-img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            border-radius: 6px;
         }
         .logo-text {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             letter-spacing: 1.5px;
             background: linear-gradient(135deg, #FFF, #AAA);
@@ -116,7 +107,6 @@
             color: transparent;
         }
         
-        /* Desktop nav links */
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -135,7 +125,6 @@
             text-shadow: 0 0 6px rgba(255,255,255,0.3);
         }
         
-        /* Mobile Menu Button - 3 lines that turn into X */
         .mobile-menu {
             display: none;
             cursor: pointer;
@@ -171,7 +160,6 @@
             top: 14px;
         }
 
-        /* Mobile menu overlay panel */
         .mobile-nav-overlay {
             position: fixed;
             top: 0;
@@ -179,8 +167,7 @@
             width: 70%;
             max-width: 280px;
             height: 100vh;
-            background: #0A0A0A;
-            backdrop-filter: blur(20px);
+            background: #000000;
             z-index: 1001;
             transition: right 0.35s ease;
             border-left: 1px solid rgba(255,255,255,0.1);
@@ -212,7 +199,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.7);
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
@@ -242,7 +229,6 @@
             box-shadow: 0 0 16px rgba(160,160,160,0.35);
         }
 
-        /* hero with background image - YOUR IMAGE NAME: bg-about.jpg or bg-about.png */
         .hero {
             min-height: 45vh;
             display: flex;
@@ -250,7 +236,7 @@
             justify-content: center;
             text-align: center;
             background-size: cover;
-            background-position: center 30%;
+            background-position: center 35%;
             position: relative;
             padding-top: 70px;
         }
@@ -293,7 +279,6 @@
             margin-bottom: 2rem;
         }
 
-        /* story card */
         .story-card {
             background: rgba(255,255,255,0.02);
             border: 0.5px solid rgba(255,255,255,0.06);
@@ -313,7 +298,6 @@
             margin-bottom: 1rem;
         }
 
-        /* mission block */
         .mission-block {
             background: linear-gradient(145deg, #0F0F0F, #080808);
             border: 0.5px solid rgba(255,255,255,0.05);
@@ -333,7 +317,6 @@
             margin: 0 auto;
         }
 
-        /* team grid */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -375,7 +358,6 @@
             line-height: 1.4;
         }
 
-        /* values grid */
         .values-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -404,7 +386,6 @@
             line-height: 1.5;
         }
 
-        /* trust badges */
         .trust-badges {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -451,7 +432,6 @@
             margin-top: 1.5rem;
         }
 
-        /* animations */
         .fade-left, .fade-right, .fade-up {
             opacity: 0;
             transition: all 0.7s cubic-bezier(0.2, 0.8, 0.3, 1);
@@ -490,9 +470,7 @@
 <nav class="navbar">
     <div class="nav-container">
         <div class="logo-area">
-            <div class="logo-placeholder">
-                <i class="fas fa-chart-line"></i>
-            </div>
+            <img src="logo1.jpg" alt="Ideal Dealers Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/38x38?text=ID';">
             <span class="logo-text">IDEAL DEALERS</span>
         </div>
         <div class="nav-links" id="desktopNavLinks">
@@ -517,7 +495,7 @@
 </nav>
 
 <main>
-    <!-- Hero Section with background image - name your image "bg-about.jpg" or "bg-about.png" -->
+    <!-- Hero Section -->
     <section class="hero" style="background-image: url('bg-about.jpg'); background-position: center 35%;">
         <div class="hero-content">
             <h1 class="fade-up">Built From Experience.<br>Designed for Growth.</h1>
@@ -549,7 +527,7 @@
                 Ideal Dealers allows business owners to focus on what matters most — running and growing their business.
             </p>
             <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 0.5px solid rgba(255,255,255,0.05);">
-                <p style="font-size: 0.7rem; color: #AAAAAA;"><i class="fas fa-signature"></i> — Lekobe Makgaretsa, Director & Creative Lead</p>
+                <p style="font-size: 0.7rem; color: #AAAAAA;"><i class="fas fa-signature"></i> — Lekobe Makgaretsa, CEO & Founder</p>
             </div>
         </div>
     </section>
@@ -566,7 +544,7 @@
         </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- Team Section with updated names and roles -->
     <section class="section" id="teamSection">
         <h2 class="section-title fade-left">The Minds Behind the Movement</h2>
         <p class="section-sub fade-right delay-1">A team built on passion, skill, and commitment to your growth.</p>
@@ -574,30 +552,30 @@
             <div class="team-card fade-up delay-1">
                 <div class="team-icon"><i class="fas fa-user-astronaut"></i></div>
                 <div class="team-name">Lekobe Makgaretsa</div>
-                <div class="team-role">Director | Creative Lead</div>
+                <div class="team-role">CEO / FOUNDER</div>
                 <div class="team-bio">The visionary behind Ideal Dealers. Leads strategic direction, branding projects, and creative development. Drives innovation, partnerships, and long-term growth.</div>
             </div>
             <div class="team-card fade-up delay-2">
                 <div class="team-icon"><i class="fas fa-chart-line"></i></div>
-                <div class="team-name">Letago</div>
-                <div class="team-role">Sales Executive | Business Development</div>
+                <div class="team-name">Letago Masedi</div>
+                <div class="team-role">Sales Executive</div>
                 <div class="team-bio">Leads client acquisition, structures service packages, negotiates pricing, and builds strong client relationships aligned with growth vision.</div>
             </div>
             <div class="team-card fade-up delay-3">
                 <div class="team-icon"><i class="fas fa-bullhorn"></i></div>
-                <div class="team-name">Lesedi</div>
-                <div class="team-role">Marketing Promoter | Brand Engagement</div>
+                <div class="team-name">Lesedi Mampane</div>
+                <div class="team-role">Marketing Director</div>
                 <div class="team-bio">Manages brand visibility, social media campaigns, and digital marketing initiatives. Ensures clients stay visible, relevant, and competitive.</div>
             </div>
             <div class="team-card fade-up delay-4">
                 <div class="team-icon"><i class="fas fa-clipboard-list"></i></div>
-                <div class="team-name">Bokang</div>
+                <div class="team-name">Bokang Malekana</div>
                 <div class="team-role">Operations Manager</div>
                 <div class="team-bio">Oversees daily operations, project coordination, and timelines. Ensures every project is delivered on time at the highest quality.</div>
             </div>
             <div class="team-card fade-up delay-5">
                 <div class="team-icon"><i class="fas fa-laptop-code"></i></div>
-                <div class="team-name">Kabelo</div>
+                <div class="team-name">Kabelo Kgosana</div>
                 <div class="team-role">Web Developer | Digital Solutions</div>
                 <div class="team-bio">Leads website development, hosting, SEO basics, and technical integrations. Turns creative ideas into functional digital experiences.</div>
             </div>
@@ -653,7 +631,7 @@
     <div class="footer-inner">
         <div>
             <div class="logo-area" style="margin-bottom:0.3rem;">
-                <div class="logo-placeholder"><i class="fas fa-chart-line"></i></div>
+                <img src="logo1.jpg" alt="Ideal Dealers Logo" class="logo-img" style="width: 32px; height: 32px;" onerror="this.onerror=null; this.src='https://placehold.co/32x32?text=ID';">
                 <span class="logo-text">IDEAL DEALERS</span>
             </div>
             <p style="font-size:0.65rem;">The Ideal Way to Grow.</p>
@@ -673,11 +651,10 @@
             <a href="#" id="termsLink">Terms</a>
         </div>
     </div>
-    <div class="copyright">© 2025 Ideal Dealers — premium marketing & growth agency</div>
+    <div class="copyright">© 2026 Ideal Dealers — premium marketing & growth agency</div>
 </footer>
 
 <script>
-    // Mobile menu functions
     const mobileMenuBtn = document.getElementById('mobileMenu');
     const mobileNavOverlay = document.getElementById('mobileNavOverlay');
     const menuOverlayBg = document.getElementById('menuOverlayBg');
@@ -722,7 +699,6 @@
         }
     });
 
-    // Scroll to team button
     const exploreBtn = document.getElementById('exploreTeam');
     if(exploreBtn) {
         exploreBtn.addEventListener('click', () => {
@@ -730,7 +706,6 @@
         });
     }
 
-    // Final CTA button
     const finalCta = document.getElementById('finalCtaBtn');
     if(finalCta) {
         finalCta.addEventListener('click', () => {
@@ -738,11 +713,9 @@
         });
     }
 
-    // Legal links
     document.getElementById('privacyLink')?.addEventListener('click', (e) => { e.preventDefault(); alert("Privacy Policy — We respect your privacy. Your information is safe with Ideal Dealers."); });
     document.getElementById('termsLink')?.addEventListener('click', (e) => { e.preventDefault(); alert("Terms & Conditions — By using our services, you agree to our standard terms. Contact us for the full document."); });
 
-    // Intersection Observer for animations
     const animatedElements = document.querySelectorAll('.fade-left, .fade-right, .fade-up');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
