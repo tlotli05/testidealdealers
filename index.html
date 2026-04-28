@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Ideal Dealers | The Ideal Way to Grow | Premium Marketing Agency Pretoria North</title>
     
-    <!-- SEO Meta Tags -->
     <meta name="description" content="Ideal Dealers is a premium marketing agency based in Pretoria North. We build, market, and scale your business with branding, graphic design, social media management, and website development.">
     <meta name="keywords" content="marketing agency Pretoria North, branding Pretoria, social media management Pretoria, website development Pretoria North, graphic design Pretoria, digital marketing agency, Ideal Dealers">
     <meta name="author" content="Ideal Dealers">
@@ -30,7 +29,6 @@
             overflow-x: hidden;
         }
 
-        /* premium typography */
         html {
             font-size: 15px;
         }
@@ -76,7 +74,6 @@
         ::-webkit-scrollbar-track { background: #0A0A0A; }
         ::-webkit-scrollbar-thumb { background: #555; border-radius: 10px; }
 
-        /* navbar */
         .navbar {
             position: fixed;
             top: 0;
@@ -84,10 +81,9 @@
             right: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(8,8,8,0.96);
-            backdrop-filter: blur(16px);
-            border-bottom: 0.5px solid rgba(255,255,255,0.05);
-            padding: 0.8rem 2rem;
+            background: #000000;
+            border-bottom: 0.5px solid rgba(255,255,255,0.08);
+            padding: 0.7rem 2rem;
         }
         .nav-container {
             max-width: 1300px;
@@ -100,32 +96,14 @@
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 10px;
         }
-        .logo-placeholder {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #E8E8E8, #909090);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .logo-placeholder i {
-            font-size: 1rem;
-            color: #0A0A0A;
-        }
-        .logo-text {
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            background: linear-gradient(135deg, #FFF, #AAA);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .logo-img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            border-radius: 6px;
         }
         
-        /* Desktop nav links */
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -144,7 +122,6 @@
             text-shadow: 0 0 6px rgba(255,255,255,0.3);
         }
         
-        /* Mobile Menu Button - 3 lines that turn into X */
         .mobile-menu {
             display: none;
             cursor: pointer;
@@ -180,7 +157,6 @@
             top: 14px;
         }
 
-        /* Mobile menu overlay panel */
         .mobile-nav-overlay {
             position: fixed;
             top: 0;
@@ -188,8 +164,7 @@
             width: 70%;
             max-width: 280px;
             height: 100vh;
-            background: #0A0A0A;
-            backdrop-filter: blur(20px);
+            background: #000000;
             z-index: 1001;
             transition: right 0.35s ease;
             border-left: 1px solid rgba(255,255,255,0.1);
@@ -221,7 +196,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.7);
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
@@ -269,7 +244,6 @@
             background: rgba(255,255,255,0.03);
         }
 
-        /* hero with premium office stock image */
         .hero {
             min-height: 88vh;
             display: flex;
@@ -293,21 +267,6 @@
             max-width: 750px;
             padding: 2rem;
         }
-        .hero-title {
-            background: linear-gradient(135deg, #FFF, #C0C0C0);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1rem;
-        }
-        .hero-sub {
-            font-size: 0.85rem;
-            color: #D0D0D0;
-            margin-bottom: 2rem;
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
-        }
 
         .section {
             max-width: 1300px;
@@ -323,29 +282,28 @@
             margin-bottom: 2rem;
         }
 
-        /* glass cards */
         .glass-card {
-            background: rgba(255,255,255,0.02);
+            background: rgba(255,255,255,0.08);
             backdrop-filter: blur(8px);
-            border: 0.5px solid rgba(255,255,255,0.04);
+            border: 0.5px solid rgba(255,255,255,0.1);
             border-radius: 20px;
             padding: 1.5rem 1.2rem;
             transition: all 0.35s ease;
             text-align: center;
         }
         .glass-card:hover {
-            border-color: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.25);
             transform: translateY(-3px);
-            background: rgba(255,255,255,0.03);
+            background: rgba(255,255,255,0.12);
         }
         .icon-md {
             font-size: 1.2rem;
             margin-bottom: 0.8rem;
-            color: #D0D0D0;
+            color: #E0E0E0;
         }
         .card-text {
             font-size: 0.7rem;
-            color: #AAA;
+            color: #DDD;
             line-height: 1.5;
         }
 
@@ -355,39 +313,61 @@
             gap: 1.2rem;
         }
 
-        .case-study {
-            background: rgba(15,15,15,0.6);
-            border-radius: 24px;
-            padding: 2rem;
-            margin: 1.5rem 0;
-            border: 0.5px solid rgba(255,255,255,0.04);
-        }
-        .case-flex {
+        /* CASE STUDY STYLES - WITH BORDERS AND VISIBLE IMAGES */
+        .case-studies-wrapper {
             display: flex;
+            flex-direction: column;
             gap: 2rem;
-            align-items: center;
-            flex-wrap: wrap;
+            margin: 1.5rem 0;
         }
-        .case-content {
-            flex: 2;
+        .case-study {
+            background: rgba(15,15,15,0.9);
+            border-radius: 24px;
+            padding: 1.5rem;
+            border: 2px solid rgba(255,255,255,0.15);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .case-study:hover {
+            border-color: rgba(255,255,255,0.35);
+        }
+        
+        /* Image container - ALWAYS visible */
+        .case-image-container {
+            width: 100%;
+            margin-bottom: 1.2rem;
+            border-radius: 16px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.1);
         }
         .case-image {
-            flex: 1;
-            min-width: 200px;
-            height: 180px;
-            background: #151515;
-            border-radius: 20px;
+            width: 100%;
+            height: 220px;
             background-size: cover;
             background-position: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            background-repeat: no-repeat;
+            display: block;
         }
+        
         .badge-small {
             font-size: 0.6rem;
             letter-spacing: 2px;
-            color: #888;
+            color: #aaa;
             text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 0.5rem;
         }
-
+        .full-description {
+            font-size: 0.75rem;
+            line-height: 1.6;
+            color: #CCC;
+            margin: 0.8rem 0;
+        }
+        
         .process-steps {
             display: flex;
             gap: 1.2rem;
@@ -460,7 +440,6 @@
             margin-top: 1.5rem;
         }
 
-        /* animations */
         .fade-left, .fade-right, .fade-up {
             opacity: 0;
             transition: all 0.7s cubic-bezier(0.2, 0.8, 0.3, 1);
@@ -478,6 +457,7 @@
             .trust-grid, .services-grid { grid-template-columns: repeat(2, 1fr); }
             h1 { font-size: 2rem; }
         }
+        
         @media (max-width: 750px) {
             .nav-links {
                 display: none;
@@ -487,8 +467,15 @@
             }
             .hero-title { font-size: 1.8rem; }
             .hero { min-height: 70vh; }
-            .section { padding: 2rem 1.2rem; }
+            .section { padding: 2rem 1rem; }
             .trust-grid, .services-grid { grid-template-columns: 1fr; }
+            
+            .case-study {
+                padding: 1rem;
+            }
+            .case-image {
+                height: 200px;
+            }
         }
     </style>
 </head>
@@ -497,10 +484,7 @@
 <nav class="navbar">
     <div class="nav-container">
         <div class="logo-area">
-            <div class="logo-placeholder">
-                <i class="fas fa-chart-line"></i>
-            </div>
-            <span class="logo-text">IDEAL DEALERS</span>
+            <img src="logo1.jpg" alt="Ideal Dealers Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/42x42?text=ID';">
         </div>
         <div class="nav-links" id="desktopNavLinks">
             <a href="index.html" class="active">Home</a>
@@ -524,7 +508,6 @@
 </nav>
 
 <main>
-    <!-- Hero Section with Premium Office Stock Image -->
     <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1600'); background-position: center 25%;">
         <div class="hero-content">
             <h1 class="fade-up">The Ideal Way to Grow.</h1>
@@ -536,7 +519,6 @@
         </div>
     </section>
 
-    <!-- Trust Section -->
     <section class="section">
         <h2 class="section-title fade-left">Why Clients Trust Ideal Dealers</h2>
         <p class="section-sub fade-right delay-1">Built from real experience. Driven by real results.</p>
@@ -564,7 +546,6 @@
         </div>
     </section>
 
-    <!-- Services Preview Section -->
     <section class="section" id="servicesPreview">
         <h2 class="section-title fade-left">What We Do</h2>
         <p class="section-sub fade-right delay-1">Complete solutions to build and grow your brand</p>
@@ -592,26 +573,109 @@
         </div>
     </section>
 
-    <!-- Case Study Highlight -->
+    <!-- FEATURED WORK SECTION - WITH BORDERS AND VISIBLE IMAGES ON ALL SCREENS -->
     <section class="section">
-        <div class="case-study fade-left">
-            <div class="case-flex">
+        <h2 class="section-title fade-left">Featured Work</h2>
+        <p class="section-sub fade-right delay-1">Real partnerships, measurable impact.</p>
+        <div class="case-studies-wrapper">
+            
+            <!-- 1. Clogerie -->
+            <div class="case-study fade-up">
+                <div class="case-image-container">
+                    <div class="case-image" style="background-image: url('clogerie-case.jpg'); background-color: #222;"></div>
+                </div>
                 <div class="case-content">
-                    <span class="badge-small"><i class="fas fa-star" style="font-size:0.5rem;"></i> Featured Work</span>
+                    <span class="badge-small"><i class="fas fa-star"></i> Featured Work</span>
                     <h2 style="font-size: 1.2rem; margin: 0.5rem 0; text-transform: none;">Clogerie — Brand Transformation</h2>
                     <p class="card-text">Women's clothing & lingerie brand. We partnered with Clogerie to build a brand presence that reflects confidence, elegance, and modern femininity. From visual direction to social media creatives, we helped shape a brand that truly connects.</p>
-                    <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <span style="font-size: 0.65rem; background: rgba(255,255,255,0.05); padding: 0.2rem 0.8rem; border-radius: 20px;"><i class="fas fa-palette"></i> Visual Identity</span>
-                        <span style="font-size: 0.65rem; background: rgba(255,255,255,0.05); padding: 0.2rem 0.8rem; border-radius: 20px;"><i class="fas fa-chart-simple"></i> Marketing Strategy</span>
-                        <span style="font-size: 0.65rem; background: rgba(255,255,255,0.05); padding: 0.2rem 0.8rem; border-radius: 20px;"><i class="fas fa-camera"></i> Social Creatives</span>
+                    <div style="margin-top: 0.8rem; display: flex; gap: 0.7rem; flex-wrap: wrap;">
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-palette"></i> Visual Identity</span>
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-chart-simple"></i> Marketing Strategy</span>
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-camera"></i> Social Creatives</span>
                     </div>
                 </div>
-                <div class="case-image" style="background-image: url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500');"></div>
+            </div>
+
+            <!-- 2. Flame Clothing -->
+            <div class="case-study fade-up delay-1">
+                <div class="case-image-container">
+                    <div class="case-image" style="background-image: url('flame-clothing-case.jpg'); background-color: #222;"></div>
+                </div>
+                <div class="case-content">
+                    <span class="badge-small"><i class="fas fa-fire"></i> Streetwear Pioneer</span>
+                    <h2 style="font-size: 1.2rem; margin: 0.5rem 0; text-transform: none;">Flame Clothing</h2>
+                    <p class="full-description">Flame Clothing is a cutting-edge streetwear brand that embodies the spirit of street culture and pushes the boundaries of modern fashion. Our team partnered with Flame Clothing from the brand's inception, playing a pivotal role in shaping its identity and driving growth.</p>
+                    <p class="full-description"><strong>Services Provided:</strong><br>Developed core branding, visual identity, and graphics<br>Crafted and executed social media strategy<br>Collaborated closely with the team to fuel brand growth and sales</p>
+                    <p class="full-description"><strong>Results:</strong><br>Through our ongoing partnership, we've helped Flame Clothing achieve significant sales growth and establish itself as a prominent player in the streetwear scene</p>
+                    <div style="margin-top: 0.5rem; display: flex; gap: 0.7rem; flex-wrap: wrap;">
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-trademark"></i> Brand Identity</span>
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-chart-line"></i> Sales Growth</span>
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-hashtag"></i> Social Strategy</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Aircraft Magician -->
+            <div class="case-study fade-up delay-2">
+                <div class="case-image-container">
+                    <div class="case-image" style="background-image: url('aircraft-magician-case.jpg'); background-color: #222;"></div>
+                </div>
+                <div class="case-content">
+                    <span class="badge-small"><i class="fas fa-plane"></i> Aviation x Streetwear</span>
+                    <h2 style="font-size: 1.2rem; margin: 0.5rem 0; text-transform: none;">Aircraft Magician</h2>
+                    <p class="full-description">Aircraft Magician: Crafting a Sky-High Fashion Brand<br>Aircraft Magician is a unique clothing brand born from the passion of an aviation enthusiast. We partnered with the owner to bring this vision to life, laying the foundation for a brand that fuses aviation spirit with streetwear style.</p>
+                    <p class="full-description"><strong>Services Provided:</strong><br>Developed brand identity, including name and logo<br>Created core graphics and visual assets<br>Currently expanding our partnership to boost social media presence and web development</p>
+                    <p class="full-description"><strong>What's Next:</strong><br>We're working closely with Aircraft Magician to take their brand to new heights, leveraging digital platforms to connect with their audience and showcase their unique blend of aviation and fashion.</p>
+                    <div style="margin-top: 0.5rem; display: flex; gap: 0.7rem; flex-wrap: wrap;">
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-fan"></i> Brand Naming</span>
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-draw-polygon"></i> Logo & Graphics</span>
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-globe"></i> Digital Expansion</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Phokwane Festival -->
+            <div class="case-study fade-up delay-3">
+                <div class="case-image-container">
+                    <div class="case-image" style="background-image: url('phokwane-festival-case.jpg'); background-color: #222;"></div>
+                </div>
+                <div class="case-content">
+                    <span class="badge-small"><i class="fas fa-calendar-alt"></i> Event Solutions</span>
+                    <h2 style="font-size: 1.2rem; margin: 0.5rem 0; text-transform: none;">Phokwane Festival</h2>
+                    <p class="full-description">Phokwane Festival is a dynamic event company bringing energy and excitement to the entertainment scene. We partnered with them to amplify their events and strengthen their brand presence.</p>
+                    <p class="full-description"><strong>Services Provided:</strong><br>Developed core branding, including logo creation aligned with their vision<br>Designed marketing materials (flyers, banners, posters, business cards)<br>Managed and grew their social media presence<br>Extended support: venue scouting, artist booking, and event logistics</p>
+                    <p class="full-description"><strong>Impact:</strong><br>Our collaboration helped Phokwane Festival host successful events, building a strong brand identity and loyal audience.</p>
+                    <div style="margin-top: 0.5rem; display: flex; gap: 0.7rem; flex-wrap: wrap;">
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-paintbrush"></i> Branding & Flyers</span>
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-users"></i> Community Growth</span>
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-ticket-alt"></i> Event Logistics</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Yvonne's Kitchen -->
+            <div class="case-study fade-up delay-4">
+                <div class="case-image-container">
+                    <div class="case-image" style="background-image: url('yvonne-kitchen-case.jpg'); background-color: #222;"></div>
+                </div>
+                <div class="case-content">
+                    <span class="badge-small"><i class="fas fa-utensils"></i> Culinary Startup</span>
+                    <h2 style="font-size: 1.2rem; margin: 0.5rem 0; text-transform: none;">Yvonne's Kitchen</h2>
+                    <p class="full-description">Yvonne's Kitchen: Bringing Flavors to Life<br>Yvonne's Kitchen is a rising catering company founded on the culinary talents of Yvonne. We partnered with Yvonne to turn her passion into a brand, starting with crafting a strong brand identity.</p>
+                    <p class="full-description"><strong>Services Provided:</strong><br>Developed brand identity, including logo design<br>Secured first two catering gigs within a week of collaboration</p>
+                    <p class="full-description"><strong>Early Wins:</strong><br>Our swift collaboration helped Yvonne's Kitchen kickstart their business, landing early opportunities to showcase their delicious offerings.</p>
+                    <p class="full-description"><strong>Social Media</strong><br>Content creation & Curation instead of editing<br>Community management & Engagement<br>Influencer Management<br>Strategy Development & Audit</p>
+                    <p class="full-description"><strong>Graphic Design Portfolio</strong><br>Cover Art | Motion Graphics | Newsletter design | Ebook & Brochure design | Menu</p>
+                    <div style="margin-top: 0.5rem; display: flex; gap: 0.7rem; flex-wrap: wrap;">
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-id-card"></i> Brand Identity</span>
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-chart-line"></i> Early Wins</span>
+                        <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-handshake"></i> Business Launch</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Process Section -->
     <section class="section">
         <h2 class="section-title fade-left">The Ideal Process</h2>
         <p class="section-sub fade-right delay-1">Three steps. No confusion. Just growth.</p>
@@ -634,7 +698,6 @@
         </div>
     </section>
 
-    <!-- Final CTA Section -->
     <section class="section">
         <div class="final-cta fade-up">
             <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Let's Build Your Brand the Right Way</h2>
@@ -648,10 +711,9 @@
     <div class="footer-inner">
         <div>
             <div class="logo-area" style="margin-bottom:0.3rem;">
-                <div class="logo-placeholder"><i class="fas fa-chart-line"></i></div>
-                <span class="logo-text">IDEAL DEALERS</span>
+                <img src="logo1.jpg" alt="Ideal Dealers Logo" class="logo-img" style="width: 36px; height: 36px;" onerror="this.onerror=null; this.src='https://placehold.co/36x36?text=ID';">
             </div>
-            <p style="font-size:0.65rem;">The Ideal Way to Grow.</p>
+            <p style="font-size:0.65rem; margin-top: 0.3rem;">The Ideal Way to Grow.</p>
             <p style="font-size:0.6rem; margin-top:0.3rem;">info@idealdealers.co.za</p>
             <p style="font-size:0.55rem; margin-top:0.2rem;">Pretoria North, South Africa</p>
         </div>
@@ -668,11 +730,10 @@
             <a href="#" id="termsLink">Terms</a>
         </div>
     </div>
-    <div class="copyright">© 2025 Ideal Dealers — premium marketing & growth agency</div>
+    <div class="copyright">© 2026 Ideal Dealers — premium marketing & growth agency</div>
 </footer>
 
 <script>
-    // Mobile menu functions
     const mobileMenuBtn = document.getElementById('mobileMenu');
     const mobileNavOverlay = document.getElementById('mobileNavOverlay');
     const menuOverlayBg = document.getElementById('menuOverlayBg');
@@ -706,31 +767,21 @@
         menuOverlayBg.addEventListener('click', closeMobileMenu);
     }
     
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-overlay a');
-    mobileNavLinks.forEach(link => {
+    document.querySelectorAll('.mobile-nav-overlay a').forEach(link => {
         link.addEventListener('click', closeMobileMenu);
     });
     
     window.addEventListener('resize', function() {
-        if(window.innerWidth > 750) {
-            closeMobileMenu();
-        }
+        if(window.innerWidth > 750) closeMobileMenu();
     });
 
-    // Button navigation
-    const bookBtn = document.getElementById('bookCoffeeBtn');
-    const viewBtn = document.getElementById('viewServicesBtn');
-    const journeyBtn = document.getElementById('startJourneyBtn');
+    document.getElementById('bookCoffeeBtn')?.addEventListener('click', () => window.location.href = 'contact.html');
+    document.getElementById('viewServicesBtn')?.addEventListener('click', () => document.getElementById('servicesPreview').scrollIntoView({ behavior: 'smooth' }));
+    document.getElementById('startJourneyBtn')?.addEventListener('click', () => window.location.href = 'contact.html');
 
-    if(bookBtn) bookBtn.addEventListener('click', () => window.location.href = 'contact.html');
-    if(viewBtn) viewBtn.addEventListener('click', () => document.getElementById('servicesPreview').scrollIntoView({ behavior: 'smooth' }));
-    if(journeyBtn) journeyBtn.addEventListener('click', () => window.location.href = 'contact.html');
-
-    // Legal links
     document.getElementById('privacyLink')?.addEventListener('click', (e) => { e.preventDefault(); alert("Privacy Policy — We respect your privacy. Your information is safe with Ideal Dealers."); });
     document.getElementById('termsLink')?.addEventListener('click', (e) => { e.preventDefault(); alert("Terms & Conditions — By using our services, you agree to our standard terms. Contact us for the full document."); });
 
-    // Intersection Observer for animations
     const animatedElements = document.querySelectorAll('.fade-left, .fade-right, .fade-up');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -741,13 +792,9 @@
         });
     }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
     animatedElements.forEach(el => observer.observe(el));
-
     setTimeout(() => {
         animatedElements.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if(rect.top < window.innerHeight - 50) {
-                el.classList.add('visible');
-            }
+            if(el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('visible');
         });
     }, 100);
 </script>
