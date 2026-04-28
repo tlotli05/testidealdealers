@@ -24,7 +24,6 @@
             overflow-x: hidden;
         }
 
-        /* premium typography */
         html {
             font-size: 15px;
         }
@@ -70,7 +69,7 @@
         ::-webkit-scrollbar-track { background: #0A0A0A; }
         ::-webkit-scrollbar-thumb { background: #555; border-radius: 10px; }
 
-        /* navbar */
+        /* navbar - solid black with logo */
         .navbar {
             position: fixed;
             top: 0;
@@ -78,10 +77,9 @@
             right: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(8,8,8,0.96);
-            backdrop-filter: blur(16px);
-            border-bottom: 0.5px solid rgba(255,255,255,0.05);
-            padding: 0.8rem 2rem;
+            background: #000000;
+            border-bottom: 0.5px solid rgba(255,255,255,0.08);
+            padding: 0.7rem 2rem;
         }
         .nav-container {
             max-width: 1300px;
@@ -96,21 +94,14 @@
             align-items: center;
             gap: 10px;
         }
-        .logo-placeholder {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #E8E8E8, #909090);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .logo-placeholder i {
-            font-size: 1rem;
-            color: #0A0A0A;
+        .logo-img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            border-radius: 6px;
         }
         .logo-text {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             letter-spacing: 1.5px;
             background: linear-gradient(135deg, #FFF, #AAA);
@@ -119,7 +110,6 @@
             color: transparent;
         }
         
-        /* Desktop nav links */
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -138,7 +128,6 @@
             text-shadow: 0 0 6px rgba(255,255,255,0.3);
         }
         
-        /* Mobile Menu Button - 3 lines that turn into X */
         .mobile-menu {
             display: none;
             cursor: pointer;
@@ -174,7 +163,6 @@
             top: 14px;
         }
 
-        /* Mobile menu overlay panel */
         .mobile-nav-overlay {
             position: fixed;
             top: 0;
@@ -182,8 +170,7 @@
             width: 70%;
             max-width: 280px;
             height: 100vh;
-            background: #0A0A0A;
-            backdrop-filter: blur(20px);
+            background: #000000;
             z-index: 1001;
             transition: right 0.35s ease;
             border-left: 1px solid rgba(255,255,255,0.1);
@@ -215,7 +202,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.7);
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
@@ -245,7 +232,6 @@
             box-shadow: 0 0 16px rgba(160,160,160,0.35);
         }
 
-        /* hero with background image - YOUR IMAGE NAME: bg-contact.jpg or bg-contact.png */
         .hero {
             min-height: 45vh;
             display: flex;
@@ -288,14 +274,12 @@
             padding: 3rem 2rem;
         }
 
-        /* contact grid */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
         }
 
-        /* form styling */
         .form-card {
             background: rgba(255,255,255,0.02);
             border: 0.5px solid rgba(255,255,255,0.06);
@@ -339,7 +323,6 @@
             min-height: 100px;
         }
 
-        /* coffee card */
         .coffee-card {
             background: linear-gradient(145deg, #0F0F0F, #080808);
             border: 0.5px solid rgba(255,255,255,0.05);
@@ -441,7 +424,6 @@
             margin-top: 1.5rem;
         }
 
-        /* animations */
         .fade-left, .fade-right, .fade-up {
             opacity: 0;
             transition: all 0.7s cubic-bezier(0.2, 0.8, 0.3, 1);
@@ -476,9 +458,7 @@
 <nav class="navbar">
     <div class="nav-container">
         <div class="logo-area">
-            <div class="logo-placeholder">
-                <i class="fas fa-chart-line"></i>
-            </div>
+            <img src="logo1.jpg" alt="Ideal Dealers Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/38x38?text=ID';">
             <span class="logo-text">IDEAL DEALERS</span>
         </div>
         <div class="nav-links" id="desktopNavLinks">
@@ -503,7 +483,6 @@
 </nav>
 
 <main>
-    <!-- Hero Section with background image - name your image "bg-contact.jpg" or "bg-contact.png" -->
     <section class="hero" style="background-image: url('bg-contact.jpg'); background-position: center 25%;">
         <div class="hero-content">
             <h1 class="fade-up">Let's Talk About<br>Your Growth</h1>
@@ -514,7 +493,6 @@
         </div>
     </section>
 
-    <!-- Contact Form + Book a Coffee Section -->
     <section class="section" id="contactFormSection">
         <div class="contact-grid">
             <div class="form-card fade-left">
@@ -586,22 +564,21 @@
         </div>
     </section>
 
-    <!-- Location Section -->
+    <!-- Location Section - Updated to Pretoria North -->
     <section class="section" style="padding-top: 0;">
         <div class="map-placeholder fade-up">
             <i class="fas fa-map-pin" style="font-size: 1.5rem; color: #C0C0C0; margin-bottom: 0.8rem; display: inline-block;"></i>
-            <h3 style="font-size: 0.9rem;">Based in South Africa — Working Worldwide</h3>
+            <h3 style="font-size: 0.9rem;">Based in Pretoria North — Serving Businesses Worldwide</h3>
             <p style="font-size: 0.65rem; color: #AAAAAA; max-width: 500px; margin: 0.5rem auto 0;">
-                Ideal Dealers operates remotely, serving ambitious businesses across continents. 
+                Ideal Dealers operates from Pretoria North, South Africa, serving ambitious businesses across continents. 
                 Let's connect wherever you are.
             </p>
             <div style="margin-top: 0.8rem; font-size: 0.55rem; color: #777;">
-                <i class="fas fa-globe-africa"></i> Johannesburg • Global reach
+                <i class="fas fa-globe-africa"></i> Pretoria North • Global reach
             </div>
         </div>
     </section>
 
-    <!-- Final CTA -->
     <section class="section" style="text-align:center;">
         <div class="fade-up">
             <i class="fas fa-handshake" style="font-size: 1.4rem; color: #C0C0C0; margin-bottom: 0.8rem; display: inline-block;"></i>
@@ -618,11 +595,12 @@
     <div class="footer-inner">
         <div>
             <div class="logo-area" style="margin-bottom:0.3rem;">
-                <div class="logo-placeholder"><i class="fas fa-chart-line"></i></div>
+                <img src="logo1.jpg" alt="Ideal Dealers Logo" class="logo-img" style="width: 32px; height: 32px;" onerror="this.onerror=null; this.src='https://placehold.co/32x32?text=ID';">
                 <span class="logo-text">IDEAL DEALERS</span>
             </div>
             <p style="font-size:0.65rem;">The Ideal Way to Grow.</p>
             <p style="font-size:0.6rem; margin-top:0.3rem;">info@idealdealers.co.za</p>
+            <p style="font-size:0.55rem; margin-top:0.2rem;">Pretoria North, South Africa</p>
         </div>
         <div class="footer-links">
             <h4 style="font-size:0.7rem; margin-bottom:0.5rem;">Navigate</h4>
@@ -637,11 +615,10 @@
             <a href="#" id="termsLink">Terms</a>
         </div>
     </div>
-    <div class="copyright">© 2025 Ideal Dealers — premium marketing & growth agency</div>
+    <div class="copyright">© 2026 Ideal Dealers — premium marketing & growth agency</div>
 </footer>
 
 <script>
-    // Mobile menu functions
     const mobileMenuBtn = document.getElementById('mobileMenu');
     const mobileNavOverlay = document.getElementById('mobileNavOverlay');
     const menuOverlayBg = document.getElementById('menuOverlayBg');
@@ -686,7 +663,6 @@
         }
     });
 
-    // Flatpickr initialization
     const datetimePicker = document.getElementById('datetimePicker');
     if(datetimePicker) {
         flatpickr(datetimePicker, {
@@ -699,7 +675,6 @@
         });
     }
 
-    // Form submission
     const form = document.getElementById('contactForm');
     const feedback = document.getElementById('formFeedback');
     if(form) {
@@ -719,7 +694,6 @@
         });
     }
 
-    // Coffee booking
     const coffeeBtn = document.getElementById('coffeeBookingBtn');
     const coffeeFeedback = document.getElementById('coffeeFeedback');
     const coffeeNameInput = document.getElementById('coffeeName');
@@ -752,17 +726,14 @@
         });
     }
 
-    // Scroll buttons
     const scrollBtn = document.getElementById('scrollToForm');
     const bottomCta = document.getElementById('bottomCta');
     if(scrollBtn) scrollBtn.addEventListener('click', () => document.getElementById('contactFormSection').scrollIntoView({ behavior: 'smooth' }));
     if(bottomCta) bottomCta.addEventListener('click', () => document.getElementById('contactFormSection').scrollIntoView({ behavior: 'smooth' }));
 
-    // Legal links
     document.getElementById('privacyLink')?.addEventListener('click', (e) => { e.preventDefault(); alert("Privacy Policy — We respect your privacy."); });
     document.getElementById('termsLink')?.addEventListener('click', (e) => { e.preventDefault(); alert("Terms & Conditions — Available upon request."); });
 
-    // Intersection Observer
     const animatedElements = document.querySelectorAll('.fade-left, .fade-right, .fade-up');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
