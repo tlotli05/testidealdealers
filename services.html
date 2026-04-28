@@ -21,7 +21,6 @@
             overflow-x: hidden;
         }
 
-        /* premium typography */
         html {
             font-size: 15px;
         }
@@ -67,7 +66,6 @@
         ::-webkit-scrollbar-track { background: #0A0A0A; }
         ::-webkit-scrollbar-thumb { background: #555; border-radius: 10px; }
 
-        /* navbar */
         .navbar {
             position: fixed;
             top: 0;
@@ -75,10 +73,9 @@
             right: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(8,8,8,0.96);
-            backdrop-filter: blur(16px);
-            border-bottom: 0.5px solid rgba(255,255,255,0.05);
-            padding: 0.8rem 2rem;
+            background: #000000;
+            border-bottom: 0.5px solid rgba(255,255,255,0.08);
+            padding: 0.7rem 2rem;
         }
         .nav-container {
             max-width: 1300px;
@@ -93,21 +90,14 @@
             align-items: center;
             gap: 10px;
         }
-        .logo-placeholder {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #E8E8E8, #909090);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .logo-placeholder i {
-            font-size: 1rem;
-            color: #0A0A0A;
+        .logo-img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            border-radius: 6px;
         }
         .logo-text {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             letter-spacing: 1.5px;
             background: linear-gradient(135deg, #FFF, #AAA);
@@ -116,7 +106,6 @@
             color: transparent;
         }
         
-        /* Desktop nav links */
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -135,7 +124,6 @@
             text-shadow: 0 0 6px rgba(255,255,255,0.3);
         }
         
-        /* Mobile Menu Button - 3 lines that turn into X - stays on far right */
         .mobile-menu {
             display: none;
             cursor: pointer;
@@ -171,7 +159,6 @@
             top: 14px;
         }
 
-        /* Mobile menu overlay panel - slides from right */
         .mobile-nav-overlay {
             position: fixed;
             top: 0;
@@ -179,8 +166,7 @@
             width: 70%;
             max-width: 280px;
             height: 100vh;
-            background: #0A0A0A;
-            backdrop-filter: blur(20px);
+            background: #000000;
             z-index: 1001;
             transition: right 0.35s ease;
             border-left: 1px solid rgba(255,255,255,0.1);
@@ -206,14 +192,13 @@
             color: #FFF;
             text-shadow: 0 0 6px rgba(255,255,255,0.3);
         }
-        /* Overlay background when menu is open */
         .menu-overlay-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.7);
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
@@ -242,8 +227,24 @@
             transform: scale(1.02);
             box-shadow: 0 0 16px rgba(160,160,160,0.35);
         }
+        .btn-outline {
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-size: 0.6rem;
+            font-weight: 500;
+            cursor: pointer;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #FFFFFF;
+            font-family: inherit;
+            margin-top: 0.8rem;
+            transition: all 0.2s;
+        }
+        .btn-outline:hover {
+            border-color: #FFF;
+            background: rgba(255,255,255,0.05);
+        }
 
-        /* hero - clean gradient, no background image */
         .hero {
             min-height: 45vh;
             display: flex;
@@ -287,7 +288,6 @@
             margin-bottom: 2rem;
         }
 
-        /* glass cards */
         .glass-card {
             background: rgba(255,255,255,0.02);
             backdrop-filter: blur(8px);
@@ -312,15 +312,38 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 1.2rem;
         }
-        .price {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin: 0.5rem 0;
-            background: linear-gradient(135deg, #FFF, #BBB);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        
+        /* Color styles for package contents */
+        .bronze-text {
+            color: #CD7F32;
         }
+        .bronze-list li {
+            color: #CD7F32 !important;
+        }
+        .bronze-list li i {
+            color: #CD7F32;
+        }
+        
+        .silver-text {
+            color: #C0C0C0;
+        }
+        .silver-list li {
+            color: #C0C0C0 !important;
+        }
+        .silver-list li i {
+            color: #C0C0C0;
+        }
+        
+        .gold-text {
+            color: #D4AF37;
+        }
+        .gold-list li {
+            color: #D4AF37 !important;
+        }
+        .gold-list li i {
+            color: #D4AF37;
+        }
+        
         .pricing-features {
             list-style: none;
             margin: 1rem 0;
@@ -330,16 +353,27 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #BBBBBB;
             font-size: 0.7rem;
         }
+        .pricing-features li i {
+            width: 14px;
+        }
+        
         .badge-premium {
-            background: rgba(200,200,200,0.12);
+            background: rgba(212, 175, 55, 0.15);
             border-radius: 30px;
             padding: 0.2rem 0.7rem;
             font-size: 0.55rem;
             display: inline-block;
+            color: #D4AF37;
         }
+        .chess-icon {
+            font-size: 1rem;
+            margin-right: 6px;
+        }
+        .bronze-border { border-top: 2px solid #CD7F32; }
+        .silver-border { border-top: 2px solid #C0C0C0; }
+        .gold-border { border-top: 2px solid #D4AF37; }
 
         .service-list-grid {
             display: grid;
@@ -421,7 +455,6 @@
             margin-top: 1.5rem;
         }
 
-        /* animations */
         .fade-left, .fade-right, .fade-up {
             opacity: 0;
             transition: all 0.7s cubic-bezier(0.2, 0.8, 0.3, 1);
@@ -456,28 +489,22 @@
 <nav class="navbar">
     <div class="nav-container">
         <div class="logo-area">
-            <div class="logo-placeholder">
-                <i class="fas fa-chart-line"></i>
-            </div>
+            <img src="logo1.jpg" alt="Ideal Dealers Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/38x38?text=ID';">
             <span class="logo-text">IDEAL DEALERS</span>
         </div>
-        <!-- Desktop nav links -->
         <div class="nav-links" id="desktopNavLinks">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="services.html" class="active">Services</a>
             <a href="contact.html">Contact</a>
         </div>
-        <!-- Mobile menu button (3 lines) -->
         <div class="mobile-menu" id="mobileMenu">
             <span></span>
             <span></span>
             <span></span>
         </div>
     </div>
-    <!-- Mobile overlay background -->
     <div class="menu-overlay-bg" id="menuOverlayBg"></div>
-    <!-- Mobile nav panel that slides from right -->
     <div class="mobile-nav-overlay" id="mobileNavOverlay">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -487,7 +514,6 @@
 </nav>
 
 <main>
-    <!-- Hero Section - clean gradient, no background image -->
     <section class="hero">
         <div class="hero-content">
             <h1 class="fade-up">Everything You Need to Build and Grow Your Brand</h1>
@@ -498,25 +524,25 @@
         </div>
     </section>
 
-    <!-- Branding Packages -->
+    <!-- Branding Packages - NO PRICES AT ALL -->
     <section class="section" id="packages">
         <h2 class="section-title fade-left">Branding Packages</h2>
-        <p class="section-sub fade-right delay-1">Choose the package that fits your stage of growth</p>
+        <p class="section-sub fade-right delay-1">Choose your strategic move</p>
         <div class="pricing-grid">
-            <div class="glass-card fade-up delay-1">
-                <h3>Starter Pack</h3>
-                <div class="price">R2,000</div>
-                <ul class="pricing-features">
-                    <li><i class="fas fa-check-circle" style="color:#A0A0A0;"></i> Logo Concept</li>
+            <!-- Pawn / Starter - Bronze -->
+            <div class="glass-card fade-up delay-1 bronze-border">
+                <h3 class="bronze-text"><i class="fas fa-chess-pawn chess-icon"></i> Pawn — Starter Pack</h3>
+                <ul class="pricing-features bronze-list">
+                    <li><i class="fas fa-check-circle"></i> Logo Concept</li>
                     <li><i class="fas fa-check-circle"></i> Color Palette</li>
                     <li><i class="fas fa-check-circle"></i> Typography</li>
                     <li><i class="fas fa-check-circle"></i> Brand Guidelines</li>
                 </ul>
             </div>
-            <div class="glass-card fade-up delay-2">
-                <h3>Growth Pack</h3>
-                <div class="price">R7,500</div>
-                <ul class="pricing-features">
+            <!-- Knight / Growth - Silver -->
+            <div class="glass-card fade-up delay-2 silver-border">
+                <h3 class="silver-text"><i class="fas fa-chess-knight chess-icon"></i> Knight — Growth Pack</h3>
+                <ul class="pricing-features silver-list">
                     <li><i class="fas fa-check-circle"></i> Starter Pack +</li>
                     <li><i class="fas fa-check-circle"></i> Business Cards</li>
                     <li><i class="fas fa-check-circle"></i> Email Signature</li>
@@ -525,17 +551,16 @@
                     <li><i class="fas fa-check-circle"></i> Posters</li>
                 </ul>
             </div>
-            <div class="glass-card fade-up delay-3">
-                <h3>Premium Pack <span class="badge-premium">recommended</span></h3>
-                <div class="price">R10,000</div>
-                <ul class="pricing-features">
+            <!-- King / Premium - Gold -->
+            <div class="glass-card fade-up delay-3 gold-border">
+                <h3 class="gold-text"><i class="fas fa-chess-king chess-icon"></i> King — Premium Package <span class="badge-premium">recommended</span></h3>
+                <ul class="pricing-features gold-list">
                     <li><i class="fas fa-check-circle"></i> Growth Pack +</li>
                     <li><i class="fas fa-check-circle"></i> Marketing Materials</li>
                     <li><i class="fas fa-check-circle"></i> Packaging & Labelling</li>
-                    <li><i class="fas fa-check-circle"></i> Social Media Management*</li>
+                    <li><i class="fas fa-check-circle"></i> Social Media Management</li>
                     <li><i class="fas fa-check-circle"></i> Weekly Reports + Strategy</li>
                 </ul>
-                <p style="font-size:0.6rem; color:#777; margin-top:0.5rem;">*SMM monthly: R1,500</p>
             </div>
         </div>
     </section>
@@ -553,22 +578,22 @@
                 <div class="service-item"><i class="fas fa-id-card"></i> Business Cards</div>
                 <div class="service-item"><i class="fas fa-trademark"></i> Logo & Brand Identity</div>
                 <div class="service-item"><i class="fas fa-box"></i> Packaging & Label Design</div>
+                <div class="service-item"><i class="fas fa-palette"></i> Art Cover</div>
+                <div class="service-item"><i class="fas fa-edit"></i> Content Editing</div>
+                <div class="service-item"><i class="fas fa-plus-circle"></i> Content Creation</div>
+                <div class="service-item"><i class="fas fa-camera"></i> Photoshoots</div>
             </div>
         </div>
     </section>
 
-    <!-- Social Media Management -->
+    <!-- Social Media Management - NO PRICES, removed LinkedIn -->
     <section class="section">
         <div class="glass-card fade-right">
-            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-items: baseline;">
-                <h2 class="section-title" style="text-align:left; margin-bottom:0.3rem;">Social Media Management</h2>
-                <span class="badge-premium" style="font-size:0.65rem;">Monthly: R1,500</span>
-            </div>
+            <h2 class="section-title" style="text-align:left; margin-bottom:0.3rem;">Social Media Management</h2>
             <div style="margin: 0.8rem 0 1rem;">
                 <span class="platform-badge"><i class="fab fa-tiktok"></i> TikTok</span>
                 <span class="platform-badge"><i class="fab fa-instagram"></i> Instagram</span>
                 <span class="platform-badge"><i class="fab fa-facebook"></i> Facebook</span>
-                <span class="platform-badge"><i class="fab fa-linkedin"></i> LinkedIn</span>
             </div>
             <div class="service-list-grid">
                 <div class="service-item"><i class="fas fa-ad"></i> Ad Creatives & Campaigns</div>
@@ -581,18 +606,45 @@
         </div>
     </section>
 
-    <!-- Website Development -->
+    <!-- Website Packages - NO PRICES -->
     <section class="section">
         <div class="glass-card fade-left">
-            <h2 class="section-title" style="text-align:left;">Website Development</h2>
+            <h2 class="section-title" style="text-align:left;">Website Packages</h2>
             <p class="section-sub" style="text-align:left; margin-bottom:1rem;">Modern websites that turn visitors into customers.</p>
-            <div class="service-list-grid">
-                <div class="service-item"><i class="fas fa-globe"></i> Business Websites</div>
-                <div class="service-item"><i class="fas fa-landmark"></i> Landing Pages</div>
-                <div class="service-item"><i class="fas fa-mobile-alt"></i> Mobile-Responsive Design</div>
-                <div class="service-item"><i class="fas fa-users"></i> Lead Generation Setup</div>
-                <div class="service-item"><i class="fas fa-calendar-check"></i> Contact & Booking Integration</div>
-                <div class="service-item"><i class="fas fa-palette"></i> Brand-aligned Design</div>
+            <div class="pricing-grid" style="margin-bottom: 1.5rem;">
+                <div class="glass-card" style="background: rgba(255,255,255,0.03);">
+                    <h3><i class="fas fa-file-alt"></i> Basic Plan</h3>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Simple 1-page website</li>
+                        <li><i class="fas fa-check-circle"></i> Mobile responsive design</li>
+                        <li><i class="fas fa-check-circle"></i> Basic UI design</li>
+                        <li><i class="fas fa-check-circle"></i> Contact section</li>
+                    </ul>
+                </div>
+                <div class="glass-card" style="background: rgba(255,255,255,0.03);">
+                    <h3><i class="fas fa-layer-group"></i> Standard Plan</h3>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Multi-page website (3–5 pages)</li>
+                        <li><i class="fas fa-check-circle"></i> Responsive design</li>
+                        <li><i class="fas fa-check-circle"></i> Clean UI/UX</li>
+                        <li><i class="fas fa-check-circle"></i> Basic animations</li>
+                        <li><i class="fas fa-check-circle"></i> Contact form</li>
+                    </ul>
+                </div>
+                <div class="glass-card" style="background: rgba(255,255,255,0.03);">
+                    <h3><i class="fas fa-crown"></i> Premium Plan</h3>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Full custom website</li>
+                        <li><i class="fas fa-check-circle"></i> Advanced UI/UX design</li>
+                        <li><i class="fas fa-check-circle"></i> Animations & interactions</li>
+                        <li><i class="fas fa-check-circle"></i> Backend functionality</li>
+                        <li><i class="fas fa-check-circle"></i> SEO optimization</li>
+                        <li><i class="fas fa-check-circle"></i> Performance optimization</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 0.5rem;">
+                <button class="btn-outline" id="websiteQuoteBtn">Request a Quote →</button>
             </div>
         </div>
     </section>
@@ -628,7 +680,7 @@
     <div class="footer-inner">
         <div>
             <div class="logo-area" style="margin-bottom:0.3rem;">
-                <div class="logo-placeholder"><i class="fas fa-chart-line"></i></div>
+                <img src="logo1.jpg" alt="Ideal Dealers Logo" class="logo-img" style="width: 32px; height: 32px;" onerror="this.onerror=null; this.src='https://placehold.co/32x32?text=ID';">
                 <span class="logo-text">IDEAL DEALERS</span>
             </div>
             <p style="font-size:0.65rem;">The Ideal Way to Grow.</p>
@@ -647,16 +699,14 @@
             <a href="#" id="termsLink">Terms</a>
         </div>
     </div>
-    <div class="copyright">© 2025 Ideal Dealers — premium marketing & growth agency</div>
+    <div class="copyright">© 2026 Ideal Dealers — premium marketing & growth agency</div>
 </footer>
 
 <script>
-    // Mobile menu elements
     const mobileMenuBtn = document.getElementById('mobileMenu');
     const mobileNavOverlay = document.getElementById('mobileNavOverlay');
     const menuOverlayBg = document.getElementById('menuOverlayBg');
     
-    // Function to open mobile menu
     function openMobileMenu() {
         mobileMenuBtn.classList.add('active');
         mobileNavOverlay.classList.add('active');
@@ -664,7 +714,6 @@
         document.body.style.overflow = 'hidden';
     }
     
-    // Function to close mobile menu
     function closeMobileMenu() {
         mobileMenuBtn.classList.remove('active');
         mobileNavOverlay.classList.remove('active');
@@ -672,7 +721,6 @@
         document.body.style.overflow = '';
     }
     
-    // Toggle menu on button click
     if(mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -684,42 +732,27 @@
         });
     }
     
-    // Close menu when clicking overlay background
     if(menuOverlayBg) {
         menuOverlayBg.addEventListener('click', closeMobileMenu);
     }
     
-    // Close menu when clicking a mobile nav link
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-overlay a');
-    mobileNavLinks.forEach(link => {
+    document.querySelectorAll('.mobile-nav-overlay a').forEach(link => {
         link.addEventListener('click', closeMobileMenu);
     });
     
-    // Close menu on window resize (if screen becomes desktop)
     window.addEventListener('resize', function() {
-        if(window.innerWidth > 750) {
-            closeMobileMenu();
-        }
+        if(window.innerWidth > 750) closeMobileMenu();
     });
 
-    // Legal links - smooth alerts
-    const privacyLink = document.getElementById('privacyLink');
-    const termsLink = document.getElementById('termsLink');
-    
-    if(privacyLink) {
-        privacyLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert("Privacy Policy — We respect your privacy. Your information is safe with Ideal Dealers.");
-        });
-    }
-    if(termsLink) {
-        termsLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert("Terms & Conditions — By using our services, you agree to our standard terms.");
-        });
-    }
+    document.getElementById('privacyLink')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert("Privacy Policy — We respect your privacy. Your information is safe with Ideal Dealers.");
+    });
+    document.getElementById('termsLink')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert("Terms & Conditions — By using our services, you agree to our standard terms.");
+    });
 
-    // Intersection Observer for animations
     const animatedElements = document.querySelectorAll('.fade-left, .fade-right, .fade-up');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -733,27 +766,21 @@
 
     setTimeout(() => {
         animatedElements.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if(rect.top < window.innerHeight - 50) {
+            if(el.getBoundingClientRect().top < window.innerHeight - 50) {
                 el.classList.add('visible');
             }
         });
     }, 100);
 
-    // Button navigation
-    const exploreBtn = document.getElementById('exploreBtn');
-    const contactBtn = document.getElementById('contactBtn');
-    
-    if(exploreBtn) {
-        exploreBtn.addEventListener('click', () => {
-            document.getElementById('packages').scrollIntoView({ behavior: 'smooth' });
-        });
-    }
-    if(contactBtn) {
-        contactBtn.addEventListener('click', () => {
-            window.location.href = 'contact.html';
-        });
-    }
+    document.getElementById('exploreBtn')?.addEventListener('click', () => {
+        document.getElementById('packages').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.getElementById('contactBtn')?.addEventListener('click', () => {
+        window.location.href = 'contact.html';
+    });
+    document.getElementById('websiteQuoteBtn')?.addEventListener('click', () => {
+        window.location.href = 'contact.html';
+    });
 </script>
 </body>
 </html>
