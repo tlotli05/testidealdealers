@@ -66,7 +66,73 @@
         ::-webkit-scrollbar-track { background: #0A0A0A; }
         ::-webkit-scrollbar-thumb { background: #555; border-radius: 10px; }
 
-        /* navbar - solid black with logo */
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: #0A0A0A;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+        }
+        .modal-content h2 {
+            margin-bottom: 1.2rem;
+            color: #FFF;
+        }
+        .modal-content h3 {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #CCC;
+        }
+        .modal-content p, .modal-content li {
+            color: #AAA;
+            font-size: 0.7rem;
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+        .modal-content ul {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        .close-modal {
+            position: sticky;
+            top: 0;
+            left: 100%;
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            float: right;
+            margin-top: -1rem;
+            margin-right: -1rem;
+            margin-bottom: 1rem;
+        }
+        .close-modal:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
         .navbar {
             position: fixed;
             top: 0;
@@ -236,7 +302,7 @@
             justify-content: center;
             text-align: center;
             background-size: cover;
-            background-position: center 35%;
+            background-position: center 75%;
             position: relative;
             padding-top: 70px;
         }
@@ -251,18 +317,6 @@
             z-index: 2;
             max-width: 800px;
             padding: 2rem;
-        }
-        .hero-title {
-            background: linear-gradient(135deg, #FFF, #C8C8C8);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1rem;
-        }
-        .hero-sub {
-            font-size: 0.85rem;
-            color: #D5D5D5;
-            margin-bottom: 1.5rem;
         }
 
         .section {
@@ -421,6 +475,7 @@
             font-size: 0.6rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            cursor: pointer;
         }
         .footer-links a:hover {
             color: #FFF;
@@ -430,6 +485,13 @@
             color: #555;
             font-size: 0.55rem;
             margin-top: 1.5rem;
+        }
+        .copyright a {
+            color: #666;
+            text-decoration: none;
+        }
+        .copyright a:hover {
+            color: #888;
         }
 
         .fade-left, .fade-right, .fade-up {
@@ -470,7 +532,7 @@
 <nav class="navbar">
     <div class="nav-container">
         <div class="logo-area">
-            <img src="logo1.jpg" alt="Ideal Dealers Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/38x38?text=ID';">
+            <img src="logo2.jpg" alt="Ideal Dealers Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/38x38?text=ID';">
             <span class="logo-text">IDEAL DEALERS</span>
         </div>
         <div class="nav-links" id="desktopNavLinks">
@@ -495,8 +557,8 @@
 </nav>
 
 <main>
-    <!-- Hero Section -->
-    <section class="hero" style="background-image: url('bg-about.jpg'); background-position: center 35%;">
+    <!-- Hero with background-position center 75% to show lower part of the image -->
+    <section class="hero" style="background-image: url('hero.jpg'); background-position: center 75%;">
         <div class="hero-content">
             <h1 class="fade-up">Built From Experience.<br>Designed for Growth.</h1>
             <p class="hero-sub fade-up delay-1">We don't just offer service — we build your brand from the ground up, then handle everything needed to grow it.</p>
@@ -506,7 +568,6 @@
         </div>
     </section>
 
-    <!-- Story Section -->
     <section class="section">
         <div class="story-card fade-up">
             <div class="quote-mark">"</div>
@@ -532,7 +593,6 @@
         </div>
     </section>
 
-    <!-- Mission Section -->
     <section class="section">
         <div class="mission-block fade-up">
             <h2 class="section-title">Our Mission</h2>
@@ -544,7 +604,6 @@
         </div>
     </section>
 
-    <!-- Team Section with updated names and roles -->
     <section class="section" id="teamSection">
         <h2 class="section-title fade-left">The Minds Behind the Movement</h2>
         <p class="section-sub fade-right delay-1">A team built on passion, skill, and commitment to your growth.</p>
@@ -582,7 +641,6 @@
         </div>
     </section>
 
-    <!-- Values Section -->
     <section class="section">
         <h2 class="section-title fade-left">Our Philosophy</h2>
         <p class="section-sub fade-right delay-1">The principles that drive every decision, every partnership.</p>
@@ -605,7 +663,6 @@
         </div>
     </section>
 
-    <!-- Why Clients Trust Section -->
     <section class="section">
         <div class="story-card fade-up">
             <h2 class="section-title" style="text-align: center;">Why Clients Trust Us</h2>
@@ -618,7 +675,6 @@
         </div>
     </section>
 
-    <!-- Final CTA -->
     <section class="section" style="text-align:center;">
         <div class="fade-up">
             <p style="font-size: 0.7rem; color: #AAAAAA; margin-bottom: 1.2rem;">Ready to write your brand's story?</p>
@@ -631,7 +687,7 @@
     <div class="footer-inner">
         <div>
             <div class="logo-area" style="margin-bottom:0.3rem;">
-                <img src="logo1.jpg" alt="Ideal Dealers Logo" class="logo-img" style="width: 32px; height: 32px;" onerror="this.onerror=null; this.src='https://placehold.co/32x32?text=ID';">
+                <img src="logo2.jpg" alt="Ideal Dealers Logo" class="logo-img" style="width: 32px; height: 32px;" onerror="this.onerror=null; this.src='https://placehold.co/32x32?text=ID';">
                 <span class="logo-text">IDEAL DEALERS</span>
             </div>
             <p style="font-size:0.65rem;">The Ideal Way to Grow.</p>
@@ -647,93 +703,115 @@
         </div>
         <div class="footer-links">
             <h4 style="font-size:0.7rem; margin-bottom:0.5rem;">Legal</h4>
-            <a href="#" id="privacyLink">Privacy</a>
-            <a href="#" id="termsLink">Terms</a>
+            <a id="privacyLink">Privacy</a>
+            <a id="termsLink">Terms</a>
+            <a id="cookiesLink">Cookies</a>
         </div>
     </div>
-    <div class="copyright">© 2026 Ideal Dealers — premium marketing & growth agency</div>
+    <div class="copyright">
+        © 2026 Ideal Dealers — premium marketing & growth agency<br>
+        <a href="https://www.monarchtechnologies.co.za/" target="_blank" style="color: #555; text-decoration: none;">Created by Monarch Technologies (Pty)Ltd</a>
+    </div>
 </footer>
 
+<!-- Privacy Modal -->
+<div id="privacyModal" class="modal">
+    <div class="modal-content">
+        <div class="close-modal" onclick="closeModal('privacyModal')">&times;</div>
+        <h2>Privacy Policy</h2>
+        <p><strong>Ideal Dealers</strong></p>
+        <h3>1. Introduction</h3>
+        <p>Ideal Dealers respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard information when you visit our website or use our services.</p>
+        <h3>2. Information We Collect</h3>
+        <p>We may collect the following information when you interact with us:</p>
+        <ul><li>Name and surname</li><li>Email address</li><li>Phone number</li><li>Business information provided through enquiry forms</li><li>Messages or project details submitted by clients</li><li>Website usage data (cookies and analytics)</li></ul>
+        <h3>3. How We Use Your Information</h3>
+        <p>Your information is used to: Respond to enquiries, communicate about projects, improve our website, send necessary updates, maintain client records. We do not sell or share personal information for marketing purposes.</p>
+        <h3>4. Data Protection</h3>
+        <p>Ideal Dealers takes reasonable technical and organizational measures to protect your personal information.</p>
+        <h3>5. Cookies</h3>
+        <p>Our website may use cookies to improve user experience. You may disable cookies through your browser settings.</p>
+        <h3>6. Third-Party Services</h3>
+        <p>We may use trusted third-party tools such as analytics or hosting platforms. These services have their own privacy policies.</p>
+        <h3>7. Your Rights</h3>
+        <p>You may request to access, correct, or delete your personal data where applicable.</p>
+        <h3>8. Contact Us</h3>
+        <p>Email: info@idealdealers.co.za</p>
+    </div>
+</div>
+
+<!-- Terms Modal -->
+<div id="termsModal" class="modal">
+    <div class="modal-content">
+        <div class="close-modal" onclick="closeModal('termsModal')">&times;</div>
+        <h2>Terms & Conditions</h2>
+        <p><strong>Ideal Dealers</strong></p>
+        <h3>1. Acceptance of Terms</h3>
+        <p>By accessing or using Ideal Dealers' website or services, you agree to these Terms & Conditions.</p>
+        <h3>2. Services</h3>
+        <p>Ideal Dealers provides branding, graphic design, social media management, website development, and related marketing services.</p>
+        <h3>3. Client Responsibilities</h3>
+        <p>Clients agree to provide accurate information and timely feedback for project completion.</p>
+        <h3>4. Payments</h3>
+        <p>Fees are quoted per project or package. Payment terms are specified in proposals or invoices.</p>
+        <h3>5. Intellectual Property</h3>
+        <p>Upon full payment, final deliverables become client property. Ideal Dealers retains the right to showcase completed work in portfolio.</p>
+        <h3>6. Limitation of Liability</h3>
+        <p>Ideal Dealers is not liable for indirect damages. Total liability is limited to fees paid for the specific service.</p>
+        <h3>7. Contact</h3>
+        <p>For questions: info@idealdealers.co.za</p>
+    </div>
+</div>
+
+<!-- Cookies Modal -->
+<div id="cookiesModal" class="modal">
+    <div class="modal-content">
+        <div class="close-modal" onclick="closeModal('cookiesModal')">&times;</div>
+        <h2>Cookies Policy</h2>
+        <p><strong>Ideal Dealers</strong></p>
+        <h3>What Are Cookies</h3>
+        <p>Cookies are small text files stored on your device when you visit a website.</p>
+        <h3>How We Use Cookies</h3>
+        <p>We use cookies to analyze traffic, improve site performance, and remember preferences.</p>
+        <h3>Managing Cookies</h3>
+        <p>You can disable cookies through your browser settings. Some features may not function properly.</p>
+        <h3>Contact</h3>
+        <p>Email: info@idealdealers.co.za</p>
+    </div>
+</div>
+
 <script>
+    function openModal(modalId) { document.getElementById(modalId).classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeModal(modalId) { document.getElementById(modalId).classList.remove('active'); document.body.style.overflow = ''; }
+    window.onclick = function(event) { if (event.target.classList.contains('modal')) { event.target.classList.remove('active'); document.body.style.overflow = ''; } }
+
     const mobileMenuBtn = document.getElementById('mobileMenu');
     const mobileNavOverlay = document.getElementById('mobileNavOverlay');
     const menuOverlayBg = document.getElementById('menuOverlayBg');
     
-    function openMobileMenu() {
-        mobileMenuBtn.classList.add('active');
-        mobileNavOverlay.classList.add('active');
-        menuOverlayBg.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
+    function openMobileMenu() { mobileMenuBtn.classList.add('active'); mobileNavOverlay.classList.add('active'); menuOverlayBg.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeMobileMenu() { mobileMenuBtn.classList.remove('active'); mobileNavOverlay.classList.remove('active'); menuOverlayBg.classList.remove('active'); document.body.style.overflow = ''; }
     
-    function closeMobileMenu() {
-        mobileMenuBtn.classList.remove('active');
-        mobileNavOverlay.classList.remove('active');
-        menuOverlayBg.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-    
-    if(mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if(mobileNavOverlay.classList.contains('active')) {
-                closeMobileMenu();
-            } else {
-                openMobileMenu();
-            }
-        });
-    }
-    
-    if(menuOverlayBg) {
-        menuOverlayBg.addEventListener('click', closeMobileMenu);
-    }
-    
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-overlay a');
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
-    });
-    
-    window.addEventListener('resize', function() {
-        if(window.innerWidth > 750) {
-            closeMobileMenu();
-        }
-    });
+    if(mobileMenuBtn) { mobileMenuBtn.addEventListener('click', (e) => { e.stopPropagation(); if(mobileNavOverlay.classList.contains('active')) { closeMobileMenu(); } else { openMobileMenu(); } }); }
+    if(menuOverlayBg) { menuOverlayBg.addEventListener('click', closeMobileMenu); }
+    document.querySelectorAll('.mobile-nav-overlay a').forEach(link => { link.addEventListener('click', closeMobileMenu); });
+    window.addEventListener('resize', function() { if(window.innerWidth > 750) closeMobileMenu(); });
 
-    const exploreBtn = document.getElementById('exploreTeam');
-    if(exploreBtn) {
-        exploreBtn.addEventListener('click', () => {
-            document.getElementById('teamSection').scrollIntoView({ behavior: 'smooth' });
-        });
-    }
+    document.getElementById('exploreTeam')?.addEventListener('click', () => { document.getElementById('teamSection').scrollIntoView({ behavior: 'smooth' }); });
+    document.getElementById('finalCtaBtn')?.addEventListener('click', () => { window.location.href = 'contact.html'; });
 
-    const finalCta = document.getElementById('finalCtaBtn');
-    if(finalCta) {
-        finalCta.addEventListener('click', () => {
-            window.location.href = 'contact.html';
-        });
-    }
-
-    document.getElementById('privacyLink')?.addEventListener('click', (e) => { e.preventDefault(); alert("Privacy Policy — We respect your privacy. Your information is safe with Ideal Dealers."); });
-    document.getElementById('termsLink')?.addEventListener('click', (e) => { e.preventDefault(); alert("Terms & Conditions — By using our services, you agree to our standard terms. Contact us for the full document."); });
+    document.getElementById('privacyLink')?.addEventListener('click', (e) => { e.preventDefault(); openModal('privacyModal'); });
+    document.getElementById('termsLink')?.addEventListener('click', (e) => { e.preventDefault(); openModal('termsModal'); });
+    document.getElementById('cookiesLink')?.addEventListener('click', (e) => { e.preventDefault(); openModal('cookiesModal'); });
 
     const animatedElements = document.querySelectorAll('.fade-left, .fade-right, .fade-up');
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
+        entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
     }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
     animatedElements.forEach(el => observer.observe(el));
 
     setTimeout(() => {
-        animatedElements.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if(rect.top < window.innerHeight - 50) {
-                el.classList.add('visible');
-            }
-        });
+        animatedElements.forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('visible'); });
     }, 100);
 </script>
 </body>
