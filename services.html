@@ -66,6 +66,73 @@
         ::-webkit-scrollbar-track { background: #0A0A0A; }
         ::-webkit-scrollbar-thumb { background: #555; border-radius: 10px; }
 
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: #0A0A0A;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+        }
+        .modal-content h2 {
+            margin-bottom: 1.2rem;
+            color: #FFF;
+        }
+        .modal-content h3 {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #CCC;
+        }
+        .modal-content p, .modal-content li {
+            color: #AAA;
+            font-size: 0.7rem;
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+        .modal-content ul {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        .close-modal {
+            position: sticky;
+            top: 0;
+            left: 100%;
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            float: right;
+            margin-top: -1rem;
+            margin-right: -1rem;
+            margin-bottom: 1rem;
+        }
+        .close-modal:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
         .navbar {
             position: fixed;
             top: 0;
@@ -251,27 +318,22 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+            background-size: cover;
+            background-position: center 30%;
             position: relative;
-            background: radial-gradient(circle at 30% 20%, #121212 0%, #0A0A0A 100%);
             padding-top: 70px;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(145deg, rgba(0,0,0,0.6) 0%, rgba(8,8,8,0.85) 100%);
         }
         .hero-content {
             position: relative;
             z-index: 2;
             max-width: 800px;
             padding: 2rem;
-        }
-        .hero-title {
-            background: linear-gradient(135deg, #FFF, #C8C8C8);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1rem;
-        }
-        .hero-sub {
-            font-size: 0.85rem;
-            color: #D5D5D5;
-            margin-bottom: 1.5rem;
         }
 
         .section {
@@ -313,36 +375,38 @@
             gap: 1.2rem;
         }
         
-        /* Color styles for package contents */
-        .bronze-text {
-            color: #CD7F32;
+        /* Branding Package Cards - Black background with chess piece on the RIGHT */
+        .branding-card {
+            background: #0A0A0A;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: all 0.35s ease;
         }
-        .bronze-list li {
-            color: #CD7F32 !important;
+        .branding-card:hover {
+            border-color: rgba(255,255,255,0.25);
+            transform: translateY(-3px);
         }
-        .bronze-list li i {
-            color: #CD7F32;
+        .branding-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
         }
-        
-        .silver-text {
-            color: #C0C0C0;
+        .branding-content {
+            flex: 1;
         }
-        .silver-list li {
-            color: #C0C0C0 !important;
+        .branding-chess {
+            flex-shrink: 0;
         }
-        .silver-list li i {
-            color: #C0C0C0;
+        .chess-piece-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
         }
-        
-        .gold-text {
-            color: #D4AF37;
-        }
-        .gold-list li {
-            color: #D4AF37 !important;
-        }
-        .gold-list li i {
-            color: #D4AF37;
-        }
+        .bronze-text { color: #CD7F32; }
+        .silver-text { color: #C0C0C0; }
+        .gold-text { color: #D4AF37; }
         
         .pricing-features {
             list-style: none;
@@ -358,6 +422,12 @@
         .pricing-features li i {
             width: 14px;
         }
+        .bronze-list li { color: #CD7F32 !important; }
+        .bronze-list li i { color: #CD7F32; }
+        .silver-list li { color: #C0C0C0 !important; }
+        .silver-list li i { color: #C0C0C0; }
+        .gold-list li { color: #D4AF37 !important; }
+        .gold-list li i { color: #D4AF37; }
         
         .badge-premium {
             background: rgba(212, 175, 55, 0.15);
@@ -366,14 +436,8 @@
             font-size: 0.55rem;
             display: inline-block;
             color: #D4AF37;
+            margin-left: 8px;
         }
-        .chess-icon {
-            font-size: 1rem;
-            margin-right: 6px;
-        }
-        .bronze-border { border-top: 2px solid #CD7F32; }
-        .silver-border { border-top: 2px solid #C0C0C0; }
-        .gold-border { border-top: 2px solid #D4AF37; }
 
         .service-list-grid {
             display: grid;
@@ -444,6 +508,7 @@
             font-size: 0.6rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            cursor: pointer;
         }
         .footer-links a:hover {
             color: #FFF;
@@ -453,6 +518,13 @@
             color: #555;
             font-size: 0.55rem;
             margin-top: 1.5rem;
+        }
+        .copyright a {
+            color: #666;
+            text-decoration: none;
+        }
+        .copyright a:hover {
+            color: #888;
         }
 
         .fade-left, .fade-right, .fade-up {
@@ -481,6 +553,19 @@
             .hero-title { font-size: 1.8rem; }
             .section { padding: 2rem 1.2rem; }
             .pricing-grid, .feature-grid { grid-template-columns: 1fr; }
+            .branding-row {
+                flex-direction: column;
+            }
+            .branding-chess {
+                order: -1;
+                margin-bottom: 0.5rem;
+                display: flex;
+                justify-content: flex-start;
+            }
+            .chess-piece-img {
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
@@ -489,7 +574,7 @@
 <nav class="navbar">
     <div class="nav-container">
         <div class="logo-area">
-            <img src="logo1.jpg" alt="Ideal Dealers Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/38x38?text=ID';">
+            <img src="logo2.jpg" alt="Ideal Dealers Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/38x38?text=ID';">
             <span class="logo-text">IDEAL DEALERS</span>
         </div>
         <div class="nav-links" id="desktopNavLinks">
@@ -514,7 +599,8 @@
 </nav>
 
 <main>
-    <section class="hero">
+    <!-- Hero with hero.jpg background -->
+    <section class="hero" style="background-image: url('hero.jpg'); background-position: center 35%;">
         <div class="hero-content">
             <h1 class="fade-up">Everything You Need to Build and Grow Your Brand</h1>
             <p class="hero-sub fade-up delay-1">From identity creation to full-scale growth partnership — we've got you covered.</p>
@@ -524,43 +610,64 @@
         </div>
     </section>
 
-    <!-- Branding Packages - NO PRICES AT ALL -->
+    <!-- Branding Packages - Black background, chess piece on the RIGHT -->
     <section class="section" id="packages">
         <h2 class="section-title fade-left">Branding Packages</h2>
         <p class="section-sub fade-right delay-1">Choose your strategic move</p>
         <div class="pricing-grid">
             <!-- Pawn / Starter - Bronze -->
-            <div class="glass-card fade-up delay-1 bronze-border">
-                <h3 class="bronze-text"><i class="fas fa-chess-pawn chess-icon"></i> Pawn — Starter Pack</h3>
-                <ul class="pricing-features bronze-list">
-                    <li><i class="fas fa-check-circle"></i> Logo Concept</li>
-                    <li><i class="fas fa-check-circle"></i> Color Palette</li>
-                    <li><i class="fas fa-check-circle"></i> Typography</li>
-                    <li><i class="fas fa-check-circle"></i> Brand Guidelines</li>
-                </ul>
+            <div class="branding-card fade-up delay-1">
+                <div class="branding-row">
+                    <div class="branding-content">
+                        <h3 class="bronze-text">Pawn — Starter Pack</h3>
+                        <ul class="pricing-features bronze-list">
+                            <li><i class="fas fa-check-circle"></i> Logo Concept</li>
+                            <li><i class="fas fa-check-circle"></i> Color Palette</li>
+                            <li><i class="fas fa-check-circle"></i> Typography</li>
+                            <li><i class="fas fa-check-circle"></i> Brand Guidelines</li>
+                        </ul>
+                    </div>
+                    <div class="branding-chess">
+                        <img src="pawn.jpg" alt="Pawn" class="chess-piece-img" onerror="this.onerror=null; this.style.display='none';">
+                    </div>
+                </div>
             </div>
             <!-- Knight / Growth - Silver -->
-            <div class="glass-card fade-up delay-2 silver-border">
-                <h3 class="silver-text"><i class="fas fa-chess-knight chess-icon"></i> Knight — Growth Pack</h3>
-                <ul class="pricing-features silver-list">
-                    <li><i class="fas fa-check-circle"></i> Starter Pack +</li>
-                    <li><i class="fas fa-check-circle"></i> Business Cards</li>
-                    <li><i class="fas fa-check-circle"></i> Email Signature</li>
-                    <li><i class="fas fa-check-circle"></i> Business Profile</li>
-                    <li><i class="fas fa-check-circle"></i> Flyers / Leaflets</li>
-                    <li><i class="fas fa-check-circle"></i> Posters</li>
-                </ul>
+            <div class="branding-card fade-up delay-2">
+                <div class="branding-row">
+                    <div class="branding-content">
+                        <h3 class="silver-text">Knight — Growth Pack</h3>
+                        <ul class="pricing-features silver-list">
+                            <li><i class="fas fa-check-circle"></i> Starter Pack +</li>
+                            <li><i class="fas fa-check-circle"></i> Business Cards</li>
+                            <li><i class="fas fa-check-circle"></i> Email Signature</li>
+                            <li><i class="fas fa-check-circle"></i> Business Profile</li>
+                            <li><i class="fas fa-check-circle"></i> Flyers / Leaflets</li>
+                            <li><i class="fas fa-check-circle"></i> Posters</li>
+                        </ul>
+                    </div>
+                    <div class="branding-chess">
+                        <img src="knight.jpg" alt="Knight" class="chess-piece-img" onerror="this.onerror=null; this.style.display='none';">
+                    </div>
+                </div>
             </div>
             <!-- King / Premium - Gold -->
-            <div class="glass-card fade-up delay-3 gold-border">
-                <h3 class="gold-text"><i class="fas fa-chess-king chess-icon"></i> King — Premium Package <span class="badge-premium">recommended</span></h3>
-                <ul class="pricing-features gold-list">
-                    <li><i class="fas fa-check-circle"></i> Growth Pack +</li>
-                    <li><i class="fas fa-check-circle"></i> Marketing Materials</li>
-                    <li><i class="fas fa-check-circle"></i> Packaging & Labelling</li>
-                    <li><i class="fas fa-check-circle"></i> Social Media Management</li>
-                    <li><i class="fas fa-check-circle"></i> Weekly Reports + Strategy</li>
-                </ul>
+            <div class="branding-card fade-up delay-3">
+                <div class="branding-row">
+                    <div class="branding-content">
+                        <h3 class="gold-text">King — Premium Package <span class="badge-premium">recommended</span></h3>
+                        <ul class="pricing-features gold-list">
+                            <li><i class="fas fa-check-circle"></i> Growth Pack +</li>
+                            <li><i class="fas fa-check-circle"></i> Marketing Materials</li>
+                            <li><i class="fas fa-check-circle"></i> Packaging & Labelling</li>
+                            <li><i class="fas fa-check-circle"></i> Social Media Management</li>
+                            <li><i class="fas fa-check-circle"></i> Weekly Reports + Strategy</li>
+                        </ul>
+                    </div>
+                    <div class="branding-chess">
+                        <img src="king.jpg" alt="King" class="chess-piece-img" onerror="this.onerror=null; this.style.display='none';">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -586,7 +693,7 @@
         </div>
     </section>
 
-    <!-- Social Media Management - NO PRICES, removed LinkedIn -->
+    <!-- Social Media Management -->
     <section class="section">
         <div class="glass-card fade-right">
             <h2 class="section-title" style="text-align:left; margin-bottom:0.3rem;">Social Media Management</h2>
@@ -606,7 +713,7 @@
         </div>
     </section>
 
-    <!-- Website Packages - NO PRICES -->
+    <!-- Website Packages -->
     <section class="section">
         <div class="glass-card fade-left">
             <h2 class="section-title" style="text-align:left;">Website Packages</h2>
@@ -680,7 +787,7 @@
     <div class="footer-inner">
         <div>
             <div class="logo-area" style="margin-bottom:0.3rem;">
-                <img src="logo1.jpg" alt="Ideal Dealers Logo" class="logo-img" style="width: 32px; height: 32px;" onerror="this.onerror=null; this.src='https://placehold.co/32x32?text=ID';">
+                <img src="logo2.jpg" alt="Ideal Dealers Logo" class="logo-img" style="width: 32px; height: 32px;" onerror="this.onerror=null; this.src='https://placehold.co/32x32?text=ID';">
                 <span class="logo-text">IDEAL DEALERS</span>
             </div>
             <p style="font-size:0.65rem;">The Ideal Way to Grow.</p>
@@ -695,92 +802,117 @@
         </div>
         <div class="footer-links">
             <h4 style="font-size:0.7rem; margin-bottom:0.5rem;">Legal</h4>
-            <a href="#" id="privacyLink">Privacy</a>
-            <a href="#" id="termsLink">Terms</a>
+            <a id="privacyLink">Privacy</a>
+            <a id="termsLink">Terms</a>
+            <a id="cookiesLink">Cookies</a>
         </div>
     </div>
-    <div class="copyright">© 2026 Ideal Dealers — premium marketing & growth agency</div>
+    <div class="copyright">
+        © 2026 Ideal Dealers — premium marketing & growth agency<br>
+        <a href="https://www.monarchtechnologies.co.za/" target="_blank" style="color: #555; text-decoration: none;">Created by Monarch Technologies (Pty)Ltd</a>
+    </div>
 </footer>
 
+<!-- Privacy Modal -->
+<div id="privacyModal" class="modal">
+    <div class="modal-content">
+        <div class="close-modal" onclick="closeModal('privacyModal')">&times;</div>
+        <h2>Privacy Policy</h2>
+        <p><strong>Ideal Dealers</strong></p>
+        <h3>1. Introduction</h3>
+        <p>Ideal Dealers respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard information when you visit our website or use our services.</p>
+        <h3>2. Information We Collect</h3>
+        <p>We may collect the following information when you interact with us:</p>
+        <ul><li>Name and surname</li><li>Email address</li><li>Phone number</li><li>Business information provided through enquiry forms</li><li>Messages or project details submitted by clients</li><li>Website usage data (cookies and analytics)</li></ul>
+        <h3>3. How We Use Your Information</h3>
+        <p>Your information is used to: Respond to enquiries, communicate about projects, improve our website, send necessary updates, maintain client records. We do not sell or share personal information for marketing purposes.</p>
+        <h3>4. Data Protection</h3>
+        <p>Ideal Dealers takes reasonable technical and organizational measures to protect your personal information.</p>
+        <h3>5. Cookies</h3>
+        <p>Our website may use cookies to improve user experience. You may disable cookies through your browser settings.</p>
+        <h3>6. Third-Party Services</h3>
+        <p>We may use trusted third-party tools such as analytics or hosting platforms. These services have their own privacy policies.</p>
+        <h3>7. Your Rights</h3>
+        <p>You may request to access, correct, or delete your personal data where applicable.</p>
+        <h3>8. Contact Us</h3>
+        <p>Email: info@idealdealers.co.za</p>
+    </div>
+</div>
+
+<!-- Terms Modal -->
+<div id="termsModal" class="modal">
+    <div class="modal-content">
+        <div class="close-modal" onclick="closeModal('termsModal')">&times;</div>
+        <h2>Terms & Conditions</h2>
+        <p><strong>Ideal Dealers</strong></p>
+        <h3>1. Acceptance of Terms</h3>
+        <p>By accessing or using Ideal Dealers' website or services, you agree to these Terms & Conditions.</p>
+        <h3>2. Services</h3>
+        <p>Ideal Dealers provides branding, graphic design, social media management, website development, and related marketing services.</p>
+        <h3>3. Client Responsibilities</h3>
+        <p>Clients agree to provide accurate information and timely feedback for project completion.</p>
+        <h3>4. Payments</h3>
+        <p>Fees are quoted per project or package. Payment terms are specified in proposals or invoices.</p>
+        <h3>5. Intellectual Property</h3>
+        <p>Upon full payment, final deliverables become client property. Ideal Dealers retains the right to showcase completed work in portfolio.</p>
+        <h3>6. Limitation of Liability</h3>
+        <p>Ideal Dealers is not liable for indirect damages. Total liability is limited to fees paid for the specific service.</p>
+        <h3>7. Contact</h3>
+        <p>For questions: info@idealdealers.co.za</p>
+    </div>
+</div>
+
+<!-- Cookies Modal -->
+<div id="cookiesModal" class="modal">
+    <div class="modal-content">
+        <div class="close-modal" onclick="closeModal('cookiesModal')">&times;</div>
+        <h2>Cookies Policy</h2>
+        <p><strong>Ideal Dealers</strong></p>
+        <h3>What Are Cookies</h3>
+        <p>Cookies are small text files stored on your device when you visit a website.</p>
+        <h3>How We Use Cookies</h3>
+        <p>We use cookies to analyze traffic, improve site performance, and remember preferences.</p>
+        <h3>Managing Cookies</h3>
+        <p>You can disable cookies through your browser settings. Some features may not function properly.</p>
+        <h3>Contact</h3>
+        <p>Email: info@idealdealers.co.za</p>
+    </div>
+</div>
+
 <script>
+    function openModal(modalId) { document.getElementById(modalId).classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeModal(modalId) { document.getElementById(modalId).classList.remove('active'); document.body.style.overflow = ''; }
+    window.onclick = function(event) { if (event.target.classList.contains('modal')) { event.target.classList.remove('active'); document.body.style.overflow = ''; } }
+
     const mobileMenuBtn = document.getElementById('mobileMenu');
     const mobileNavOverlay = document.getElementById('mobileNavOverlay');
     const menuOverlayBg = document.getElementById('menuOverlayBg');
     
-    function openMobileMenu() {
-        mobileMenuBtn.classList.add('active');
-        mobileNavOverlay.classList.add('active');
-        menuOverlayBg.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
+    function openMobileMenu() { mobileMenuBtn.classList.add('active'); mobileNavOverlay.classList.add('active'); menuOverlayBg.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeMobileMenu() { mobileMenuBtn.classList.remove('active'); mobileNavOverlay.classList.remove('active'); menuOverlayBg.classList.remove('active'); document.body.style.overflow = ''; }
     
-    function closeMobileMenu() {
-        mobileMenuBtn.classList.remove('active');
-        mobileNavOverlay.classList.remove('active');
-        menuOverlayBg.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-    
-    if(mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if(mobileNavOverlay.classList.contains('active')) {
-                closeMobileMenu();
-            } else {
-                openMobileMenu();
-            }
-        });
-    }
-    
-    if(menuOverlayBg) {
-        menuOverlayBg.addEventListener('click', closeMobileMenu);
-    }
-    
-    document.querySelectorAll('.mobile-nav-overlay a').forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
-    });
-    
-    window.addEventListener('resize', function() {
-        if(window.innerWidth > 750) closeMobileMenu();
-    });
+    if(mobileMenuBtn) { mobileMenuBtn.addEventListener('click', (e) => { e.stopPropagation(); if(mobileNavOverlay.classList.contains('active')) { closeMobileMenu(); } else { openMobileMenu(); } }); }
+    if(menuOverlayBg) { menuOverlayBg.addEventListener('click', closeMobileMenu); }
+    document.querySelectorAll('.mobile-nav-overlay a').forEach(link => { link.addEventListener('click', closeMobileMenu); });
+    window.addEventListener('resize', function() { if(window.innerWidth > 750) closeMobileMenu(); });
 
-    document.getElementById('privacyLink')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        alert("Privacy Policy — We respect your privacy. Your information is safe with Ideal Dealers.");
-    });
-    document.getElementById('termsLink')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        alert("Terms & Conditions — By using our services, you agree to our standard terms.");
-    });
+    document.getElementById('privacyLink')?.addEventListener('click', (e) => { e.preventDefault(); openModal('privacyModal'); });
+    document.getElementById('termsLink')?.addEventListener('click', (e) => { e.preventDefault(); openModal('termsModal'); });
+    document.getElementById('cookiesLink')?.addEventListener('click', (e) => { e.preventDefault(); openModal('cookiesModal'); });
 
     const animatedElements = document.querySelectorAll('.fade-left, .fade-right, .fade-up');
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
+        entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
     }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
     animatedElements.forEach(el => observer.observe(el));
 
     setTimeout(() => {
-        animatedElements.forEach(el => {
-            if(el.getBoundingClientRect().top < window.innerHeight - 50) {
-                el.classList.add('visible');
-            }
-        });
+        animatedElements.forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('visible'); });
     }, 100);
 
-    document.getElementById('exploreBtn')?.addEventListener('click', () => {
-        document.getElementById('packages').scrollIntoView({ behavior: 'smooth' });
-    });
-    document.getElementById('contactBtn')?.addEventListener('click', () => {
-        window.location.href = 'contact.html';
-    });
-    document.getElementById('websiteQuoteBtn')?.addEventListener('click', () => {
-        window.location.href = 'contact.html';
-    });
+    document.getElementById('exploreBtn')?.addEventListener('click', () => { document.getElementById('packages').scrollIntoView({ behavior: 'smooth' }); });
+    document.getElementById('contactBtn')?.addEventListener('click', () => { window.location.href = 'contact.html'; });
+    document.getElementById('websiteQuoteBtn')?.addEventListener('click', () => { window.location.href = 'contact.html'; });
 </script>
 </body>
 </html>
