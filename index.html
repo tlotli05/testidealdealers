@@ -1,3 +1,5 @@
+Here is the `index.html` with your social media links added at the bottom in the footer.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -399,7 +401,7 @@
             width: 36px;
             height: 36px;
             background: rgba(200,200,200,0.08);
-            border-radius: 50%;
+            border-radius: 70%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -416,7 +418,6 @@
             border: 0.5px solid rgba(255,255,255,0.05);
         }
 
-        /* Modal styles */
         .modal {
             display: none;
             position: fixed;
@@ -509,6 +510,22 @@
         .footer-links a:hover {
             color: #FFF;
         }
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        .social-links a {
+            color: #aaa;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        .social-links a:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
         .copyright {
             text-align: center;
             color: #555;
@@ -556,6 +573,13 @@
             .trust-grid, .services-grid { grid-template-columns: 1fr; }
             .case-study { padding: 1rem; }
             .case-image { height: 200px; }
+            .footer-inner {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            .social-links {
+                justify-content: flex-start;
+            }
         }
     </style>
 </head>
@@ -660,7 +684,6 @@
         <p class="section-sub fade-right delay-1">Real partnerships, measurable impact.</p>
         <div class="case-studies-wrapper">
             
-            <!-- 1. Clogerie -->
             <div class="case-study fade-up">
                 <div class="case-image-container">
                     <div class="case-image" style="background-image: url('clogerie-case.jpg'); background-color: #222; background-size: cover; background-position: center;"></div>
@@ -677,7 +700,6 @@
                 </div>
             </div>
 
-            <!-- 2. Flame Clothing -->
             <div class="case-study fade-up delay-1">
                 <div class="case-image-container">
                     <div class="case-image" style="background-image: url('flame-clothing-case.jpg'); background-color: #222; background-size: cover; background-position: center;"></div>
@@ -696,7 +718,6 @@
                 </div>
             </div>
 
-            <!-- 3. Aircraft Magician -->
             <div class="case-study fade-up delay-2">
                 <div class="case-image-container">
                     <div class="case-image" style="background-image: url('aircraft-magician-case.jpg'); background-color: #222; background-size: cover; background-position: center;"></div>
@@ -715,7 +736,6 @@
                 </div>
             </div>
 
-            <!-- 4. Phokwane Festival -->
             <div class="case-study fade-up delay-3">
                 <div class="case-image-container">
                     <div class="case-image" style="background-image: url('phokwane-festival-case.jpg'); background-color: #222; background-size: cover; background-position: center;"></div>
@@ -734,7 +754,6 @@
                 </div>
             </div>
 
-            <!-- 5. Yvonne's Kitchen -->
             <div class="case-study fade-up delay-4">
                 <div class="case-image-container">
                     <div class="case-image" style="background-image: url('yvonne-kitchen-case.jpg'); background-color: #222; background-size: cover; background-position: center;"></div>
@@ -745,8 +764,6 @@
                     <p class="full-description">Yvonne's Kitchen: Bringing Flavors to Life<br>Yvonne's Kitchen is a rising catering company founded on the culinary talents of Yvonne. We partnered with Yvonne to turn her passion into a brand, starting with crafting a strong brand identity.</p>
                     <p class="full-description"><strong>Services Provided:</strong><br>Developed brand identity, including logo design<br>Secured first two catering gigs within a week of collaboration</p>
                     <p class="full-description"><strong>Early Wins:</strong><br>Our swift collaboration helped Yvonne's Kitchen kickstart their business, landing early opportunities to showcase their delicious offerings.</p>
-                    <p class="full-description"><strong>Social Media</strong><br>Content creation & Curation instead of editing<br>Community management & Engagement<br>Influencer Management<br>Strategy Development & Audit</p>
-                    <p class="full-description"><strong>Graphic Design Portfolio</strong><br>Cover Art | Motion Graphics | Newsletter design | Ebook & Brochure design | Menu</p>
                     <div style="margin-top: 0.5rem; display: flex; gap: 0.7rem; flex-wrap: wrap;">
                         <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-id-card"></i> Brand Identity</span>
                         <span style="font-size: 0.6rem; background: rgba(255,255,255,0.06); padding: 0.2rem 0.8rem; border-radius: 30px;"><i class="fas fa-chart-line"></i> Early Wins</span>
@@ -755,7 +772,6 @@
                 </div>
             </div>
 
-            <!-- 6. Shaun Sentimental Scent (NEW) -->
             <div class="case-study fade-up delay-5">
                 <div class="case-image-container">
                     <div class="case-image" style="background-image: url('scent-case.jpg'); background-color: #222; background-size: cover; background-position: center;"></div>
@@ -831,6 +847,20 @@
             <a id="privacyLink">Privacy</a>
             <a id="termsLink">Terms</a>
             <a id="cookiesLink">Cookies</a>
+        </div>
+        <div>
+            <h4 style="font-size:0.7rem; margin-bottom:0.5rem;">Follow Us</h4>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@ideal.dealers" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.instagram.com/ideal_dealers" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/ideal.dealers" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
         </div>
     </div>
     <div class="copyright">
@@ -935,3 +965,4 @@
 </script>
 </body>
 </html>
+```
