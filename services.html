@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Ideal Dealers | Services — Branding, Marketing & Growth</title>
+    <title>Ideal Dealers | Services — Branding, Marketing & Growth | Marketing Agency Pretoria North</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -23,6 +23,7 @@
 
         html {
             font-size: 15px;
+            scroll-behavior: smooth;
         }
         body, p, li, a, button, .card-text {
             font-size: 0.75rem;
@@ -375,7 +376,7 @@
             gap: 1.2rem;
         }
         
-        /* Branding Package Cards - Black background with chess piece on the RIGHT */
+        /* Branding Package Cards */
         .branding-card {
             background: #0A0A0A;
             border: 1px solid rgba(255,255,255,0.1);
@@ -386,23 +387,6 @@
         .branding-card:hover {
             border-color: rgba(255,255,255,0.25);
             transform: translateY(-3px);
-        }
-        .branding-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-        .branding-content {
-            flex: 1;
-        }
-        .branding-chess {
-            flex-shrink: 0;
-        }
-        .chess-piece-img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
         }
         .bronze-text { color: #CD7F32; }
         .silver-text { color: #C0C0C0; }
@@ -513,6 +497,22 @@
         .footer-links a:hover {
             color: #FFF;
         }
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        .social-links a {
+            color: #aaa;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        .social-links a:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
         .copyright {
             text-align: center;
             color: #555;
@@ -520,11 +520,13 @@
             margin-top: 1.5rem;
         }
         .copyright a {
-            color: #666;
+            color: #777;
             text-decoration: none;
+            transition: color 0.2s;
         }
         .copyright a:hover {
-            color: #888;
+            color: #aaa;
+            text-decoration: underline;
         }
 
         .fade-left, .fade-right, .fade-up {
@@ -553,18 +555,12 @@
             .hero-title { font-size: 1.8rem; }
             .section { padding: 2rem 1.2rem; }
             .pricing-grid, .feature-grid { grid-template-columns: 1fr; }
-            .branding-row {
+            .footer-inner {
                 flex-direction: column;
+                gap: 1.2rem;
             }
-            .branding-chess {
-                order: -1;
-                margin-bottom: 0.5rem;
-                display: flex;
+            .social-links {
                 justify-content: flex-start;
-            }
-            .chess-piece-img {
-                width: 40px;
-                height: 40px;
             }
         }
     </style>
@@ -599,7 +595,7 @@
 </nav>
 
 <main>
-    <!-- Hero with hero.jpg background -->
+    <!-- Hero with bg-about.jpg background -->
     <section class="hero" style="background-image: url('bg-about.jpg'); background-position: center 35%;">
         <div class="hero-content">
             <h1 class="fade-up">Everything You Need to Build and Grow Your Brand</h1>
@@ -610,64 +606,43 @@
         </div>
     </section>
 
-    <!-- Branding Packages - Black background, chess piece on the RIGHT -->
+    <!-- Branding Packages - No chess pieces -->
     <section class="section" id="packages">
         <h2 class="section-title fade-left">Branding Packages</h2>
         <p class="section-sub fade-right delay-1">Choose your strategic move</p>
         <div class="pricing-grid">
             <!-- Pawn / Starter - Bronze -->
             <div class="branding-card fade-up delay-1">
-                <div class="branding-row">
-                    <div class="branding-content">
-                        <h3 class="bronze-text">Pawn — Starter Pack</h3>
-                        <ul class="pricing-features bronze-list">
-                            <li><i class="fas fa-check-circle"></i> Logo Concept</li>
-                            <li><i class="fas fa-check-circle"></i> Color Palette</li>
-                            <li><i class="fas fa-check-circle"></i> Typography</li>
-                            <li><i class="fas fa-check-circle"></i> Brand Guidelines</li>
-                        </ul>
-                    </div>
-                    <div class="branding-chess">
-                        <img src="pawn.jpg" alt="Pawn" class="chess-piece-img" onerror="this.onerror=null; this.style.display='none';">
-                    </div>
-                </div>
+                <h3 class="bronze-text">Pawn — Starter Pack</h3>
+                <ul class="pricing-features bronze-list">
+                    <li><i class="fas fa-check-circle"></i> Logo Concept</li>
+                    <li><i class="fas fa-check-circle"></i> Color Palette</li>
+                    <li><i class="fas fa-check-circle"></i> Typography</li>
+                    <li><i class="fas fa-check-circle"></i> Brand Guidelines</li>
+                </ul>
             </div>
             <!-- Knight / Growth - Silver -->
             <div class="branding-card fade-up delay-2">
-                <div class="branding-row">
-                    <div class="branding-content">
-                        <h3 class="silver-text">Knight — Growth Pack</h3>
-                        <ul class="pricing-features silver-list">
-                            <li><i class="fas fa-check-circle"></i> Starter Pack +</li>
-                            <li><i class="fas fa-check-circle"></i> Business Cards</li>
-                            <li><i class="fas fa-check-circle"></i> Email Signature</li>
-                            <li><i class="fas fa-check-circle"></i> Business Profile</li>
-                            <li><i class="fas fa-check-circle"></i> Flyers / Leaflets</li>
-                            <li><i class="fas fa-check-circle"></i> Posters</li>
-                        </ul>
-                    </div>
-                    <div class="branding-chess">
-                        <img src="knight.jpg" alt="Knight" class="chess-piece-img" onerror="this.onerror=null; this.style.display='none';">
-                    </div>
-                </div>
+                <h3 class="silver-text">Knight — Growth Pack</h3>
+                <ul class="pricing-features silver-list">
+                    <li><i class="fas fa-check-circle"></i> Starter Pack +</li>
+                    <li><i class="fas fa-check-circle"></i> Business Cards</li>
+                    <li><i class="fas fa-check-circle"></i> Email Signature</li>
+                    <li><i class="fas fa-check-circle"></i> Business Profile</li>
+                    <li><i class="fas fa-check-circle"></i> Flyers / Leaflets</li>
+                    <li><i class="fas fa-check-circle"></i> Posters</li>
+                </ul>
             </div>
             <!-- King / Premium - Gold -->
             <div class="branding-card fade-up delay-3">
-                <div class="branding-row">
-                    <div class="branding-content">
-                        <h3 class="gold-text">King — Premium Package <span class="badge-premium">recommended</span></h3>
-                        <ul class="pricing-features gold-list">
-                            <li><i class="fas fa-check-circle"></i> Growth Pack +</li>
-                            <li><i class="fas fa-check-circle"></i> Marketing Materials</li>
-                            <li><i class="fas fa-check-circle"></i> Packaging & Labelling</li>
-                            <li><i class="fas fa-check-circle"></i> Social Media Management</li>
-                            <li><i class="fas fa-check-circle"></i> Weekly Reports + Strategy</li>
-                        </ul>
-                    </div>
-                    <div class="branding-chess">
-                        <img src="king.jpg" alt="King" class="chess-piece-img" onerror="this.onerror=null; this.style.display='none';">
-                    </div>
-                </div>
+                <h3 class="gold-text">King — Premium Package <span class="badge-premium">recommended</span></h3>
+                <ul class="pricing-features gold-list">
+                    <li><i class="fas fa-check-circle"></i> Growth Pack +</li>
+                    <li><i class="fas fa-check-circle"></i> Marketing Materials</li>
+                    <li><i class="fas fa-check-circle"></i> Packaging & Labelling</li>
+                    <li><i class="fas fa-check-circle"></i> Social Media Management</li>
+                    <li><i class="fas fa-check-circle"></i> Weekly Reports + Strategy</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -792,6 +767,7 @@
             </div>
             <p style="font-size:0.65rem;">The Ideal Way to Grow.</p>
             <p style="font-size:0.6rem; margin-top:0.3rem;">info@idealdealers.co.za</p>
+            <p style="font-size:0.55rem; margin-top:0.2rem;">Pretoria North, South Africa</p>
         </div>
         <div class="footer-links">
             <h4 style="font-size:0.7rem; margin-bottom:0.5rem;">Navigate</h4>
@@ -806,10 +782,24 @@
             <a id="termsLink">Terms</a>
             <a id="cookiesLink">Cookies</a>
         </div>
+        <div>
+            <h4 style="font-size:0.7rem; margin-bottom:0.5rem;">Follow Us</h4>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@ideal.dealers" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.instagram.com/ideal_dealers" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/people/Ideal-Dealers/61588728341771/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+        </div>
     </div>
     <div class="copyright">
         © 2026 Ideal Dealers — premium marketing & growth agency<br>
-        <a href="https://www.monarchtechnologies.co.za/" target="_blank" style="color: #555; text-decoration: none;">Created by Monarch Technologies (Pty)Ltd</a>
+        <a href="https://www.monarchtechnologies.co.za/" target="_blank" rel="noopener noreferrer">Created by Monarch Technologies (Pty) Ltd</a>
     </div>
 </footer>
 
