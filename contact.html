@@ -229,6 +229,16 @@
             transform: scale(1.02);
             box-shadow: 0 0 16px rgba(160,160,160,0.35);
         }
+        .btn-outline-light {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #FFFFFF;
+        }
+        .btn-outline-light:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.6);
+            box-shadow: none;
+        }
         .btn-whatsapp {
             background: #25D366;
             color: #0A0A0A;
@@ -321,6 +331,19 @@
             min-height: 100px;
         }
 
+        .badge-enquiry {
+            display: inline-block;
+            background: rgba(255,255,255,0.05);
+            border-radius: 30px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.6rem;
+            letter-spacing: 0.5px;
+            color: #BBBBBB;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            text-transform: none;
+        }
+
         .coffee-card {
             background: linear-gradient(145deg, #0F0F0F, #080808);
             border: 0.5px solid rgba(255,255,255,0.05);
@@ -337,6 +360,46 @@
             color: #D0D0D0;
             margin-bottom: 1rem;
         }
+        .consultation-badge {
+            background: rgba(200,200,200,0.08);
+            border-radius: 30px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.6rem;
+            color: #CCCCCC;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+        
+        .booking-choice-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.2rem 0 1rem;
+        }
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+        .divider-text {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #777;
+            font-weight: 400;
+        }
+        .wa-benefit-note {
+            font-size: 0.6rem;
+            background: rgba(37,211,102,0.08);
+            border-radius: 20px;
+            padding: 0.5rem 0.7rem;
+            margin: 0.8rem 0 0.3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #b0f0b0;
+        }
+        
         .datetime-picker {
             background: rgba(20,20,20,0.9);
             border: 0.5px solid rgba(255,255,255,0.1);
@@ -569,8 +632,11 @@
     <section class="section" id="contactFormSection">
         <div class="contact-grid">
             <div class="form-card fade-left">
-                <h2 class="section-title" style="text-align: left; margin-bottom: 0.5rem;">Send us a message</h2>
-                <p style="font-size: 0.7rem; color: #999; margin-bottom: 1.5rem;">Tell us about your vision — we'll respond within 24 hours.</p>
+                <h2 class="section-title" style="text-align: left; margin-bottom: 0.25rem;">
+                    Send us a message 
+                    <span class="badge-enquiry">General Enquiries only</span>
+                </h2>
+                <p style="font-size: 0.7rem; color: #999; margin-bottom: 1.5rem;">For general questions, partnerships or support — we'll respond within 24 hours.</p>
                 <form id="contactForm">
                     <div class="form-group">
                         <label>Full Name</label>
@@ -595,62 +661,61 @@
                     <button type="submit" class="btn-primary" style="width: 100%;">Send Message →</button>
                     <p id="formFeedback" style="font-size: 0.65rem; color: #888; margin-top: 1rem; text-align: center;"></p>
                 </form>
-                
-                <!-- WhatsApp Button -->
-                <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 0.5px solid rgba(255,255,255,0.05);">
-                    <a href="https://wa.me/27645724461?text=Hi%20Ideal%20Dealers%2C%20I'm%20interested%20in%20your%20services.%20I%20would%20like%20to%20book%20a%20coffee%20consultation." target="_blank" style="text-decoration: none;">
-                        <button class="btn-primary btn-whatsapp" style="width: 100%;">
-                            <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> Book a coffee with us on WhatsApp
-                        </button>
-                    </a>
-                </div>
             </div>
 
             <div class="coffee-card fade-right">
                 <div class="coffee-icon"><i class="fas fa-mug-hot"></i></div>
+                <div class="consultation-badge"><i class="fas fa-comments"></i> For consultations only</div>
                 <h3 style="font-size: 1rem;">Book a Coffee With Us</h3>
                 <p style="color: #CCCCCC; margin: 0.5rem 0 0.8rem; font-size:0.7rem;">
-                    A relaxed 30-minute consultation. No pressure. Just good coffee and the start of something great.
+                    A relaxed 30-min strategy consultation. No pressure. Just good coffee and the start of something great.
                 </p>
                 <p style="color: #888; font-size: 0.6rem; margin-bottom: 0.5rem;">
                     <i class="fas fa-clock"></i> Monday–Friday | 10:00 – 16:00 (30-min slots)
                 </p>
                 
-                <div style="margin: 0.5rem 0;">
-                    <label style="font-size: 0.6rem; text-align: left; display: block; margin-bottom: 0.3rem; color:#AAA;">Select Date & Time</label>
-                    <input type="text" id="datetimePicker" class="datetime-picker" placeholder="Choose your preferred date and time" readonly>
-                </div>
-                
-                <div style="margin-bottom: 0.5rem;">
-                    <label style="font-size: 0.6rem; text-align: left; display: block; margin-bottom: 0.3rem; color:#AAA;">Your Name</label>
-                    <input type="text" id="coffeeName" class="coffee-name-input" placeholder="Enter your name">
-                </div>
-                
-                <div style="margin-bottom: 0.5rem;">
-                    <label style="font-size: 0.6rem; text-align: left; display: block; margin-bottom: 0.3rem; color:#AAA;">Your Email</label>
-                    <input type="email" id="coffeeEmail" class="coffee-email-input" placeholder="Enter your email">
-                </div>
-                
-                <button id="coffeeBookingBtn" class="btn-primary" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #FFF; margin: 0.5rem 0 1rem; width: 100%;">
-                    Confirm Coffee Chat <i class="fas fa-calendar-check" style="margin-left: 8px;"></i>
-                </button>
-                <p id="coffeeFeedback" style="font-size: 0.6rem; color: #888; margin-top: -0.3rem;"></p>
-                
-                <div class="info-row">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h4 style="font-size: 0.7rem; margin-bottom: 0.2rem;">Email Directly</h4>
-                        <a href="mailto:info@idealdealers.co.za" style="font-size: 0.7rem;">info@idealdealers.co.za</a>
+                <!-- Option A: Book via Website Form -->
+                <div style="margin-top: 0.5rem;">
+                    <label style="font-size: 0.65rem; text-align: left; display: block; margin-bottom: 0.2rem; color:#CCCCCC;"><i class="fas fa-calendar-alt"></i> Book Here</label>
+                    <div style="margin-bottom: 0.5rem;">
+                        <input type="text" id="datetimePicker" class="datetime-picker" placeholder="Select date & time" readonly>
                     </div>
-                </div>
-                <div class="info-row">
-                    <i class="fab fa-whatsapp"></i>
-                    <div>
-                        <h4 style="font-size: 0.7rem; margin-bottom: 0.2rem;">WhatsApp</h4>
-                        <a href="https://wa.me/27645724461" target="_blank" style="font-size: 0.7rem;">+27 64 572 4461</a>
+                    <div style="margin-bottom: 0.5rem;">
+                        <input type="text" id="coffeeName" class="coffee-name-input" placeholder="Your full name">
                     </div>
+                    <div style="margin-bottom: 0.5rem;">
+                        <input type="email" id="coffeeEmail" class="coffee-email-input" placeholder="Your email address">
+                    </div>
+                    <button id="coffeeBookingBtn" class="btn-primary btn-outline-light" style="width: 100%; margin-bottom: 0.2rem;">
+                        Send request <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <p id="coffeeFeedback" style="font-size: 0.6rem; color: #888; margin-top: 0.3rem;"></p>
                 </div>
-                <div class="info-row">
+                
+                <!-- OR Divider with style -->
+                <div class="booking-choice-divider">
+                    <div class="divider-line"></div>
+                    <span class="divider-text">or</span>
+                    <div class="divider-line"></div>
+                </div>
+                
+                <!-- Option B: Book via WhatsApp (much easier) -->
+                <div>
+                    <div class="wa-benefit-note">
+                        <i class="fab fa-whatsapp"></i> <span>Much easier & faster — chat directly with our team</span>
+                    </div>
+                    <a href="https://wa.me/27645724461?text=Hi%20Ideal%20Dealers%2C%20I'm%20interested%20in%20a%20coffee%20consultation.%20Let's%20schedule%20a%20time!" target="_blank" style="text-decoration: none;">
+                        <button class="btn-primary btn-whatsapp" style="width: 100%;">
+                            <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> Book on WhatsApp (recommended)
+                        </button>
+                    </a>
+                    <p style="font-size: 0.55rem; color: #888; margin-top: 0.5rem;">
+                        <i class="fas fa-bolt"></i> Get instant reply • No forms
+                    </p>
+                </div>
+                
+                <!-- Keep response time only (removed email and whatsapp duplicate contacts) -->
+                <div class="info-row" style="margin-top: 1.2rem;">
                     <i class="fas fa-clock"></i>
                     <div>
                         <h4 style="font-size: 0.7rem; margin-bottom: 0.2rem;">Response Time</h4>
@@ -820,7 +885,7 @@
         });
     }
 
-    // Contact form submission
+    // Contact form submission (general enquiries)
     const form = document.getElementById('contactForm');
     const feedback = document.getElementById('formFeedback');
     if(form) {
@@ -846,7 +911,7 @@
         });
     }
 
-    // Coffee booking
+    // Coffee booking via WEBSITE (manual request)
     const coffeeBtn = document.getElementById('coffeeBookingBtn');
     const coffeeFeedback = document.getElementById('coffeeFeedback');
     const coffeeNameInput = document.getElementById('coffeeName');
@@ -859,7 +924,7 @@
             const coffeeEmail = coffeeEmailInput ? coffeeEmailInput.value.trim() : null;
             
             if(!coffeeName) {
-                coffeeFeedback.innerHTML = "Please enter your name to book a coffee chat.";
+                coffeeFeedback.innerHTML = "Please enter your name to book.";
                 coffeeFeedback.style.color = "#D8A8A8";
                 return;
             }
@@ -878,10 +943,10 @@
                 weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
             });
             
-            const whatsappMsg = `Coffee%20Booking%20Request%3A%0AName%3A%20${coffeeName}%0AEmail%3A%20${coffeeEmail}%0ADate%2FTime%3A%20${formattedDate}`;
+            const whatsappMsg = `Coffee%20Booking%20Request%20(via%20website)%3A%0AName%3A%20${coffeeName}%0AEmail%3A%20${coffeeEmail}%0ADate%2FTime%3A%20${formattedDate}`;
             window.open(`https://wa.me/27645724461?text=${whatsappMsg}`, '_blank');
             
-            coffeeFeedback.innerHTML = `<i class="fas fa-check-circle"></i> Thanks ${coffeeName}! Request sent via WhatsApp. We'll confirm within 24 hours.`;
+            coffeeFeedback.innerHTML = `<i class="fas fa-check-circle"></i> Request sent! We'll confirm your coffee chat within hours.`;
             coffeeFeedback.style.color = "#A8D8A8";
             if(datetimePicker) datetimePicker.value = "";
             if(coffeeNameInput) coffeeNameInput.value = "";
